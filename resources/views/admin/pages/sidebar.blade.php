@@ -85,13 +85,18 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">
             <i class="lar la-folder-open"></i>
-            <span>Pages</span>
+            <span>Reports</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Employee Reports</h6>
-                <a class="collapse-item" href="">R</a>
-                <a class="collapse-item" href="">other</a>
+                <a class="collapse-item" href="">Department Reports</a>
+                <a class="collapse-item" href=""> Designation Reports</a>
+                <a class="collapse-item" href=""> Sales Reports</a>
+                <a class="collapse-item" href=""> Attemdences Reports</a>
+                <a class="collapse-item" href=""> Bonuses Reports</a>
+                <a class="collapse-item" href=""> Leaves Reports</a>
+                
            
             </div>
         </div>
