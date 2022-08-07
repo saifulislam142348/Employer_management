@@ -19,6 +19,16 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('forget_token')->default('none');
+            $table->string('gender')->comment('male=1 female=2');
+            $table->string('address');
+            $table->bigInteger('nid');
+            $table->bigInteger('phone');
+            $table->string('create_by')->default('none');
+            $table->string('update_by')->default('none');
+            $table->string('delete_by')->default('none');
+            $table->string('type')->default('employee');
+            $table->tinyInteger('status')->default(0)->comment('inactive=0 active=1');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -5,7 +5,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Employer Admin Panel <sup></sup></div>
+        <div class="sidebar-brand-text mx-3">Employee user Panel <sup></sup></div>
     </a>
 
     <!-- Divider -->
@@ -35,9 +35,11 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
+                <h6 class="collapse-header">Employee Components:</h6>
+                <a class="collapse-item" href="">Attemdences</a>
+                <a class="collapse-item" href="">Leaves Apply</a>
+                <a class="collapse-item" href="">Promosition Apply</a>
+           
             </div>
         </div>
     </li>
@@ -47,16 +49,18 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="las la-wrench"></i>
-            <span>Utilities</span>
+            <span>Setting</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="utilities-color.html">Colors</a>
-                <a class="collapse-item" href="utilities-border.html">Borders</a>
-                <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                <a class="collapse-item" href="utilities-other.html">Other</a>
+                <h6 class="collapse-header">Reports:</h6>
+                <h6 class="collapse-header">Employee Reports</h6>
+                <a class="collapse-item" href="">Department Reports</a>
+                <a class="collapse-item" href=""> Designation Reports</a>
+                <a class="collapse-item" href=""> Attemdences Reports</a>
+                <a class="collapse-item" href=""> Bonuses Reports</a>
+                <a class="collapse-item" href=""> Leaves Reports</a>
             </div>
         </div>
     </li>
@@ -79,8 +83,6 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Register</a>
                 <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                 <div class="collapse-divider"></div>
                 <h6 class="collapse-header">Other Pages:</h6>

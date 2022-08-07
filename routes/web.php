@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +19,29 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('welcome');
 });
-route::get('admin/index',[AdminController::class,'index'])->name('admin.index');
+
 route::get('user/index',[UserController::class,'index'])->name('user.index');
+
+Auth::routes();
+
+// user panel 
+Route::middleware(['auth', 'user-access:user'])->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    // route::get('user/index',[UserController::class,'index'])->name('user.index');
+    
+});
+
+// admin panel
+route::get('admin/index',[AdminController::class,'index'])->name('admin.index');
+Route::middleware(['auth', 'user-access:admin'])->group(function () {
+    Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
+    // route::get('admin/index',[AdminController::class,'index'])->name('admin.index');
+  
+    
+});
+
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -35,8 +35,12 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+
                 <h5 class="collapse-header">Employees Components:</h5>
-                <a class="collapse-item" href=""> Registration</a>
+               
+                    <a class="collapse-item" href=""> Registration</a>
+             
+               
                  <a class="collapse-item" href=""> Employees</a>
                  <a class="collapse-item" href="">Bonus</a>
                  <a class="collapse-item" href="">Attendences</a>
@@ -62,8 +66,10 @@
 
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Employees Setting</h6>
-                
-                <a class="collapse-item" href="">Department </a>
+               
+                    <a class="collapse-item" href="">Department </a>
+                  
+  
                 <a class="collapse-item" href="">designation</a>
                 <a class="collapse-item" href="">Utilities</a>
                 <a class="collapse-item" href="">Forgotted password</a>
@@ -92,7 +98,6 @@
                 <h6 class="collapse-header">Employee Reports</h6>
                 <a class="collapse-item" href="">Department Reports</a>
                 <a class="collapse-item" href=""> Designation Reports</a>
-                <a class="collapse-item" href=""> Sales Reports</a>
                 <a class="collapse-item" href=""> Attemdences Reports</a>
                 <a class="collapse-item" href=""> Bonuses Reports</a>
                 <a class="collapse-item" href=""> Leaves Reports</a>
