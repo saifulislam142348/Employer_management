@@ -38,13 +38,11 @@
 
                 <h5 class="collapse-header">Employees Components:</h5>
                
-                    <a class="collapse-item" href=""> Registration</a>
-             
-               
-                 <a class="collapse-item" href=""> Employees</a>
-                 <a class="collapse-item" href="">Bonus</a>
-                 <a class="collapse-item" href="">Attendences</a>
-                 <a class="collapse-item" href="">leaves</a>
+                <a class="collapse-item " href="{{route('admin.registration')}}"> Registration</a>
+                 <a class="collapse-item" href="{{route('admin.employee')}}"> Employees</a>
+                 <a class="collapse-item" href="{{route('admin.bonus')}}">Bonus</a>
+                 <a class="collapse-item" href="{{route('admin.attendence')}}">Attendences</a>
+                 <a class="collapse-item" href="{{route('admin.leave')}}">leaves</a>
                 
               
               
@@ -67,12 +65,11 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Employees Setting</h6>
                
-                    <a class="collapse-item" href="">Department </a>
-                  
-  
-                <a class="collapse-item" href="">designation</a>
-                <a class="collapse-item" href="">Utilities</a>
-                <a class="collapse-item" href="">Forgotted password</a>
+                    <a class="collapse-item" href="{{route('admin.department')}}">Department </a>
+                  <a class="collapse-item" href="{{route('admin.designation')}}">Designation</a>
+                  <a class="collapse-item" href="{{route('admin.department.designation')}}">Department & Designation</a>
+                <a class="collapse-item" href="{{route('admin.month')}}">Monthes</a>
+                <a class="collapse-item" href="#">Employees ForgetPassword</a>
                 
             </div>
         </div>

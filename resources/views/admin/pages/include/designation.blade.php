@@ -2,11 +2,11 @@
 @section('content')
 @include('admin.pages.include.header')
 <div class="container">
-    <h1 style="text-align: center;"><b>Employees List</b> </h1>
-    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#employeeModal">
-       Employee create
+    <h1 style="text-align: center;"><b>Designation List</b> </h1>
+    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#designationModal">
+     Designation create
       </button>
-      @include('form.employeeCreate')
+      @include('form.designationCreate')
     <div class="jumbotron">
        
  
@@ -16,26 +16,30 @@
             <tr>
                 <th>Id</th>
                 <th>name</th>
-                <th>Attemdences</th>
                 <th>Status</th>
-
                 <th>Action</th>
+                <th>Create_by</th>
+                <th>Update_by</th>
+                <th>Delete_by</th>
             </tr>
         </thead>
         <tbody>
+            @foreach ($designation as $item)
             <tr>
-                <td>1</td>
-                <td>ddk</td>
-                <td>2</td>
+               <td>{{$item->id}}</td>
+               <td>{{$item->name}}</td>
+               <td>{{$item->status}}</td>
                 <td>
                     <a class="btn btn-success" href=""><i class="las la-trash"></i></a>
                     <a class="btn btn-danger" href=""><i class="las la-edit"></i></a>
                 </td>
-                <td>
-                    <a class="btn btn-success" href="">active</i></a>
-                    <a class="btn btn-danger" href="">inactive</i></a>
-                </td>
+             
+                <td>{{$item->create_by}}</td>
+                <td>{{$item->update_by}}</td>
+                <td>{{$item->delete_by}}</td>
             </tr>
+            @endforeach
+           
         </tbody>
           </table>
     </div>

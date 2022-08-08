@@ -2,11 +2,11 @@
 @section('content')
 @include('admin.pages.include.header')
 <div class="container">
-    <h1 style="text-align: center;"><b>Employees List</b> </h1>
-    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#employeeModal">
-       Employee create
+    <h1 style="text-align: center;"><b>Attemdences List</b> </h1>
+    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#attendenceModal">
+       Attendences create
       </button>
-      @include('form.employeeCreate')
+      @include('form.attendenceCreate')
     <div class="jumbotron">
        
  

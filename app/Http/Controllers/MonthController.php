@@ -12,10 +12,9 @@ use App\Models\Employee;
 use App\Models\Leave;
 use App\Models\Salary;
 use Auth;
-
-class AttendencesController extends Controller
+class MonthController extends Controller
 {
-   public function attendence(){
-    return view('admin.pages.include.attendence');
-   }
+    public function month(){
+        return view('admin.pages.include.month');
+    }
 }

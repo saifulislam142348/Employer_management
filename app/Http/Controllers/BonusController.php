@@ -13,9 +13,9 @@ use App\Models\Leave;
 use App\Models\Salary;
 use Auth;
 
-class AttendencesController extends Controller
+class BonusController extends Controller
 {
-   public function attendence(){
-    return view('admin.pages.include.attendence');
+   public function bonus(){
+    return view('admin.pages.include.bonus');
    }
 }
