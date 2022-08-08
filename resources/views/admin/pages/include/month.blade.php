@@ -2,9 +2,9 @@
 @section('content')
 @include('admin.pages.include.header')
 <div class="container">
-    <h1 style="text-align: center;"><b>Employees List</b> </h1>
+    <h1 style="text-align: center;"><b>Month List</b> </h1>
     <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#monthModal">
-       Employee create
+   Month create
       </button>
       @include('form.monthCreate')
     <div class="jumbotron">
@@ -16,26 +16,19 @@
             <tr>
                 <th>Id</th>
                 <th>name</th>
-                <th>Attemdences</th>
-                <th>Status</th>
-
-                <th>Action</th>
+                <th>Create_by</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>ddk</td>
-                <td>2</td>
-                <td>
-                    <a class="btn btn-success" href=""><i class="las la-trash"></i></a>
-                    <a class="btn btn-danger" href=""><i class="las la-edit"></i></a>
-                </td>
-                <td>
-                    <a class="btn btn-success" href="">active</i></a>
-                    <a class="btn btn-danger" href="">inactive</i></a>
-                </td>
-            </tr>
+        @foreach ($month as $item)
+        <tr>
+            <td>{{$item->id}}</td>
+            <td>{{$item->name}}</td>
+            <td>{{$item->create_by}}</td>
+               
+        </tr>
+        @endforeach
+           
         </tbody>
           </table>
     </div>
