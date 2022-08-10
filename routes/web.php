@@ -55,12 +55,15 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
   
     //bonuscontroller
     route::get('admin/pages/include/bonus',[BonusController::class,'bonus'])->name('admin.bonus');
+    route::post('emoployees/bonus/add',[BonusController::class,'bonusstore'])->name('admin.employee.bonus');
 
     //attendences controller
     route::get('admin/pages/include/attendence',[AttendencesController::class,'attendence'])->name('admin.attendence');
+    route::post('employee/attendence',[AttendencesController::class,'present'])->name('admin.employee.present');
     
     //leavecontroller
     route::get('admin/pages/include/leave',[LeavesController::class,'leave'])->name('admin.leave');
+    route::post('employee/leave',[LeavesController::class,'leavestore'])->name('admin.employee.leave');
     
     //department add
     route::get('admin/pages/include/department',[DepartmentController::class,'department'])->name('admin.department');

@@ -16,7 +16,7 @@ use Auth;
 class RegistrationController extends Controller
 {
    public function registration(){
-    $registration = User::get();
+    $registration = User::where('type','employee')->get();
 
     return view('admin.pages.include.registration',compact('registration'));
    }

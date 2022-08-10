@@ -18,7 +18,7 @@ class EmployeesController extends Controller
 {
     public function employee(){
         $employees= Employee::get();
-        $user = User::get();
+        $user = User::where('type','employee')->get();
         $department =Department::get();
         $designation =Designation::get();
         $month = Month::get();

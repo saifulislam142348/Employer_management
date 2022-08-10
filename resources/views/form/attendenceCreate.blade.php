@@ -7,29 +7,45 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          {{-- <form method="POST" action="{{ route('admin.registration.store') }}">
+          <form method="POST" action="{{ route('admin.employee.present') }}">
             @csrf
 
             <div class="row mb-3">
-                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                <label for="user_id" class="col-md-4 col-form-label text-md-end">{{ __('User_Id') }}</label>
 
                 <div class="col-md-6">
-                    <input id="name" type="text" class="form-control" name="name">
-
-                    @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                   <select class="form-select" name="user_id" >
+                    <option  selected></option>
+                    @foreach ($user as $item)
+                        <option value="{{$item->id}}">{{$item->id}}</option>
+                    @endforeach
+                   </select>
                 </div>
             </div>
+           
+        
+            <div class="row mb-3">
+                <label  class="col-md-4 col-form-label text-md-end">{{ __('Month Name ') }}</label>
 
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save </button>
-            </div> 
-        </form> --}}
-
+                <div class="col-md-6">
+                   <select class="form-select" name="month_id" id="">
+                    <option  selected>..</option>
+                    @foreach ($month as $item)
+                        <option value="{{$item->id}}">{{$item->name}}</option>
+                    @endforeach
+                   </select>
+                </div>
+            </div>
+            
+           
+        
+            
+      
+    </div>
+    
+    <input type="submit" class="btn btn-success " value="save">
+    
+</form>
         </div>
         
       </div>
