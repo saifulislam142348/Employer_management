@@ -65,7 +65,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Employees Setting</h6>
                
-                    <a class="collapse-item" href="{{route('admin.department')}}">Department </a>
+                    <a class="collapse-item " href="{{route('admin.department')}}">Department </a>
                   <a class="collapse-item" href="{{route('admin.designation')}}">Designation</a>
                   <a class="collapse-item" href="{{route('admin.department.designation')}}">Department & Designation</a>
                 <a class="collapse-item" href="{{route('admin.month')}}">Monthes</a>

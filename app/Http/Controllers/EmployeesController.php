@@ -11,18 +11,26 @@ use App\Models\Designation;
 use App\Models\Employee;
 use App\Models\Leave;
 use App\Models\Salary;
+use App\Models\Month;
 use Auth;
 
 class EmployeesController extends Controller
 {
     public function employee(){
-        return view('admin.pages.include.employee');
+        $employees= Employee::get();
+        $user = User::get();
+        $department =Department::get();
+        $designation =Designation::get();
+        $month = Month::get();
+        return view('admin.pages.include.employee',compact('user','department', 'designation' ,'month','employees'));
     }
     public function  store(Request $request){
         $rules=[
             'user_id' => ['required'], 
             'department_id' =>['required'],
             'designation_id' => ['required'],
+            'month_id' => ['required'],
+
             'salary' => ['required'], 
             'join_date' =>['required'],
         ];
@@ -31,6 +39,7 @@ class EmployeesController extends Controller
         $employee->user_id=$request->input('user_id');
         $employee->department_id=$request->input('department_id');
         $employee->designation_id=$request->input('designation_id');
+        $employee->month_id=$request->input('month_id');
         $employee->salary=$request->input('salary');
         $employee->join_date=$request->input('join_date');
         $employee->save();

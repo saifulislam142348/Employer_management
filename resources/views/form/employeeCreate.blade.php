@@ -12,17 +12,18 @@
                     <span class="text-danger">{{ $error }}</span>
                 @endforeach
 
-                {{-- <form method="POST" action="{{ route('admin.employee.store') }}"> --}}
+                <form method="POST" action="{{ route('admin.employee.store') }}">
                     @csrf
 
                     <div class="row mb-3">
                         <label for="user_id" class="col-md-4 col-form-label text-md-end">{{ __('User_Id') }}</label>
 
                         <div class="col-md-6">
-                           <select class="form-select" name="user_id" id="">
+                           <select class="form-select" name="user_id" >
                             <option  selected></option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                            @foreach ($user as $item)
+                                <option value="{{$item->id}}">{{$item->id}}</option>
+                            @endforeach
                            </select>
                         </div>
                     </div>
@@ -31,10 +32,10 @@
 
                         <div class="col-md-6">
                            <select class="form-select" name="department_id" id="">
-                            <option  selected></option>
-                            <option value="1">web designer</option>
-                            <option value="2">networking</option>
-                            <option value="3">backend designer</option>
+                            <option  selected>..</option>
+                            @foreach ($department as $item)
+                            <option value="{{$item->id}}">{{$item->id}}</option>
+                        @endforeach
                            </select>
                         </div>
                     </div>
@@ -43,10 +44,22 @@
 
                         <div class="col-md-6">
                            <select class="form-select" name="designation_id" id="">
-                            <option  selected></option>
-                            <option value="1">python</option>
-                            <option value="2">laravel</option>
-                            <option value="3">java</option>
+                            <option  selected>..</option>
+                            @foreach ($designation as $item)
+                                <option value="{{$item->id}}">{{$item->id}}</option>
+                            @endforeach
+                           </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label  class="col-md-4 col-form-label text-md-end">{{ __('Month Name ') }}</label>
+
+                        <div class="col-md-6">
+                           <select class="form-select" name="month_id" id="">
+                            <option  selected>..</option>
+                            @foreach ($month as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                            @endforeach
                            </select>
                         </div>
                     </div>
@@ -67,13 +80,13 @@
 
                         </div>
                     </div>
-
+              
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save</button>
-            </div>
-            </form>
+            
+            <input type="submit" class="btn btn-success " value="save">
+            
+        </form>
+            
         </div>
     </div>
 </div>

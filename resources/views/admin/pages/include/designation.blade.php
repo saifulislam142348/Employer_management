@@ -6,6 +6,7 @@
     <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#designationModal">
      Designation create
       </button>
+      @include('form.relationCreate')
       @include('form.designationCreate')
     <div class="jumbotron">
        
@@ -20,7 +21,7 @@
                 <th>Action</th>
                 <th>Create_by</th>
                 <th>Update_by</th>
-                <th>Delete_by</th>
+              
             </tr>
         </thead>
         <tbody>
@@ -36,7 +37,7 @@
              
                 <td>{{$item->create_by}}</td>
                 <td>{{$item->update_by}}</td>
-                <td>{{$item->delete_by}}</td>
+              
             </tr>
             @endforeach
            

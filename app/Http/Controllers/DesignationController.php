@@ -16,7 +16,8 @@ class DesignationController extends Controller
 {
    public function designation(){
       $designation= Designation::all();
-    return view('admin.pages.include.designation',compact('designation'));
+      $department= Department::all();
+    return view('admin.pages.include.designation',compact('designation','department'));
    }
 
 

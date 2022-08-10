@@ -23,9 +23,10 @@
                 <th>Gender</th>
                 <th>Address</th>
                 <th>Phone</th>
+               
+                <th>Create_by</th>
                 <th>Status</th>
                 <th> Action</th>
-                <th>Create_by</th>
             </tr>
         </thead>
         <tbody>
@@ -37,14 +38,14 @@
                 <td>{{$item->gender}}</td>
                 <td>{{$item->address}}</td>
                 <td>{{$item->phone}}</td>
+               
+                <td>{{$item->create_by}}</td>
                 <td>{{$item->status}} </td>
                
                 <td>
                     <a class="btn btn-success" href=""><i class="las la-trash"></i></a>
                     <a class="btn btn-danger" href=""><i class="las la-edit"></i></a>
                 </td>
-                <td>{{$item->create_by}}</td>
-                
                 
             </tr>
             @endforeach

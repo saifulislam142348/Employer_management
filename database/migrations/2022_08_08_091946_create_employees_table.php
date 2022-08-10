@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('department_id');
             $table->unsignedBigInteger('designation_id');
+            $table->unsignedBigInteger('month_id');
             $table->unsignedBigInteger('salary');
             $table->string('join_date');
             $table->tinyInteger('status')->default(0)->comment('inactive=0 active=1');

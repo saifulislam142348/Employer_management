@@ -66,6 +66,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     route::get('admin/pages/include/department',[DepartmentController::class,'department'])->name('admin.department');
     route::get('admin/pages/include/department/designation',[DepartmentController::class,'depart_design'])->name('admin.department.designation');
     route::post('admin/department/create',[DepartmentController::class,'deptStore'])->name('admin.department.store');
+    route::post('admin/department/relation',[DepartmentController::class,'deptrelation'])->name('admin.department.relation');
    
     //designation add
     route::get('admin/pages/include/designation',[DesignationController::class,'designation'])->name('admin.designation');
