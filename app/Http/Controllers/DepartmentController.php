@@ -43,7 +43,8 @@ class DepartmentController extends Controller
    }
     public function deptrelation(Request $request){
       $rules=[
-         'name' => ['required'], 
+         'department_id' => ['required'], 
+         'designation_id' => ['required'], 
  
      ];
      $this->validate($request,$rules);

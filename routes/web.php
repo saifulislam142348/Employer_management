@@ -59,7 +59,8 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
     //attendences controller
     route::get('admin/pages/include/attendence',[AttendencesController::class,'attendence'])->name('admin.attendence');
-    route::post('employee/attendence',[AttendencesController::class,'present'])->name('admin.employee.present');
+    route::post('employee/attendence/inTime',[AttendencesController::class,'inTime'])->name('admin.employee.in_time');
+    route::post('employee/attendence/outTime',[AttendencesController::class,'outTime'])->name('admin.employee.out_time');
     
     //leavecontroller
     route::get('admin/pages/include/leave',[LeavesController::class,'leave'])->name('admin.leave');

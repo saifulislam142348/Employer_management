@@ -1,3 +1,12 @@
+
+   @if(session()->has('status'))
+    <div class="alert alert-success">
+        {{ session()->get('status') }}
+    </div>
+@endif
+
+
+
 <form action="{{route('admin.department.relation')}}"  method="POST">
     @csrf
 <div class="d-flex flex-row justify-content-end bd-highlight">

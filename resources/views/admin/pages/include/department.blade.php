@@ -9,24 +9,22 @@
             Department Create
         </button>
 
-      @include('form.relationCreate')
-      
+        @include('form.relationCreate')
+
         @include('form.departmentCreate')
         <div class="jumbotron">
 
-y
+            y
 
             <table class="table table-striped table-bordered table-hover table-dark">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th> Department name</th>
-
-                        <th>Status</th>
-
-                        <th>Action</th>
                         <th>Create_by</th>
                         <th>Update_by</th>
+                        <th>Status</th>
+                        <th>Action</th>
 
                     </tr>
                 </thead>
@@ -35,13 +33,15 @@ y
                         <tr>
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->name }}</td>
+                            <td>{{ $item->create_by }}</td>
+                            <td>{{ $item->update_by }}</td>
                             <td>{{ $item->status }}</td>
                             <td>
                                 <a class="btn btn-success" href=""><i class="las la-trash"></i></a>
                                 <a class="btn btn-danger" href=""><i class="las la-edit"></i></a>
                             </td>
-                            <td>{{ $item->create_by }}</td>
-                            <td>{{ $item->update_by }}</td>
+
+
 
 
                         </tr>

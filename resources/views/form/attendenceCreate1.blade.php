@@ -1,13 +1,13 @@
 <!-- Modal -->
-<div class="modal fade" id="attendenceModal" tabindex="-1" aria-labelledby="attendenceModalLabel" aria-hidden="true">
+<div class="modal fade" id="attendence1Modal" tabindex="-1" aria-labelledby="attendence1ModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="attendenceModalLabel"> Employee Attendences </h5>
+          <h5 class="modal-title" id="attendence1ModalLabel"> Employee Attendences </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form method="POST" action="{{ route('admin.employee.in_time') }}">
+          <form method="POST" action="{{ route('admin.employee.out_time') }}">
             @csrf
 
             <div class="row mb-3">

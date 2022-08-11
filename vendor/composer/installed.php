@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'eb164958b8c05a981bb667e078bd98ada37aa29d',
+        'reference' => 'a978330c3ce570af868e4a599aac70d0064df7b7',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'brick/math' => array(
-            'pretty_version' => '0.10.1',
-            'version' => '0.10.1.0',
-            'reference' => 'de846578401f4e58f911b3afeb62ced56365ed87',
+            'pretty_version' => '0.10.2',
+            'version' => '0.10.2.0',
+            'reference' => '459f2781e1a08d52ee56b0b1444086e038561e3f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../brick/math',
             'aliases' => array(),
@@ -376,7 +376,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'eb164958b8c05a981bb667e078bd98ada37aa29d',
+            'reference' => 'a978330c3ce570af868e4a599aac70d0064df7b7',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -763,8 +763,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0|3.0',
-                1 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                1 => '1.0|2.0|3.0',
             ),
         ),
         'psr/simple-cache' => array(
