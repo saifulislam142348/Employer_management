@@ -21,7 +21,8 @@ class BonusController extends Controller
       $employees= Employee::get();
       $user = User::where('type','employee')->get();
       $month = Month::get();
-    return view('admin.pages.include.bonus', compact('user','month','employees'));
+      $bonus = Bonus::get();
+    return view('admin.pages.include.bonus', compact('user','month','employees','bonus'));
    }
 
    public function bonusstore(Request $request){

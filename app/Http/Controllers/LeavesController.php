@@ -18,7 +18,8 @@ class LeavesController extends Controller
    public function leave(){
       $user = User::where('type','employee')->get();
       $month = month::get();
-    return view('admin.pages.include.leave',compact('user','month'));
+      $leaves=Leave::get();
+    return view('admin.pages.include.leave',compact('user','month','leaves'));
    }
 
    public function leavestore(Request $request){

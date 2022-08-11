@@ -21,6 +21,8 @@
                         <th>Salary</th>
                         <th> Join month</th>
                         <th> Join time</th>
+                        <th>Create_by</th>
+                        <th>Update_by</th>
                         <th>Status</th>
 
                         <th>Action</th>
@@ -29,21 +31,29 @@
                 <tbody>
                     @foreach ($employees as $item)
                         <tr>
-                            <td>{{$item->id}}</td>
-                            <td>{{$item->user_id}}</td>
-                            <td>{{$item->department_id}}</td>
-                            <td>{{$item->designation_id}}</td>
-                           
-                            <td>{{$item->salary}}</td>
-                            <td>{{$item->month_id}}</td>
-                            <td>{{$item->join_date}}</td>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->users->name }}</td>
+                            {{-- {{dd($item->departments->name)}} --}}
+                            <td>{{ $item->departments->name }}</td>
+                            <td>{{ $item->designations->name }}</td>
+
+                            <td>{{ $item->salary }}</td>
+                            <td>{{ $item->months->name }}</td>
+                            <td>{{ $item->join_date }}</td>
+                            <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
+                            <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
                             <td>
                                 <a class="btn btn-success" href=""><i class="las la-trash"></i></a>
                                 <a class="btn btn-danger" href=""><i class="las la-edit"></i></a>
                             </td>
                             <td>
-                                <a class="btn btn-success" href="">active</i></a>
-                                <a class="btn btn-danger" href="">inactive</i></a>
+                                @if ($item->status == 0)
+                                    <a class="btn btn-danger" href="">inactive</i></a>
+                                @else
+                                    <a class="btn btn-success" href="">active</i></a>
+                                @endif
+
+
                             </td>
                         </tr>
                     @endforeach

@@ -20,7 +20,7 @@
                         </div>
                     </div>
             </div>
-           <input type="submit" value="save">
+           <input class="btn btn-success" type="submit" value="save">
              
            
             </form>

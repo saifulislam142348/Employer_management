@@ -1,44 +1,75 @@
 @extends('layouts.layout')
 @section('content')
-@include('admin.pages.include.header')
-<div class="container">
-    <h1 style="text-align: center;"><b>Leave List</b> </h1>
-    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#leaveModal">
-       Leave create
-      </button>
-      @include('form.leaveCreate')
-    <div class="jumbotron">
-       
- 
-  
-        <table class="table table-striped table-bordered table-hover table-dark">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>name</th>
-                <th>Attemdences</th>
-                <th>Status</th>
+    @include('admin.pages.include.header')
+    <div class="container">
+        <h1 style="text-align: center;"><b>Leave List</b> </h1>
+        <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#leaveModal">
+            Leave create
+        </button>
+        @include('form.leaveCreate')
+        <div class="jumbotron">
 
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>ddk</td>
-                <td>2</td>
-                <td>
-                    <a class="btn btn-success" href=""><i class="las la-trash"></i></a>
-                    <a class="btn btn-danger" href=""><i class="las la-edit"></i></a>
-                </td>
-                <td>
-                    <a class="btn btn-success" href="">active</i></a>
-                    <a class="btn btn-danger" href="">inactive</i></a>
-                </td>
-            </tr>
-        </tbody>
-          </table>
+
+
+            <table class="table table-striped table-bordered table-hover table-dark">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Id</th>
+                        <th>name</th>
+                        <th> Leave Month</th>
+                        <th> Present Condition/status</th>
+                        <th>Create_by</th>
+                        <th>Update_by</th>
+                        <th>Action</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($leaves as $key => $item)
+                        <tr>
+                            <td>{{ $key + 1 }}</td>
+                            <td>{{ $item->user_id }}</td>
+                            <td>{{ $item->users->name }}</td>
+                            <td>{{ $item->months->name }}</td>
+
+                            <td>
+                                @if ($item->leave == 1)
+                                    <a class="btn btn-danger" href="">leave</a>
+                                @else
+                                    <a class="btn btn-success" href="">join</a>
+                                @endif
+                            </td>
+                            <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
+                            <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
+                            <td>
+                                <a class="btn btn-success" href=""><i class="las la-trash"></i></a>
+                                <a class="btn btn-danger" href=""><i class="las la-edit"></i></a>
+                            </td>
+                            <td>
+                                @if ($item->status == 0)
+                                    <a class="btn btn-danger" href="">inactive</i></a>
+                                @else
+                                    <a class="btn btn-success" href="">active</i></a>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
-
 @endsection

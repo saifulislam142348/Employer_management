@@ -33,8 +33,8 @@
                         <tr>
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->name }}</td>
-                            <td>{{ $item->create_by }}</td>
-                            <td>{{ $item->update_by }}</td>
+                          <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
+                          <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
                             <td>{{ $item->status }}</td>
                             <td>
                                 <a class="btn btn-success" href=""><i class="las la-trash"></i></a>

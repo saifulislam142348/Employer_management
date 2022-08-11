@@ -20,36 +20,34 @@
                         <th>Designation</th>
                         <th>Create_by</th>
                         <th>Update_by</th>
-                        <th>Status</th>
+
                         <th>Action</th>
-
-
-
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($relation as $item)
-                 
-                        @if ($item->count() > 0)
-                            <tr>
-                                <td>{{ $item->id }}</td>
-                                <td>{{ $item->department_id }}</td>
-                                <td>{{ $item->designation_id }}</td>
-                                <td>{{ $item->create_by }}</td>
-                                <td>{{ $item->update_by }}</td>
-                                <td>{{ $item->status }}</td>
-                                <td>
-                                    <a class="btn btn-success" href=""><i class="las la-trash"></i></a>
-                                    <a class="btn btn-danger" href=""><i class="las la-edit"></i></a>
-                                </td>
-                            </tr>
-                         
-                                
-                            @else
-                            <span alert alert-danger> no founds</span>
-                                
-                            
-                        @endif
+                        <tr>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->departments->name }}</td>
+                            <td>{{ $item->designations->name }}</td>
+                            <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
+                            <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
+                            <td>
+                                <a class="btn btn-success" href=""><i class="las la-trash"></i></a>
+                                <a class="btn btn-danger" href=""><i class="las la-edit"></i></a>
+                            </td>
+                            <td>
+
+                                @if ($item->status == 0)
+                                    <a class="btn btn-danger" href="">inactive</a>
+                                @else
+                                    <a class="btn btn-success" href="">active</a>
+                                @endif
+
+
+                            </td>
+                        </tr>
                     @endforeach
 
                 </tbody>

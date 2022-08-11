@@ -20,34 +20,66 @@
                         <th>Bonus </th>
                         <th>Bonus month</th>
                         <th>Create_by</th>
-
-                        <th>Status</th>
-
+                        <th>Update_by</th>
                         <th>Action</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($employees as $item)
-                
+                    @if ($bonus->count() > 0)
+                        @foreach ($bonus as $item)
+                            <tr>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->users->name }}</td>
+                                {{-- <td>{{ $item->bonus_title }}</td> --}}
+                                <td>{{ $item->bonus }}</td>
+                                <td>{{ $item->months->name }}</td>
+                                <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
+                                <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
+                                <td>
+                                    <a class="btn btn-success" href=""><i class="las la-trash"></i></a>
+                                    <a class="btn btn-danger" href=""><i class="las la-edit"></i></a>
+                                </td>
+                                <td>
+                                    @if ($item->status == 0)
+                                        <a class="btn btn-danger " href="">inactive</a>
+                                    @else
+                                        <a class="btn btn-success" href="">active</a>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
                         <tr>
-                            <td>{{ $item->id }}</td>
-                            <td>{{ $item->user_id }}</td>
-                            {{-- <td>{{ $item->bonus_title }}</td> --}}
-                            <td>{{ $item->bonus}}</td>
-                            <td>{{ $item->month_id }}</td>
-                            <td>{{ $item->create_by }}</td>
-                            <td>
-                                <a class="btn btn-success" href="">active</i></a>
-                                <a class="btn btn-danger" href="">inactive</i></a>
-                            </td>
 
-                            <td>
-                                <a class="btn btn-success" href=""><i class="las la-trash"></i></a>
-                                <a class="btn btn-danger" href=""><i class="las la-edit"></i></a>
-                            </td>
+                            <td class="text-center " colspan="100%">
 
+                                no found!
+
+                            </td>
                         </tr>
-                    @endforeach
+                    @endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 </tbody>
             </table>

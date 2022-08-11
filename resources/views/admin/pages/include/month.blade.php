@@ -24,7 +24,7 @@
         <tr>
             <td>{{$item->id}}</td>
             <td>{{$item->name}}</td>
-            <td>{{$item->create_by}}</td>
+       <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
                
         </tr>
         @endforeach
