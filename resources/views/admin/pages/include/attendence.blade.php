@@ -45,49 +45,44 @@
                         <th>Month</th>
                         <th>In Time</th>
                         <th>Out Time</th>
-                        <th>Action</th>
                         <th>Attendences</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($attendence as $key=> $item)
-                        <tr>
-                            <td>{{ $key+1}}</td>
-                            <td>{{ $item->user_id }}</td>
-                            <td>{{ $item->users->name }}</td>
-                            <td>{{ $item->months->name }}</td>
-                            <td>{{ $item->in_time }}</td>
-                            <td>{{ $item->out_time }}</td>
-                            <td>
-                                <a class="btn btn-success" href=""><i class="las la-edit"></i></a>
-                                <a class="btn btn-danger" href=""><i class="las la-trash"></i></a>
+                    @if ($attendence->count() > 0)
+                        @foreach ($attendence as $key => $item)
+                            <tr>
+                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $item->user_id }}</td>
+                                <td>{{ $item->users->name }}</td>
+                                <td>{{ $item->months->name }}</td>
+                                <td>{{ $item->in_time }}</td>
+                                <td>{{ $item->out_time }}</td>
 
-                            </td>
-                            <td>
-                                @if ($item->status == 1)
-                                    <a class="btn btn-danger" href=""></i>Absent</a>
-                                @else
-                                    @if ($item->status == 0)
-                                        <a class="btn btn-success" href="">Present</i></a>
+                                <td>
+                                    @if ($item->status == 1)
+                                        <a class="btn btn-danger" href=""></i>Out Time</a>
+                                    @else
+                                        @if ($item->status == 0)
+                                            <a class="btn btn-success" href="">In Time</i></a>
+                                        @endif
                                     @endif
-                                @endif
-
-
-                            </td>
+                                </td>
+                                <td>
+                                    <form action="{{ url('attendence/delete/' . $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger"><i class="las la-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="100%" style="text-align: center;">Not Found!</td>
                         </tr>
-                    @endforeach
-
-
-
-
-
-
-
-
-
-
-
-
+                    @endif
                 </tbody>
             </table>
         </div>

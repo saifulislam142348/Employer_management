@@ -61,4 +61,11 @@ public function outTime(Request $request){
  return redirect()->back()->with('status',' success');
 }
 
+public function delete($id){
+   $attendenceDelete= Attendence::find($id);
+    $attendenceDelete->delete();
+    return back();
+
+}
+
 }

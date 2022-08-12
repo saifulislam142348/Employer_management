@@ -26,39 +26,58 @@
 
                         <th>Create_by</th>
                         <th>Update_by</th>
-                        <th> Action</th>
+                        <th colspan="2" style="text-align: center;">Action</th>
                         <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($registration as $item)
-                        <tr>
-                            <td>{{ $item->id }}</td>
-                            <td>{{ $item->name }}</td>
-                            <td>{{ $item->email }}</td>
-                            @if ($item->gender == 1)
-                                <td><span>male</span></td>
-                            @else
-                                <td><span>female</span></td>
-                            @endif
-                            <td>{{ $item->address }}</td>
-                            <td>{{ $item->phone }}</td>
-                          <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
-                          <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
-                            <td colspan="2">
-                                <a class="btn btn-success" href=""><i class="las la-edit"></i></a>
-                                 <a class="btn btn-danger" href=""><i class="las la-trash"></i></a>
-                            </td>
-                            <td>
-                                @if ($item->status == 0)
-                                    <a class="btn btn-danger" href="">inactive</i></a>
+                    @if ($registration->count() > 0)
+                        @foreach ($registration as $item)
+                            <tr>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->email }}</td>
+                                @if ($item->gender == 1)
+                                    <td><span>male</span></td>
                                 @else
-                                    <a class="btn btn-success" href="">active</i></a>
+                                    <td><span>female</span></td>
                                 @endif
+                                <td>{{ $item->address }}</td>
+                                <td>{{ $item->phone }}</td>
+                                <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
+                                <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
+                                <td>
+                                    <a class="btn btn-success" href=""><i class="las la-edit"></i></a>
+                                <td>
+
+                                    <form action="{{ url('registration/delete/' . $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button class="btn btn-danger"><i class="las la-trash"></i></button>
+
+                                    </form>
+
+                                </td>
+                                </td>
+                                <td>
+                                    @if ($item->status == 0)
+                                        <a class="btn btn-danger"
+                                            href="{{ url('statusChange/' . $item->id) }}">inactive</i></a>
+                                    @else
+                                        <a class="btn btn-success"
+                                            href="{{ url('statusChange/' . $item->id) }}">active</i></a>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="100%" style="text-align: center;">Not Found!</td>
+                            not found
                             </td>
                         </tr>
-                    @endforeach
-
+                    @endif
                 </tbody>
             </table>
         </div>

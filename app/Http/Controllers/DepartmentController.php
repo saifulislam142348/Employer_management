@@ -37,7 +37,7 @@ class DepartmentController extends Controller
  
      $department= new Department();
      $department->name=$request->input('name');
-     $department->create_by= Auth::User()->name;
+     $department->create_by=Auth::User()->name;
      $department->save();
      return redirect()->back()->with('status','department success');
    }
@@ -57,4 +57,41 @@ class DepartmentController extends Controller
      return redirect()->back()->with('status','department relation success');
 
     }
+
+    public function departmentStatus($id){
+      $departmentStatus= Department::select('status')->where('id', $id)->first();
+      if($departmentStatus->status==0){
+         $status=1;
+      }
+      else{
+         $status=0;
+      }
+      Department::where('id', $id)->update(['status'=> $status]);
+      return redirect()->back();
+    }
+
+   public function deptRelationStatus($id)
+   {
+      $Department_Designation= Department_Designation::select('status')->where('id', $id)->first();
+      if ($Department_Designation->status == 0) {
+         $status = 1;
+      } else {
+         $status = 0;
+      }
+      Department_Designation::where('id', $id)->update(['status' => $status]);
+      return redirect()->back();
+   }
+   public function delete($id)
+   {
+      $departmentDelete = department::find($id);
+      $departmentDelete->delete();
+      return back();
+   }
+   public function deleteelation($id)
+   {
+      $Department_Designation = Department_Designation::find($id);
+      $Department_Designation->delete();
+      return back();
+   }
+   
 }

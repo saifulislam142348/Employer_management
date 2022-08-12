@@ -17,31 +17,51 @@ use Auth;
 
 class BonusController extends Controller
 {
-   public function bonus(){
-      $employees= Employee::get();
-      $user = User::where('type','employee')->get();
+   public function bonus()
+   {
+      $employees = Employee::get();
+      $user = User::where('type', 'employee')->get();
       $month = Month::get();
       $bonus = Bonus::get();
-    return view('admin.pages.include.bonus', compact('user','month','employees','bonus'));
+      return view('admin.pages.include.bonus', compact('user', 'month', 'employees', 'bonus'));
    }
 
-   public function bonusstore(Request $request){
-      $rules=[
-         'user_id' => ['required'], 
-         'month_id' => ['required'], 
-         'bonus_title' => ['required'], 
-         'bonus' => ['required'], 
- 
-     ];
-     $this->validate($request,$rules);
- 
-      $bonus= new bonus();
-      $bonus->user_id=$request->input('user_id');
-      $bonus->month_id=$request->input('month_id');
-      $bonus->bonus_title=$request->input('bonus_title');
-      $bonus->bonus=$request->input('bonus');
-      $bonus->create_by= Auth::User()->name;
-     $bonus->save();
-     return redirect()->back()->with('status',' success');
+   public function bonusstore(Request $request)
+   {
+      $rules = [
+         'user_id' => ['required'],
+         'month_id' => ['required'],
+         'bonus_title' => ['required'],
+         'bonus' => ['required'],
+
+      ];
+      $this->validate($request, $rules);
+
+      $bonus = new bonus();
+      $bonus->user_id = $request->input('user_id');
+      $bonus->month_id = $request->input('month_id');
+      $bonus->bonus_title = $request->input('bonus_title');
+      $bonus->bonus = $request->input('bonus');
+      $bonus->create_by = Auth::User()->name;
+      $bonus->save();
+      return redirect()->back()->with('status', ' success');
+   }
+   public function bonusStatus($id)
+   {
+      $bonusStatus = Bonus::select('status')->where('user_id', $id)->first();
+      if ($bonusStatus->status == 0) {
+         $status = 1;
+      }
+      else{
+         $status=0;
+      }
+      Bonus::where('user_id', $id)->update(['status'=> $status]);
+      return redirect()->back()->with('status','status update successfully');
+   }
+   public function delete($id)
+   {
+      $bonusDelete = Bonus::find($id);
+      $bonusDelete->delete();
+      return back();
    }
 }

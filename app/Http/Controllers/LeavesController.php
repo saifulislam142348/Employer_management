@@ -40,4 +40,23 @@ class LeavesController extends Controller
      $leave->save();
      return redirect()->back()->with('status',' success');
    }
+
+   public function leaveStatus($id){
+      $leaveStatus= Leave::select('status')->where('user_id', $id)->first();
+      if($leaveStatus->status==0){
+         $status=1;
+      }
+      else{
+         $status=0;
+      }
+      Leave::where('user_id', $id)->update(['status'=> $status]);
+      return redirect()->back()->with('status','status update success');
+
+   }
+   public function delete($id)
+   {
+      $leaveDelete = Leave::find($id);
+      $leaveDelete->delete();
+      return back();
+   }
 }

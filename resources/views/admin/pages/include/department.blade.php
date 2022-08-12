@@ -23,30 +23,53 @@
                         <th> Department name</th>
                         <th>Create_by</th>
                         <th>Update_by</th>
-                        <th>Status</th>
                         <th>Action</th>
+                        <th>Status</th>
 
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($department as $item)
+                    @if ($department->count() > 0)
+                        @foreach ($department as $item)
+                            <tr>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
+                                <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
+
+                                <td>
+                                    <a class="btn btn-success" href=""><i class="las la-edit"></i></a>
+                                <td>
+
+                                    <form action="{{ url('department/delete/' . $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button class="btn btn-danger"><i class="las la-trash"></i></button>
+
+                                    </form>
+
+                                </td>
+                                </td>
+                                <td>
+                                    @if ($item->status == 0)
+                                        <a class="btn btn-danger"
+                                            href="{{ url('departmentStatus/' . $item->id) }}">inactive<a>
+                                            @else
+                                                <a class="btn btn-success"
+                                                    href="{{ url('departmentStatus/' . $item->id) }}">active<a>
+                                    @endif
+
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
                         <tr>
-                            <td>{{ $item->id }}</td>
-                            <td>{{ $item->name }}</td>
-                          <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
-                          <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
-                            <td>{{ $item->status }}</td>
-                            <td>
-                                <a class="btn btn-success" href=""><i class="las la-trash"></i></a>
-                                <a class="btn btn-danger" href=""><i class="las la-edit"></i></a>
+                            <td colspan="100%" style="text-align: center;">Not Found!</td>
+                            not found
                             </td>
-
-
-
-
                         </tr>
-                    @endforeach
-
+                    @endif
                 </tbody>
             </table>
         </div>

@@ -44,10 +44,32 @@ class RegistrationController extends Controller
     $registration->address=$request->input('address');
     $registration->nid=$request->input('nid');
     $registration->phone=$request->input('phone');
-    $registration->create_by=Auth::User()->name;
+    $registration->create_by= Auth::User()->name;
     $registration->save();
    
     return redirect()->back()->with('status','Registration success');
 
    }
+
+   
+   public function statusChange($id){
+  $getstatus=User::select('status')->where('id',$id)->first();
+
+        if($getstatus->status==1){
+            $status=0;
+        }else{
+            $status=1;
+        }
+        User::where('id',$id)->update(['status'=>  $status]);
+
+      
+        return back()->with('status','status update successfully');
+   
+   }
+    public function delete($id)
+    {
+        $userDelete = User::find($id);
+        $userDelete->delete();
+        return back();
+    }
 }

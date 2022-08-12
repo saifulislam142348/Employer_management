@@ -46,4 +46,22 @@ class EmployeesController extends Controller
         return redirect()->back()->with('status','employyess success');
 
     }
+
+    public function employeeStatus($id){
+        $employeeStatus= Employee::select('status')->where('id', $id)->first();
+        if ($employeeStatus->status==0) {
+           $status=1;
+        }
+        else{
+            $status=0;
+        }
+        Employee::where('id',$id)->update(['status'=> $status]);
+        return redirect()->back()->with('status','status upadate');
+    }
+    public function delete($id)
+    {
+        $employeeDelete = Employee::find($id);
+        $employeeDelete->delete();
+        return back();
+    }
 }
