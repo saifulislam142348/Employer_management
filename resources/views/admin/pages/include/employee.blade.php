@@ -42,7 +42,9 @@
                                 <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
                                 <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
                                 <td>
-                                    <a class="btn btn-success" href=""><i class="las la-edit"></i></a>
+                                    <a class="btn btn-success" data-toggle="modal" data-target="#employeeEditModal"
+                                        href=""><i class="las la-edit"></i></a>
+                                    @include('form.edit.employee')
                                 <td>
 
                                     <form action="{{ url('employee/delete/' . $item->id) }}" method="POST">

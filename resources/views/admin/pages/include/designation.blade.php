@@ -37,7 +37,9 @@
 
                                 <td>
 
-                                    <a class="btn btn-success" href=""><i class="las la-edit"></i></a>
+                                    <a class="btn btn-success" data-toggle="modal" data-target="#designationEditModal"
+                                        href=""><i class="las la-edit"></i></a>
+                                    @include('form.edit.designation')
                                 <td>
 
                                     <form action="{{ url('designation/delete/' . $item->id) }}" method="POST">

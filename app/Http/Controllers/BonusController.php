@@ -13,7 +13,7 @@ use App\Models\Leave;
 use App\Models\Salary;
 use App\Models\Month;
 use App\Models\Department_Designation;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class BonusController extends Controller
 {

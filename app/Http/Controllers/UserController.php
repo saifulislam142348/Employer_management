@@ -11,7 +11,7 @@ use App\Models\Designation;
 use App\Models\Employee;
 use App\Models\Leave;
 use App\Models\Salary;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
   

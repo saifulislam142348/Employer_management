@@ -43,7 +43,9 @@
                                 <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
                                 <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
                                 <td>
-                                    <a class="btn btn-success" href=""><i class="las la-trash"></i></a>
+                                    <a class="btn btn-success" data-toggle="modal" data-target="#leaveEditModal"
+                                        href=""><i class="las la-edit"></i></a>
+                                    @include('form.edit.leave')
                                 <td>
 
                                     <form action="{{ url('leave/delete/' . $item->id) }}" method="POST">

@@ -38,7 +38,11 @@
                                 <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
                                 <td>
 
-                                    <a class="btn btn-success" href=""><i class="las la-edit"></i></a>
+
+                                  
+                                    <a class="btn btn-success" data-toggle="modal" data-target="#bonusEditModal"
+                                        href=""><i class="las la-edit"></i></a>
+                                          @include('form.edit.bonus')
                                 <td>
 
                                     <form action="{{ url('bonus/delete/' . $item->id) }}" method="POST">
@@ -66,7 +70,7 @@
 
                             <td colspan="100%" style="text-align: center;">Not Found!</td>
 
-                                not found
+                            not found
                             </td>
                         </tr>
                     @endif

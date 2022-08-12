@@ -12,7 +12,7 @@ use App\Models\Employee;
 use App\Models\Leave;
 use App\Models\Salary;
 use App\Models\Month;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class EmployeesController extends Controller
 {
