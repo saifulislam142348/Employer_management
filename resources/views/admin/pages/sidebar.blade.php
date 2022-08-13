@@ -41,6 +41,7 @@
                 <a class="collapse-item " href="{{route('admin.registration')}}"> Registration</a>
                  <a class="collapse-item" href="{{route('admin.employee')}}"> Employees</a>
                  <a class="collapse-item" href="{{route('admin.bonus')}}">Bonus</a>
+                 <a class="collapse-item" href="{{route('admin.salaryPrepared')}}">Salary Prepared</a>
                  <a class="collapse-item" href="{{route('admin.attendence')}}">Attendences</a>
                  <a class="collapse-item" href="{{route('admin.leave')}}">leaves</a>
                 

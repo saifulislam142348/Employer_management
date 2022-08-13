@@ -41,7 +41,7 @@
 
                                   
                                     <a class="btn btn-success" data-toggle="modal" data-target="#bonusEditModal"
-                                        href=""><i class="las la-edit"></i></a>
+                                        href="{{url('admin/form/edit/'.$item->id)}}"><i class="las la-edit"></i></a>
                                           @include('form.edit.bonus')
                                 <td>
 

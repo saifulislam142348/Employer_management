@@ -72,4 +72,10 @@ class RegistrationController extends Controller
         $userDelete->delete();
         return back();
     }
+
+    public function edit($id){
+
+        $registration= User::find($id);
+        return redirect('admin.pages.include.registration', compact('registration'));
+    }
 }

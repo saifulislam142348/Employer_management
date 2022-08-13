@@ -46,11 +46,12 @@ route::get('admin/index', [AdminController::class, 'index'])->name('admin.index'
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
 
-    //registratio9n controller
+    //registration controller
     route::get('admin/pages/include/registration', [RegistrationController::class, 'registration'])->name('admin.registration');
     route::post('admin/registration/create', [RegistrationController::class, 'store'])->name('admin.registration.store');
     route::get('statusChange/{id}', [RegistrationController::class, 'statusChange']);
     route::delete('registration/delete/{id}', [RegistrationController::class, 'delete']);
+    route::get('admin.pages.include.registration/{id}', [RegistrationController::class, 'edit']);
 
     //employee controller
     route::get('admin/pages/include/employee', [EmployeesController::class, 'employee'])->name('admin.employee');
@@ -61,6 +62,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     //bonuscontroller
     route::get('admin/pages/include/bonus', [BonusController::class, 'bonus'])->name('admin.bonus');
     route::post('emoployees/bonus/add', [BonusController::class, 'bonusstore'])->name('admin.employee.bonus');
+    route::post('emoployees/bonus/edit/{id}', [BonusController::class, 'bonus'])->name('admin.employee.bonus.edit');
     route::get('bonusStatus/{id}', [BonusController::class, 'bonusStatus']);
     route::delete('bonus/delete/{id}', [BonusController::class, 'delete']);
 
@@ -95,6 +97,10 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     //month add
     route::get('admin/pages/include/month', [MonthController::class, 'month'])->name('admin.month');
     route::post('admin/month/store', [MonthController::class, 'store'])->name('admin.month.store');
+
+    //salary add
+    route::get('admin/pages/include/salaryPrepared', [SalaryController::class, 'salaryPrepared'])->name('admin.salaryPrepared');
+    route::post('admin/employees/salaryPrepared', [SalaryController::class, 'store'])->name('admin.salaryPreparedCreate');
 });
 
 

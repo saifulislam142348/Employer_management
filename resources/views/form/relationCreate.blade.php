@@ -6,6 +6,10 @@
 @endif
 
 
+                @foreach ($errors->all() as $error)
+                <span class="text-danger">{{ $error }}</span>
+             @endforeach
+              
 
 <form action="{{route('admin.department.relation')}}"  method="POST">
     @csrf
