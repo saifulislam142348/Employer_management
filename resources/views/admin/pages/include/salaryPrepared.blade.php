@@ -3,10 +3,49 @@
     @include('admin.pages.include.header')
     <div class="container">
         <h1 style="text-align: center;"><b>Salary Prepared List</b> </h1>
-        <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#salaryPreparedCreateModal">
-           Bonus Add
-        </button>
-        @include('form.salaryPreparedCreate')
+
+
+
+        <div class="d-flex flex-row bd-highlight mb-4">
+            <div class="p-2 bd-highlight">
+                <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#registrationModal">
+                    Registration create
+                </button>
+                @include('form.registrationCreate')
+            </div>
+            <div class="p-2 bd-highlight">
+                <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#employeeModal">
+                    Employee create
+                </button>
+                @include('form.employeeCreate')
+            </div>
+            <div class="p-2 bd-highlight">
+                <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#bonusModal">
+                    Bonus create
+                </button>
+                @include('form.bonusCreate')
+                <div class="p-2 bd-highlight">
+                    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#departmentModal">
+                        Department Create
+                    </button>
+                    @include('form.departmentCreate')
+                </div>
+                <div class="p-2 bd-highlight">
+                    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#designationModal">
+                        Designation create
+                    </button>
+                    @include('form.designationCreate')
+                </div>
+                <div class="p-2 bd-highlight">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Relation Add
+                    </button>
+                    @include('form.departmentDesignationCreate')
+                </div>
+            </div>
+            
+        </div>
+        
         <div class="jumbotron">
 
 
@@ -19,8 +58,8 @@
                         <th>Department</th>
                         <th>Designation</th>
                         <th> Month</th>
-                        <th> Month Salary</th>
-                        <th> Month bonus</th>
+                        <th> Monthly Salary</th>
+                        <th> Monthly bonus</th>
                         <th> Total Salary</th>
                         <th> Join time</th>
                         <th>Create_by</th>
@@ -30,25 +69,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if ($salaryPrepared->count() > 0)
-                        @foreach ($salaryPrepared as $item)
+                    @if ($employees->count() > 0)
+                        @foreach ($employees as $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->users->name }}</td>
-                                {{-- {{dd($item->departments->name)}} --}}
                                 <td>{{ $item->departments->name }}</td>
                                 <td>{{ $item->designations->name }}</td>
                                 <td>{{ $item->months->name }}</td>
-                                 <td>{{ $item->bonus->bonus}}</td>
+                                <td>{{ $item->salary }}</td>
+                 @foreach ($item->users->bonuses as $s)
+                 <td>{{ $s->bonus }}</td>
+                 <td>{{ $item->salary + $s->bonus }}</td>  
+                 @endforeach
+                             
+                            
+                                <td>{{ $item->join_date }}</td>
+
+                                {{-- {{dd($item->employees)}} --}}
+
                                 <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
                                 <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
                                 <td>
                                     <a class="btn btn-success" data-toggle="modal" data-target="#employeeEditModal"
                                         href=""><i class="las la-edit"></i></a>
-                                    @include('form.edit.employee')
+
                                 <td>
 
-                                    <form action="{{ url('employee/delete/' . $item->id) }}" method="POST">
+                                    <form action="" method="POST">
                                         @csrf
                                         @method('DELETE')
 

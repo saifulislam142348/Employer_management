@@ -53,14 +53,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function departments(){
-        return $this->hasMany(Department::class);
-    }
-     public function designations(){
-      return $this->hasMany(Designation::class);
-   }
-
-    public function months(){
-        return $this->hasMany(Month::class);
+    public function bonuses(){
+        return $this->hasMany(Bonus::class);
+  }
+    public function employees(){
+        return $this->hasMany(Employee::class);
   }
 }

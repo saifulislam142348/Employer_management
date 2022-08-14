@@ -26,8 +26,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if ($relation->count() > 0)
-                        @foreach ($relation as $item)
+                    @if ($relations->count() > 0)
+                        @foreach ($relations as $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->departments->name }}</td>

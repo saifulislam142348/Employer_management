@@ -9,10 +9,9 @@
             <div class="modal-body">
 
 
-                @foreach ($errors->all() as $error)
+                {{-- @foreach ($errors->all() as $error)
                 <span class="text-danger">{{ $error }}</span>
-             @endforeach
-              
+             @endforeach --}}
                 <form method="POST" action="{{ route('admin.registration.store') }}">
                     @csrf
 
@@ -21,14 +20,13 @@
 
                         <div class="col-md-6">
                             <input id="name" type="text" class="form-control" name="name"
-                                value="{{ old('name') }}" autofocus>
+                               autofocus>
 
-                            @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+
                         </div>
+                        @foreach ($errors->get('name') as $message)
+                            <span class="text-center alert-danger">{{ $message }}</span>
+                        @endforeach
                     </div>
 
                     <div class="row mb-3">
@@ -38,27 +36,22 @@
                         <div class="col-md-6">
                             <input id="email" type="email" class="form-control " name="email">
 
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+
                         </div>
+                        @foreach ($errors->get('email') as $message)
+                            <span class="text-center alert-danger">{{ $message }}</span>
+                        @endforeach
                     </div>
 
                     <div class="row mb-3">
                         <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                         <div class="col-md-6">
-                            <input id="password" type="password" class="form-control " name="password"
-                                autocomplete="new-password">
-
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <input id="password" type="password" class="form-control " name="password">
                         </div>
+                        @foreach ($errors->get('password') as $message)
+                            <span class="text-center alert-danger">{{ $message }}</span>
+                        @endforeach
                     </div>
 
 
@@ -70,25 +63,19 @@
                                 <option value="1">male</option>
                                 <option value="2">female</option>
                             </select>
-
-                            @error('gender')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
                         </div>
+                        @foreach ($errors->get('gender') as $message)
+                            <span class="text-center alert-danger">{{ $message }}</span>
+                        @endforeach
                     </div>
                     <div class="row mb-3">
                         <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
                         <div class="col-md-6">
                             <input id="address" type="text" class="form-control" name="address">
-
-                            @error('address')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
                         </div>
+                        @foreach ($errors->get('address') as $message)
+                            <span class="text-center alert-danger">{{ $message }}</span>
+                        @endforeach
                     </div>
 
                     <div class="row mb-3">
@@ -96,13 +83,10 @@
                             class="col-md-4 col-form-label text-md-end">{{ __('National_ID') }}</label>
                         <div class="col-md-6">
                             <input id="nid" type="text" class="form-control" name="nid">
-
-                            @error('nid')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
                         </div>
+                        @foreach ($errors->get('nid') as $message)
+                            <span class="text-center alert-danger">{{ $message }}</span>
+                        @endforeach
                     </div>
 
                     <div class="row mb-3">
@@ -110,38 +94,11 @@
                         <div class="col-md-6">
                             <input id="phone" type="tel" class="form-control " name="phone">
 
-                            @error('phone')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
                         </div>
+                        @foreach ($errors->get('phone') as $message)
+                            <span class="text-center alert-danger">{{ $message }}</span>
+                        @endforeach
                     </div>
-                    {{-- <div class="row mb-3">
-                            <label for="name"
-                                class="col-md-4 col-form-label text-md-end">{{ __('Create_by') }}</label>
-                            <div class="col-md-6">
-                                <input id="create_by" type="text" class="form-control" name="create_by">
-                            </div>
-                        </div> --}}
-                    {{-- <div class="row mb-3">
-                            <label for="name"
-                                class="col-md-4 col-form-label text-md-end">{{ __('update_by') }}</label>
-                            <div class="col-md-6">
-                                <input id="update_by" type="text" class="form-control" name="update_by">
-
-
-                            </div>
-                        </div> --}}
-                    {{-- <div class="row mb-3">
-                            <label for="name"
-                                class="col-md-4 col-form-label text-md-end">{{ __('delete_by') }}</label>
-                            <div class="col-md-6">
-                                <input id="delete_by" type="text" class="form-control" name="delete_by">
-
-
-                            </div>
-                        </div> --}}
                     <div class="row mb-0">
                         <div class=" d-flex col-md-6 offset-md-4">
                             <button type="submit" class="btn btn-primary">

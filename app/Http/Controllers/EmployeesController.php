@@ -18,21 +18,20 @@ class EmployeesController extends Controller
 {
     public function employee(){
         $employees= Employee::get();
-        $user = User::where('type','employee')->get();
-        $department =Department::get();
-        $designation =Designation::get();
-        $month = Month::get();
-        return view('admin.pages.include.employee',compact('user','department', 'designation' ,'month','employees'));
+        $users = User::where('type','employee')->get();
+        $departments =Department::get();
+        $designations =Designation::get();
+        $months = Month::get();
+        return view('admin.pages.include.employee',compact('users','departments', 'designations' ,'months','employees'));
     }
     public function  store(Request $request){
         $rules=[
-            'user_id' => ['required'], 
-            'department_id' =>['required'],
-            'designation_id' => ['required'],
-            'month_id' => ['required'],
-
-            'salary' => ['required'], 
-            'join_date' =>['required'],
+            'user_id' => 'required', 
+            'department_id' =>'required',
+            'designation_id' => 'required',
+            'month_id' => 'required',
+            'salary' => 'required', 
+            'join_date' =>'required',
         ];
         $this->validate($request,$rules);
         $employee= new Employee();
@@ -42,6 +41,7 @@ class EmployeesController extends Controller
         $employee->month_id=$request->input('month_id');
         $employee->salary=$request->input('salary');
         $employee->join_date=$request->input('join_date');
+        $employee->create_by=Auth::user()->name;
         $employee->save();
         return redirect()->back()->with('status','employyess success');
 

@@ -15,8 +15,7 @@ return new class extends Migration
     {
         Schema::create('salaries', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('month_id');
+            $table->unsignedBigInteger('employee_id');
             $table->unsignedBigInteger('bonus_id');
             $table->tinyInteger('status')->default(0)->comment('inactive=0 active=1');
             $table->string('create_by')->default('none');
@@ -24,7 +23,7 @@ return new class extends Migration
             $table->string('delete_by')->default('none');
             $table->timestamps();
            
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
         });
     }
 

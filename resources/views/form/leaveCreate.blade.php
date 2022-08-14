@@ -6,12 +6,7 @@
           <h5 class="modal-title" id="leaveModalLabel">Employee Leaves</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          
-                @foreach ($errors->all() as $error)
-                <span class="text-danger">{{ $error }}</span>
-             @endforeach
-              
+        <div class="modal-body">   
           <form method="POST" action="{{ route('admin.employee.leave') }}">
             @csrf
 
@@ -21,7 +16,7 @@
                 <div class="col-md-6">
                    <select class="form-select" name="user_id" >
                     <option  selected></option>
-                    @foreach ($user as $item)
+                    @foreach ($users as $item)
                         <option value="{{$item->id}}">{{$item->id}}</option>
                     @endforeach
                    </select>
@@ -35,34 +30,25 @@
                 <div class="col-md-6">
                    <select class="form-select" name="month_id" id="">
                     <option  selected>..</option>
-                    @foreach ($month as $item)
+                    @foreach ($months as $item)
                         <option value="{{$item->id}}">{{$item->name}}</option>
                     @endforeach
                    </select>
                 </div>
             </div>
-            
-           
             <div class="row mb-3">
                 <label for="salary" class="col-md-4 col-form-label text-md-end">{{ __('Leave') }}</label>
-
                 <div class="col-md-6">
                   <div class="form-check">
                     <input class="form-check-input" name="leave" type="checkbox" value="1" id="flexCheckIndeterminate">
                     <label class="form-check-label" for="flexCheckIndeterminate">
-                     
                     </label>
                   </div>
                 </div>
             </div>
-            
-      
     </div>
-    
     <input type="submit" class="btn btn-success " value="save">
-    
 </form>
-    
         </div>
       </div>
     </div>

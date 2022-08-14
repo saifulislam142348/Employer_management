@@ -10,6 +10,7 @@ use App\Models\Department;
 use App\Models\Designation;
 use App\Models\Employee;
 use App\Models\Leave;
+use App\Models\Month;
 use App\Models\Salary;
 use Illuminate\Auth\Access\Response;
 use App\Models\Department_Designation;
@@ -19,23 +20,27 @@ class DepartmentController extends Controller
 {
    public function department()
    {
-      $department = Department::all();
-      $designation = Designation::all();
-      return view('admin.pages.include.department', compact('department', 'designation'));
+      $users= User::get();
+      $months= Month::get();
+      $bonus= Bonus::get();
+      $employees= Employee::get();
+      $departments= Department::get();
+      $designations= Designation::get();
+      return view('admin.pages.include.department', compact('users','months','bonus','employees','departments','designations'));
    }
    public function depart_design()
    {
 
-      $department = Department::all();
-      $designation = Designation::all();
-      $relation = Department_Designation::get();
-      return view('admin.pages.include.departmentDesignation', compact('department', 'designation', 'relation'));
+      $departments = Department::all();
+      $designations = Designation::all();
+      $relations = Department_Designation::get();
+      return view('admin.pages.include.departmentDesignation', compact('departments', 'designations', 'relations'));
    }
 
    public function deptStore(Request $request)
    {
       $rules = [
-         'name' => ['required'],
+         'name' => 'required|unique:departments',
 
       ];
       $this->validate($request, $rules);

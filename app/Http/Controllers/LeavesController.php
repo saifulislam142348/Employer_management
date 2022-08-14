@@ -16,17 +16,15 @@ use Illuminate\Support\Facades\Auth;
 class LeavesController extends Controller
 {
    public function leave(){
-      $user = User::where('type','employee')->get();
-      $month = month::get();
+      $users = User::where('type','employee')->get();
+      $months = month::get();
       $leaves=Leave::get();
-    return view('admin.pages.include.leave',compact('user','month','leaves'));
+    return view('admin.pages.include.leave',compact('users','months','leaves'));
    }
 
    public function leavestore(Request $request){
       $rules=[
-         'user_id' => ['required'], 
-         'month_id' => ['required'], 
-         'leave' => ['required'], 
+         'leave' => 'required', 
         
  
      ];

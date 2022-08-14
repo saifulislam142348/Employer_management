@@ -27,8 +27,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if ($designation->count() > 0)
-                        @foreach ($designation as $item)
+                    @if ($designations->count() > 0)
+                        @foreach ($designations as $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->name }}</td>

@@ -16,12 +16,12 @@ use Illuminate\Support\Facades\Auth;
 class MonthController extends Controller
 {
     public function month(){
-        $month= Month::all();
-        return view('admin.pages.include.month',compact('month'));
+        $months= Month::all();
+        return view('admin.pages.include.month',compact('months'));
     }
      public function store(Request $request){
         $rules=[
-            'name' => ['required'], 
+            'name' => 'required|unique:months', 
             
         ];
         $this->validate($request,$rules);

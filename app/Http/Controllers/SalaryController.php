@@ -20,16 +20,17 @@ class SalaryController extends Controller
         $users= User::get();
         $months= Month::get();
         $bonus= Bonus::get();
-    return view('admin/pages/include/salaryPrepared',compact('salaryPrepared','users','months','bonus'));
+        $employees= Employee::get();
+        $departments= Department::get();
+        $designations= Designation::get();
+    return view('admin/pages/include/salaryPrepared',compact('salaryPrepared','users','months','bonus','employees','departments','designations'));
    }
 
 
    public function store(Request $request){
 
         $rules = [
-            'user_id' => ['required'],
-            'month_id' => ['required'],
-            'bonus_id' => ['required'],
+            'bonus_id' => 'required',
         ];
         $this->validate($request, $rules);
         $salary = new Salary();

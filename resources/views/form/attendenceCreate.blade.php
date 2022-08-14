@@ -6,12 +6,7 @@
           <h5 class="modal-title" id="attendenceModalLabel"> Employee Attendences </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          
-                @foreach ($errors->all() as $error)
-                <span class="text-danger">{{ $error }}</span>
-             @endforeach
-              
+        <div class="modal-body">  
           <form method="POST" action="{{ route('admin.employee.in_time') }}">
             @csrf
 
@@ -21,38 +16,31 @@
                 <div class="col-md-6">
                    <select class="form-select" name="user_id" >
                     <option  selected></option>
-                    @foreach ($user as $item)
+                    @foreach ($users as $item)
                         <option value="{{$item->id}}">{{$item->id}}</option>
                     @endforeach
                    </select>
                 </div>
             </div>
-           
-        
             <div class="row mb-3">
                 <label  class="col-md-4 col-form-label text-md-end">{{ __('Month Name ') }}</label>
 
                 <div class="col-md-6">
                    <select class="form-select" name="month_id" id="">
                     <option  selected>..</option>
-                    @foreach ($month as $item)
+                    @foreach ($months as $item)
                         <option value="{{$item->id}}">{{$item->name}}</option>
                     @endforeach
                    </select>
                 </div>
+              
             </div>
-            
-           
-        
-            
-      
-    </div>
-    
-    <input type="submit" class="btn btn-success " value="save">
-    
+    </div> 
+    <input type="submit" class="btn btn-success " value="save">   
 </form>
         </div>
         
       </div>
     </div>
   </div>
+  {!! Toastr::message() !!}

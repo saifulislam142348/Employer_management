@@ -14,10 +14,9 @@
         @include('form.departmentCreate')
         <div class="jumbotron">
 
-            y
 
             <table class="table table-striped table-bordered table-hover table-dark">
-                <thead>
+                <thead class="bg-light">
                     <tr>
                         <th>Id</th>
                         <th> Department name</th>
@@ -29,8 +28,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if ($department->count() > 0)
-                        @foreach ($department as $item)
+                    @if ($departments->count() > 0)
+                        @foreach ($departments as $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->name }}</td>

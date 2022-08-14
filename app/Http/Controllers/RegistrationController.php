@@ -11,25 +11,31 @@ use App\Models\Designation;
 use App\Models\Employee;
 use App\Models\Leave;
 use App\Models\Salary;
+use App\Models\Month;
 use Illuminate\Support\Facades\Auth;
 
 class RegistrationController extends Controller
 {
    public function registration(){
     $registration = User::where('type','employee')->get();
-
-    return view('admin.pages.include.registration',compact('registration'));
+    $users= User::get();
+    $months= Month::get();
+    $bonus= Bonus::get();
+    $employees= Employee::get();
+    $departments= Department::get();
+    $designations= Designation::get();
+    return view('admin.pages.include.registration',compact('registration','users','months','bonus','employees','departments','designations'));
    }
 
    public function store(Request $request){
     $rules=[
-        'name' => ['required'], 
-        'email' =>['required'],
-        'password' => ['required', 'min:8'],
-        'gender' => ['required'], 
-        'address' =>['required'],
-        'nid' => ['required'],
-        'phone' => ['required'],
+        'name' => 'required', 
+        'email' =>'required',
+        'password' => 'required', 'min:8',
+        'gender' => 'required', 
+        'address' =>'required',
+        'nid' => 'required',
+        'phone' => 'required',
        
 
     ];

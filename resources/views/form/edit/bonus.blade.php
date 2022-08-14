@@ -12,7 +12,7 @@
                 <span class="text-danger">{{ $error }}</span>
              @endforeach
               
-          <form method="POST" action="{{ route('admin.employee.bonus.edit') }}">
+          <form method="POST" action="">
             @csrf
 
             <div class="row mb-3">

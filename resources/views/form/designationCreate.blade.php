@@ -7,11 +7,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                
-                @foreach ($errors->all() as $error)
-                <span class="text-danger">{{ $error }}</span>
-             @endforeach
-              
                 <form method="POST" action="{{ route('admin.designation.store') }}">
                     @csrf
 
@@ -20,8 +15,11 @@
                             class="col-md-4 col-form-label text-md-end">{{ __(' Designation Name') }}</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control" name="name">
+                            <input id="name" type="text" class="form-control" name="designation_name">
                         </div>
+                        @foreach ($errors->get('designation_name') as $message)
+                        <span class="text-center alert-danger">{{ $message }}</span>
+                    @endforeach
                     </div>
             </div>
             <input class="btn btn-success" type="submit" value="save">

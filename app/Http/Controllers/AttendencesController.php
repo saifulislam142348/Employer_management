@@ -14,6 +14,7 @@ use App\Models\Salary;
 use App\Models\Month;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use  Toastr;
 
 class AttendencesController extends Controller
 {
@@ -21,16 +22,16 @@ class AttendencesController extends Controller
       $attendence= Attendence::latest()->get();
       $in= Attendence::select('in_time')->latest()->get();
       $out= Attendence::select('out_time')->latest()->get();
-      $user= User::where('type','employee')->get();
-      $month= Month::get();
+      $users= User::where('type','employee')->get();
+      $months= Month::get();
 
-    return view('admin.pages.include.attendence',compact('user','month','attendence','in','out'));
+    return view('admin.pages.include.attendence',compact('users','months','attendence','in','out'));
    }
 
    public function inTime(Request $request){
       $rules=[
-         'user_id' => ['required'], 
-         'month_id' => ['required'], 
+         'user_id' => 'required', 
+         'month_id' => 'required'
  
      ];
      $this->validate($request,$rules);
@@ -41,7 +42,9 @@ class AttendencesController extends Controller
       $present->in_time =  $todayDate;
       $present->create_by= Auth::User()->name;
      $present->save();
-     return redirect()->back()->with('status',' success');
+     Toastr::success('Messages in here', 'Title', ["positionClass" => "toast-top-center"]);
+     return redirect()->back();
+    
    }
 
 public function outTime(Request $request){
@@ -58,7 +61,8 @@ public function outTime(Request $request){
   $present->status = 1;
   $present->create_by= Auth::User()->name;
  $present->save();
- return redirect()->back()->with('status',' success');
+ Toastr::success('Messages in here', 'Title', ["positionClass" => "toast-top-center"]);
+ return redirect();
 }
 
 public function delete($id){

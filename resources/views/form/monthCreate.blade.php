@@ -8,9 +8,7 @@
             </div>
             <div class="modal-body">
                 
-                @foreach ($errors->all() as $error)
-                <span class="text-danger">{{ $error }}</span>
-             @endforeach
+                
               
                 <form method="POST" action="{{ route('admin.month.store') }}">
                     @csrf

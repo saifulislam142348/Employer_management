@@ -17,22 +17,22 @@ class DesignationController extends Controller
 {
    public function designation()
    {
-      $designation = Designation::all();
-      $department = Department::all();
-      return view('admin.pages.include.designation', compact('designation', 'department'));
+      $designations= Designation::all();
+      $departments = Department::all();
+      return view('admin.pages.include.designation', compact('designations', 'departments'));
    }
 
 
    public function store(Request $request)
    {
       $rules = [
-         'name' => ['required'],
+         'designation_name' => 'required|unique:designations',
 
       ];
       $this->validate($request, $rules);
 
       $designation = new Designation();
-      $designation->name = $request->input('name');
+      $designation->name = $request->input('designation_name');
       $designation->create_by = Auth::User()->name;
       $designation->save();
       return redirect()->back()->with('status', 'department success');

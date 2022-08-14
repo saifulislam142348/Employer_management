@@ -20,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-        @foreach ($month as $item)
+        @foreach ($months as $item)
         <tr>
             <td>{{$item->id}}</td>
             <td>{{$item->name}}</td>

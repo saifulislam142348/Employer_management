@@ -19,20 +19,21 @@ class BonusController extends Controller
 {
    public function bonus()
    {
-      $employees = Employee::get();
-      $user = User::where('type', 'employee')->get();
-      $month = Month::get();
-      $bonus = Bonus::get();
-      return view('admin.pages.include.bonus', compact('user', 'month', 'employees', 'bonus'));
+      $users= User::get();
+        $months= Month::get();
+        $bonus= Bonus::get();
+        $employees= Employee::get();
+        $departments= Department::get();
+        $designations= Designation::get();
+      
+      return view('admin.pages.include.bonus', compact('users', 'months', 'employees', 'bonus','departments','designations'));
    }
 
    public function bonusstore(Request $request)
    {
       $rules = [
-         'user_id' => ['required'],
-         'month_id' => ['required'],
-         'bonus_title' => ['required'],
-         'bonus' => ['required'],
+         'bonus_title' => 'required',
+         'bonus' => 'required',
 
       ];
       $this->validate($request, $rules);

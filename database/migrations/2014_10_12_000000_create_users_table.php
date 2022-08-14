@@ -20,10 +20,10 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('forget_token')->default('none');
-            $table->string('gender')->comment('male=1 female=2');
-            $table->string('address');
-            $table->bigInteger('nid');
-            $table->bigInteger('phone');
+            $table->string('gender')->nullable()->comment('male=1 female=2');
+            $table->string('address')->nullable();
+            $table->bigInteger('nid')->nullable();
+            $table->bigInteger('phone')->nullable();
             $table->string('create_by')->default('none');
             $table->string('update_by')->default('none');
             $table->string('delete_by')->default('none');
