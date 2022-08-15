@@ -21,9 +21,6 @@
                         <th>Update_by</th>
                         <th colspan="2" style="text-align: center;">Action</th>
                         <th>Status</th>
-
-
-
                     </tr>
                 </thead>
                 <tbody>

@@ -14,6 +14,7 @@ use App\Models\Salary;
 use App\Models\Month;
 use App\Models\Department_Designation;
 use Illuminate\Support\Facades\Auth;
+use Brian2694\Toastr\Facades\Toastr;
 
 class BonusController extends Controller
 {
@@ -45,7 +46,11 @@ class BonusController extends Controller
       $bonus->bonus = $request->input('bonus');
       $bonus->create_by = Auth::User()->name;
       $bonus->save();
-      return redirect()->back()->with('status', ' success');
+      Toastr::success('Bonus added done', 'success', [
+         "positionClass" => "toast-top-right",
+         "closeButton" => "true", "progressBar" => "true"
+      ]);
+      return redirect()->back();
    }
    public function bonusStatus($id)
    {
@@ -57,12 +62,20 @@ class BonusController extends Controller
          $status=0;
       }
       Bonus::where('user_id', $id)->update(['status'=> $status]);
-      return redirect()->back()->with('status','status update successfully');
+      Toastr::success('Bonus status change', 'success', [
+         "positionClass" => "toast-top-right", "closeButton"
+         =>
+         "true", "progressBar" => "true"
+      ]);
+      return redirect()->back();
    }
    public function delete($id)
    {
       $bonusDelete = Bonus::find($id);
       $bonusDelete->delete();
-      return back();
+      Toastr::Error('Bonus Delete done', 'delete', [
+         "positionClass" => "toast-top-right", "closeButton"=>"true", "progressBar" => "true"
+      ]);
+      return redirect()->back();
    }
 }

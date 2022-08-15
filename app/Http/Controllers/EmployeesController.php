@@ -13,6 +13,7 @@ use App\Models\Leave;
 use App\Models\Salary;
 use App\Models\Month;
 use Illuminate\Support\Facades\Auth;
+use Brian2694\Toastr\Facades\Toastr;
 
 class EmployeesController extends Controller
 {
@@ -43,7 +44,12 @@ class EmployeesController extends Controller
         $employee->join_date=$request->input('join_date');
         $employee->create_by=Auth::user()->name;
         $employee->save();
-        return redirect()->back()->with('status','employyess success');
+        Toastr::success('Employees  create successfully', 'success', [
+            "positionClass" => "toast-top-right", "closeButton"
+            =>
+            "true",
+        ]);
+        return redirect()->back();
 
     }
 
@@ -62,6 +68,11 @@ class EmployeesController extends Controller
     {
         $employeeDelete = Employee::find($id);
         $employeeDelete->delete();
-        return back();
+        Toastr::Error('Delete successfully', 'success', [
+            "positionClass" => "toast-top-right", "closeButton"
+            =>
+            "true", "progressBar" => "true"
+        ]);
+        return redirect()->back();
     }
 }

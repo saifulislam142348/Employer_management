@@ -13,6 +13,7 @@ use App\Models\Leave;
 use App\Models\Salary;
 use App\Models\month;
 use Illuminate\Support\Facades\Auth;
+use Brian2694\Toastr\Facades\Toastr;
 class LeavesController extends Controller
 {
    public function leave(){
@@ -36,7 +37,12 @@ class LeavesController extends Controller
       $leave->leave=$request->input('leave');
       $leave->create_by= Auth::User()->name;
      $leave->save();
-     return redirect()->back()->with('status',' success');
+      Toastr::success('leave create successfully', 'success', [
+         "positionClass" => "toast-top-right", "closeButton"
+         =>
+         "true", "progressBar" => "true"
+      ]);
+      return redirect()->back();
    }
 
    public function leaveStatus($id){
@@ -55,6 +61,11 @@ class LeavesController extends Controller
    {
       $leaveDelete = Leave::find($id);
       $leaveDelete->delete();
-      return back();
+      Toastr::Error('Delete successfully', 'success', [
+         "positionClass" => "toast-top-right", "closeButton"
+         =>
+         "true", "progressBar" => "true"
+      ]);
+      return redirect()->back();
    }
 }

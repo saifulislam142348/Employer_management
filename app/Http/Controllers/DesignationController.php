@@ -12,6 +12,7 @@ use App\Models\Employee;
 use App\Models\Leave;
 use App\Models\Salary;
 use Illuminate\Support\Facades\Auth;
+use Brian2694\Toastr\Facades\Toastr;
 
 class DesignationController extends Controller
 {
@@ -26,16 +27,21 @@ class DesignationController extends Controller
    public function store(Request $request)
    {
       $rules = [
-         'designation_name' => 'required|unique:designations',
+         'name' => 'required|unique:designations',
 
       ];
       $this->validate($request, $rules);
 
       $designation = new Designation();
-      $designation->name = $request->input('designation_name');
+      $designation->name = $request->input('name');
       $designation->create_by = Auth::User()->name;
       $designation->save();
-      return redirect()->back()->with('status', 'department success');
+      Toastr::success('Designation create successfully', 'success', [
+         "positionClass" => "toast-top-right", "closeButton"
+         =>
+         "true",
+      ]);
+      return redirect()->back();
    }
    public function designationStatus($id)
    {
@@ -52,6 +58,11 @@ class DesignationController extends Controller
    {
       $designationDelete = Designation::find($id);
       $designationDelete->delete();
-      return back();
+      Toastr::Error('Delete successfully', 'success', [
+         "positionClass" => "toast-top-right", "closeButton"
+         =>
+         "true", "progressBar" => "true"
+      ]);
+      return redirect()->back();
    }
 }

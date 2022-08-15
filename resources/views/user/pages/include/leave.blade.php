@@ -1,49 +1,54 @@
 @extends('layouts.layout')
 @section('content')
-
     @include('admin.pages.include.header')
     <div class="container">
-        <h1 style="text-align: center;"><b>Department List</b> </h1>
-
-
-        <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#departmentModal">
-            Department Create
+        <h1 style="text-align: center;"><b>Leave List</b> </h1>
+        <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#leaveModal">
+            Leave create
         </button>
-
-        @include('form.relationCreate')
-
-        @include('form.departmentCreate')
+        @include('form.leaveCreate')
         <div class="jumbotron">
 
 
+
             <table class="table table-striped table-bordered table-hover table-dark">
-                <thead class="bg-light">
+                <thead>
                     <tr>
+                        <th>#</th>
                         <th>Id</th>
-                        <th> Department name</th>
+                        <th>name</th>
+                        <th> Leave Month</th>
+                        <th> Present Condition/status</th>
                         <th>Create_by</th>
                         <th>Update_by</th>
-                        <th>Action</th>
+                        <th colspan="2" style="text-align: center;">Action</th>
                         <th>Status</th>
-
                     </tr>
                 </thead>
                 <tbody>
-                    @if ($departments->count() > 0)
-                        @foreach ($departments as $item)
+                    @if ($leaves->count() > 0)
+                        @foreach ($leaves as $key => $item)
                             <tr>
-                                <td>{{ $item->id }}</td>
-                                <td>{{ $item->name }}</td>
+                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $item->user_id }}</td>
+                                <td>{{ $item->users->name }}</td>
+                                <td>{{ $item->months->name }}</td>
+                                <td>
+                                    @if ($item->leave == 1)
+                                        <a class="btn btn-danger" href="">leave</a>
+                                    @else
+                                        <a class="btn btn-success" href="">join</a>
+                                    @endif
+                                </td>
                                 <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
                                 <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
-
                                 <td>
-                                    <a class="btn btn-success" data-toggle="modal" data-target="#departmentEditModal"
+                                    <a class="btn btn-success" data-toggle="modal" data-target="#leaveEditModal"
                                         href=""><i class="las la-edit"></i></a>
-                                    @include('form.edit.department')
+                                    @include('form.edit.leave')
                                 <td>
 
-                                    <form action="{{ url('department/delete/' . $item->id) }}" method="POST">
+                                    <form action="{{ url('leave/delete/' . $item->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
 
@@ -56,12 +61,11 @@
                                 <td>
                                     @if ($item->status == 0)
                                         <a class="btn btn-danger"
-                                            href="{{ url('departmentStatus/' . $item->id) }}">inactive<a>
-                                            @else
-                                                <a class="btn btn-success"
-                                                    href="{{ url('departmentStatus/' . $item->id) }}">active<a>
+                                            href="{{ url('leaveStatus/' . $item->user_id) }}">inactive</i></a>
+                                    @else
+                                        <a class="btn btn-success"
+                                            href="{{ url('leaveStatus/' . $item->user_id) }}">active</i></a>
                                     @endif
-
                                 </td>
                             </tr>
                         @endforeach
@@ -76,7 +80,4 @@
             </table>
         </div>
     </div>
-  @section('scripts')
-  @include('jquery.department')  
-  @endsection
 @endsection
