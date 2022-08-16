@@ -42,7 +42,7 @@ class AttendencesController extends Controller
       $present->in_time =  $todayDate;
       $present->create_by= Auth::User()->name;
      $present->save();
-     Toastr::success('Messages in here', 'Title', ["positionClass" => "toast-top-center"]);
+     Toastr::success('Messages in here', 'Title', ["positionClass" => "toast-top-center","closeButton"=> "false", "progressBar" => "true",]);
      return redirect()->back();
     
    }
@@ -61,7 +61,7 @@ public function outTime(Request $request){
   $present->status = 1;
   $present->create_by= Auth::User()->name;
  $present->save();
- Toastr::success('Messages in here', 'Title', ["positionClass" => "toast-top-center"]);
+ Toastr::success('Messages in here', 'success', ["positionClass" => "toast-top-right", "closeButton"=> "false", "progressBar" => "true",]);
  return redirect();
 }
 
