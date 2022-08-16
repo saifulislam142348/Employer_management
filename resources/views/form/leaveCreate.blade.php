@@ -14,13 +14,11 @@
                         <label for="user_id" class="col-md-4 col-form-label text-md-end">{{ __('User_Id') }}</label>
 
                         <div class="col-md-6">
-                            <select class="form-select" name="user_id">
-                                <option selected></option>
-                                @foreach ($users as $item)
-                                    <option value="{{ $item->id }}">{{ $item->id }}</option>
-                                @endforeach
-                            </select>
+                            <input class="form-control" name="user_id" type="text" value="{{ Auth::user()->id }}" readonly>
                         </div>
+                        @foreach ($errors->get('user_id') as $message)
+                        <span class="text-center alert-danger">{{ $message }}</span>
+                    @endforeach
                     </div>
 
 
@@ -46,6 +44,9 @@
 
                             </select>
                         </div>
+                        @foreach ($errors->get('month') as $message)
+                        <span class="text-center alert-danger">{{ $message }}</span>
+                    @endforeach
                     </div>
                     <div class="row mb-3">
                         <label for="salary" class="col-md-4 col-form-label text-md-end">{{ __('Leave') }}</label>

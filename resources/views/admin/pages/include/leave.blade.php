@@ -8,9 +8,6 @@
         </button>
         @include('form.leaveCreate')
         <div class="jumbotron">
-
-
-
             <table class="table table-striped table-bordered table-hover table-dark">
                 <thead>
                     <tr>

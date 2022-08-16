@@ -14,12 +14,7 @@
            <div class="row mb-3">
                <label for="user_id" class="col-md-4 col-form-label text-md-end">{{ __('User_Id') }}</label>
                <div class="col-md-6">
-                  <select class="form-select" name="user_id" >
-                   <option  selected></option>
-                   @foreach ($user as $item)
-                       <option value="{{$item->id}}">{{$item->id}}</option>
-                   @endforeach
-                  </select>
+                  
                </div>
            </div>
           
@@ -29,9 +24,7 @@
                <div class="col-md-6">
                   <select class="form-select" name="month_id" id="">
                    <option  selected>..</option>
-                   @foreach ($month as $item)
-                       <option value="{{$item->id}}">{{$item->name}}</option>
-                   @endforeach
+                  
                   </select>
                </div>
            </div>

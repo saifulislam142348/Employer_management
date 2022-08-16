@@ -83,6 +83,9 @@ class BonusController extends Controller
    // user pannel
 
    public function userBonus(){
-      return view('user.pages.include.bonus');
+      $bonus=Bonus::where('status',1)->get();
+      $users= User::get();
+      $months= Month::get();
+      return view('user.pages.include.bonus',compact('bonus','users','months'));
    }
 }

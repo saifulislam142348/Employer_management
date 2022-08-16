@@ -74,6 +74,9 @@ class LeavesController extends Controller
    //  user leave
 
    public function userLeave(){
-      return view('user.pages.include.leave');
+      $users= User::where('type','employee')->get();
+      $months = month::get();
+      $leaves=Leave::get();
+      return view('user.pages.include.leave',compact('users','months','leaves'));
    }
 }

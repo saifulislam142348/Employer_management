@@ -17,32 +17,34 @@ use Brian2694\Toastr\Facades\Toastr;
 
 class EmployeesController extends Controller
 {
-    public function employee(){
-        $employees= Employee::get();
-        $users = User::where('type','employee')->get();
-        $departments =Department::get();
-        $designations =Designation::get();
+    public function employee()
+    {
+        $employees = Employee::get();
+        $users = User::where('type', 'employee')->get();
+        $departments = Department::get();
+        $designations = Designation::get();
         $months = Month::get();
-        return view('admin.pages.include.employee',compact('users','departments', 'designations' ,'months','employees'));
+        return view('admin.pages.include.employee', compact('users', 'departments', 'designations', 'months', 'employees'));
     }
-    public function  store(Request $request){
-        $rules=[
-            'user_id' => 'required|unique:employees', 
-            'department_id' =>'required',
+    public function  store(Request $request)
+    {
+        $rules = [
+            'user_id' => 'required|unique:employees',
+            'department_id' => 'required',
             'designation_id' => 'required',
             'month' => 'required',
-            'salary' => 'required', 
-            'join_date' =>'required',
+            'salary' => 'required',
+            'join_date' => 'required',
         ];
-        $this->validate($request,$rules);
-        $employee= new Employee();
-        $employee->user_id=$request->input('user_id');
-        $employee->department_id=$request->input('department_id');
-        $employee->designation_id=$request->input('designation_id');
-        $employee->month=$request->input('month');
-        $employee->salary=$request->input('salary');
-        $employee->join_date=$request->input('join_date');
-        $employee->create_by=Auth::user()->name;
+        $this->validate($request, $rules);
+        $employee = new Employee();
+        $employee->user_id = $request->input('user_id');
+        $employee->department_id = $request->input('department_id');
+        $employee->designation_id = $request->input('designation_id');
+        $employee->month = $request->input('month');
+        $employee->salary = $request->input('salary');
+        $employee->join_date = $request->input('join_date');
+        $employee->create_by = Auth::user()->name;
         $employee->save();
         Toastr::success('Employees  create successfully', 'success', [
             "positionClass" => "toast-top-right", "closeButton"
@@ -51,19 +53,18 @@ class EmployeesController extends Controller
         ]);
         // dd(  $employee);
         return redirect()->back();
-
     }
 
-    public function employeeStatus($id){
-        $employeeStatus= Employee::select('status')->where('id', $id)->first();
-        if ($employeeStatus->status==0) {
-           $status=1;
+    public function employeeStatus($id)
+    {
+        $employeeStatus = Employee::select('status')->where('id', $id)->first();
+        if ($employeeStatus->status == 0) {
+            $status = 1;
+        } else {
+            $status = 0;
         }
-        else{
-            $status=0;
-        }
-        Employee::where('id',$id)->update(['status'=> $status]);
-        return redirect()->back()->with('status','status upadate');
+        Employee::where('id', $id)->update(['status' => $status]);
+        return redirect()->back()->with('status', 'status upadate');
     }
     public function delete($id)
     {
@@ -79,7 +80,10 @@ class EmployeesController extends Controller
 
     // user employee
 
-    public function userEmployee(){
-        return view('user.pages.include.employee');
+    public function userEmployee()
+    {
+        $allEmployees = Employee::where('status', '1')->get();
+        // dd($allEmployees);
+        return view('user.pages.include.employee', compact('allEmployees'));
     }
 }
