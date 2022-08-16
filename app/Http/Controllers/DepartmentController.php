@@ -15,6 +15,7 @@ use App\Models\Salary;
 use Illuminate\Auth\Access\Response;
 use App\Models\Department_Designation;
 use Illuminate\Support\Facades\Auth;
+use Brian2694\Toastr\Facades\Toastr;
 
 class DepartmentController extends Controller
 {
@@ -49,7 +50,12 @@ class DepartmentController extends Controller
       $department->name = $request->input('name');
       $department->create_by = Auth::User()->name;
       $department->save();
-      return redirect()->back()->with('status', 'department success');
+      Toastr::success('Department create successfully', 'success', [
+         "positionClass" => "toast-top-right", "closeButton"
+         =>
+         "true",
+      ]);
+      return redirect()->back();
    }
    public function deptrelation(Request $request)
    {
@@ -65,7 +71,12 @@ class DepartmentController extends Controller
       $dd->designation_id = $request->input('designation_id');
       $dd->create_by = Auth::User()->name;
       $dd->save();
-      return redirect()->back()->with('status', 'department relation success');
+      Toastr::success('Department Designation ralation create successfully', 'success', [
+         "positionClass" => "toast-top-right", "closeButton"
+         =>
+         "true",
+      ]);
+      return redirect()->back();
    }
 
    public function departmentStatus($id)
@@ -77,6 +88,11 @@ class DepartmentController extends Controller
          $status = 0;
       }
       Department::where('id', $id)->update(['status' => $status]);
+      Toastr::success('Status update successully', 'success', [
+         "positionClass" => "toast-top-right", "closeButton"
+         =>
+         "true", "progressBar" => "true"
+      ]);
       return redirect()->back();
    }
 
@@ -89,18 +105,33 @@ class DepartmentController extends Controller
          $status = 0;
       }
       Department_Designation::where('id', $id)->update(['status' => $status]);
+      Toastr::success('status update successfully', 'success', [
+         "positionClass" => "toast-top-right", "closeButton"
+         =>
+         "true",
+      ]);
       return redirect()->back();
    }
    public function delete($id)
    {
       $departmentDelete = department::find($id);
       $departmentDelete->delete();
-      return back();
+      Toastr::Error('Delete successfully', 'success', [
+         "positionClass" => "toast-top-right", "closeButton"
+         =>
+         "true",
+      ]);
+      return redirect()->back();
    }
    public function deleteelation($id)
    {
       $Department_Designation = Department_Designation::find($id);
       $Department_Designation->delete();
-      return back();
+      Toastr::Error('delete successfully', 'success', [
+         "positionClass" => "toast-top-right", "closeButton"
+         =>
+         "true",
+      ]);
+      return redirect()->back();
    }
 }

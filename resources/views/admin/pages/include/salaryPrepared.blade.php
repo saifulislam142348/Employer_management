@@ -25,13 +25,15 @@
                 </button>
                 @include('form.bonusCreate')
                 <div class="p-2 bd-highlight">
-                    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#departmentModal">
+                    <button type="button" class="btn btn-primary " data-bs-toggle="modal"
+                        data-bs-target="#departmentModal">
                         Department Create
                     </button>
                     @include('form.departmentCreate')
                 </div>
                 <div class="p-2 bd-highlight">
-                    <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#designationModal">
+                    <button type="button" class="btn btn-primary " data-bs-toggle="modal"
+                        data-bs-target="#designationModal">
                         Designation create
                     </button>
                     @include('form.designationCreate')
@@ -43,9 +45,9 @@
                     @include('form.departmentDesignationCreate')
                 </div>
             </div>
-            
+
         </div>
-        
+
         <div class="jumbotron">
 
 
@@ -76,14 +78,14 @@
                                 <td>{{ $item->users->name }}</td>
                                 <td>{{ $item->departments->name }}</td>
                                 <td>{{ $item->designations->name }}</td>
-                                <td>{{ $item->months->name }}</td>
+                                <td>{{ $item->month }}</td>
                                 <td>{{ $item->salary }}</td>
-                 @foreach ($item->users->bonuses as $s)
-                 <td>{{ $s->bonus }}</td>
-                 <td>{{ $item->salary + $s->bonus }}</td>  
-                 @endforeach
-                             
-                            
+                                 <td>{{$item->users->bonuses}}</td>
+     @foreach ($item->users->bonuses as $i)
+     <td>{{$i->bonus}}</td>
+     
+         
+     @endforeach
                                 <td>{{ $item->join_date }}</td>
 
                                 {{-- {{dd($item->employees)}} --}}

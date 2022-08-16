@@ -18,24 +18,8 @@
                 </button>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
         @include('form.attendenceCreate1')
         <div class="jumbotron">
-
-
-
             <table class="table table-striped table-bordered table-hover table-dark">
                 <thead>
                     <tr>
@@ -56,7 +40,7 @@
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $item->user_id }}</td>
                                 <td>{{ $item->users->name }}</td>
-                                <td>{{ $item->months->name }}</td>
+                                <td>{{ $item->month}}</td>
                                 <td>{{ $item->in_time }}</td>
                                 <td>{{ $item->out_time }}</td>
 

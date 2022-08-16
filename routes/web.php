@@ -35,48 +35,60 @@ route::get('user/index', [UserController::class, 'index'])->name('user.index');
 Auth::routes();
 
 // user panel 
-Route::middleware(['auth', 'user-access:user'])->group(function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-    // route::get('user/index',[UserController::class,'index'])->name('user.index');
 
+Route::middleware(['auth', 'user-access:employee'])->group(function () {
+    // Route::get('/home', [HomeController::class, 'index'])->name('home');
+    // attendence
+    Route::get('user/pages/include/attendence', [AttendencesController::class, 'userAttendence'])->name('user.attendence');
+    // bonus
+    route::get('user/pages/include/bonus', [BonusController::class, 'userBonus'])->name('user.bonus');
+
+    // employyee
+    route::get('user/pages/include/employee', [EmployeesController::class, 'userEmployee'])->name('user.employee');
+
+    // leave
+    route::get('user/pages/include/leave', [LeavesController::class, 'userLeave'])->name('user.leave');
 });
 
 // admin panel
 route::get('admin/index', [AdminController::class, 'index'])->name('admin.index');
+
 Route::middleware(['auth', 'user-access:admin'])->group(function () {
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
 
     //registration controller
     route::get('admin/pages/include/registration', [RegistrationController::class, 'registration'])->name('admin.registration');
     route::post('admin/registration/create', [RegistrationController::class, 'store'])->name('admin.registration.store');
-    route::get('statusChange/{id}', [RegistrationController::class, 'statusChange']);
     route::delete('registration/delete/{id}', [RegistrationController::class, 'delete']);
+    route::get('statusChange/{id}', [RegistrationController::class, 'statusChange']);
     route::get('admin.pages.include.registration/{id}', [RegistrationController::class, 'edit']);
 
     //employee controller
     route::get('admin/pages/include/employee', [EmployeesController::class, 'employee'])->name('admin.employee');
     route::post('admin/pages/include/employee/create', [EmployeesController::class, 'store'])->name('admin.employee.store');
-    route::get('employeeStatus/{id}', [EmployeesController::class, 'employeeStatus']);
     route::delete('employee/delete/{id}', [EmployeesController::class, 'delete']);
+    
+    route::get('employeeStatus/{id}', [EmployeesController::class, 'employeeStatus']);
+
 
     //bonuscontroller
     route::get('admin/pages/include/bonus', [BonusController::class, 'bonus'])->name('admin.bonus');
     route::post('emoployees/bonus/add', [BonusController::class, 'bonusstore'])->name('admin.employee.bonus');
-    route::post('emoployees/bonus/edit/{id}', [BonusController::class, 'bonus'])->name('admin.employee.bonus.edit');
-    route::get('bonusStatus/{id}', [BonusController::class, 'bonusStatus']);
     route::delete('bonus/delete/{id}', [BonusController::class, 'delete']);
+    route::get('emoployees/bonus/edit/{id}', [BonusController::class, 'bonus'])->name('admin.employee.bonus.edit');
+    route::get('bonusStatus/{id}', [BonusController::class, 'bonusStatus']);
+
 
     //attendences controller
     route::get('admin/pages/include/attendence', [AttendencesController::class, 'attendence'])->name('admin.attendence');
-    route::post('employee/attendence/inTime', [AttendencesController::class, 'inTime'])->name('admin.employee.in_time');
-    route::post('employee/attendence/outTime', [AttendencesController::class, 'outTime'])->name('admin.employee.out_time');
-    route::delete('attendence/delete/{id}', [AttendencesController::class, 'delete']);
+
+
 
     //leavecontroller
     route::get('admin/pages/include/leave', [LeavesController::class, 'leave'])->name('admin.leave');
-    route::post('employee/leave', [LeavesController::class, 'leavestore'])->name('admin.employee.leave');
+
     route::get('leaveStatus/{id}', [LeavesController::class, 'leaveStatus']);
-    route::delete('leave/delete/{id}', [LeavesController::class, 'delete']);
+
 
     //department add
     route::get('admin/pages/include/department', [DepartmentController::class, 'department'])->name('admin.department');
@@ -104,23 +116,20 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 });
 
 
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+                               // form post 
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+route::post('employee/attendence/inTime', [AttendencesController::class, 'inTime'])->name('admin.employee.in_time');
+route::post('employee/attendence/outTime', [AttendencesController::class, 'outTime'])->name('admin.employee.out_time');
+route::delete('attendence/delete/{id}', [AttendencesController::class, 'delete']);
+route::post('employee/leave', [LeavesController::class, 'leavestore'])->name('admin.employee.leave');
+route::delete('leave/delete/{id}', [LeavesController::class, 'delete']);

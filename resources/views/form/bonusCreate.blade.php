@@ -21,6 +21,7 @@
                                     <option value="{{ $item->id }}">{{ $item->id }}</option>
                                 @endforeach
                             </select>
+                           
                         </div>
                     </div>
 
@@ -29,11 +30,22 @@
                         <label class="col-md-4 col-form-label text-md-end">{{ __('Month Name ') }}</label>
 
                         <div class="col-md-6">
-                            <select class="form-select" name="month_id" id="">
-                                <option selected>..</option>
-                                @foreach ($months as $item)
-                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                @endforeach
+                            <select class="form-select" name="month">
+                                <option selected></option>
+                               
+                                    <option value="January">January</option>
+                                    <option value="February">February</option>
+                                    <option value="March">March</option>
+                                    <option value="April">April</option>
+                                    <option value="May">May</option>
+                                    <option value="June">June</option>
+                                    <option value="July">July</option>
+                                    <option value="August">August</option>
+                                    <option value="Septembe">Septembe</option>
+                                    <option value="October">October</option>
+                                    <option value="November">November</option>
+                                    <option value="December">December</option>
+                                
                             </select>
                         </div>
                         @foreach ($errors->get('month_id') as $message)

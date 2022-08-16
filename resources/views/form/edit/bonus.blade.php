@@ -21,7 +21,7 @@
                 <div class="col-md-6">
                    <select class="form-select" name="user_id" >
                     <option  selected></option>
-                    @foreach ($user as $item)
+                    @foreach ($users as $item)
                         <option value="{{$item->id}}">{{$item->id}}</option>
                     @endforeach
                    </select>
@@ -35,7 +35,7 @@
                 <div class="col-md-6">
                    <select class="form-select" name="month_id" id="">
                     <option  selected>..</option>
-                    @foreach ($month as $item)
+                    @foreach ($months as $item)
                         <option value="{{$item->id}}">{{$item->name}}</option>
                     @endforeach
                    </select>

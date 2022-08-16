@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('bonuses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('month_id');
+            $table->string('month');
             $table->string('bonus_title');
             $table->unsignedBigInteger('bonus');
             $table->tinyInteger('status')->default(0)->comment('inactive=0 active=1');

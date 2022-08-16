@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('leaves', function (Blueprint $table) {
              $table->id();
              $table->unsignedBigInteger('user_id')->unique();
-             $table->unsignedBigInteger('month_id');
+             $table->string('month');
              $table->unsignedBigInteger('leave')->nullable();	
              $table->tinyInteger('status')->default(0)->comment('inactive=0 active=1');
              $table->string('create_by')->default('none');

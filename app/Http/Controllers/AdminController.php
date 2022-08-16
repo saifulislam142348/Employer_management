@@ -12,6 +12,7 @@ use App\Models\Employee;
 use App\Models\Leave;
 use App\Models\Salary;
 use Illuminate\Support\Facades\Auth;
+use Toastr;
 
 class AdminController extends Controller
 {

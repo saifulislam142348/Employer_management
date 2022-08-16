@@ -13,6 +13,7 @@ use App\Models\Leave;
 use App\Models\Salary;
 use App\Models\Month;
 use Illuminate\Support\Facades\Auth;
+use Brian2694\Toastr\Facades\Toastr;
 
 class EmployeesController extends Controller
 {
@@ -26,10 +27,10 @@ class EmployeesController extends Controller
     }
     public function  store(Request $request){
         $rules=[
-            'user_id' => 'required', 
+            'user_id' => 'required|unique:employees', 
             'department_id' =>'required',
             'designation_id' => 'required',
-            'month_id' => 'required',
+            'month' => 'required',
             'salary' => 'required', 
             'join_date' =>'required',
         ];
@@ -38,12 +39,18 @@ class EmployeesController extends Controller
         $employee->user_id=$request->input('user_id');
         $employee->department_id=$request->input('department_id');
         $employee->designation_id=$request->input('designation_id');
-        $employee->month_id=$request->input('month_id');
+        $employee->month=$request->input('month');
         $employee->salary=$request->input('salary');
         $employee->join_date=$request->input('join_date');
         $employee->create_by=Auth::user()->name;
         $employee->save();
-        return redirect()->back()->with('status','employyess success');
+        Toastr::success('Employees  create successfully', 'success', [
+            "positionClass" => "toast-top-right", "closeButton"
+            =>
+            "true",
+        ]);
+        // dd(  $employee);
+        return redirect()->back();
 
     }
 
@@ -62,6 +69,17 @@ class EmployeesController extends Controller
     {
         $employeeDelete = Employee::find($id);
         $employeeDelete->delete();
-        return back();
+        Toastr::Error('Delete successfully', 'success', [
+            "positionClass" => "toast-top-right", "closeButton"
+            =>
+            "true", "progressBar" => "true"
+        ]);
+        return redirect()->back();
+    }
+
+    // user employee
+
+    public function userEmployee(){
+        return view('user.pages.include.employee');
     }
 }

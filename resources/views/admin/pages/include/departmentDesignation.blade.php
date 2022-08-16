@@ -6,12 +6,8 @@
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Relation Add
         </button>
-
         @include('form.departmentDesignationCreate')
         <div class="jumbotron">
-
-
-
             <table class="table table-striped table-bordered table-hover table-dark">
                 <thead>
                     <tr>

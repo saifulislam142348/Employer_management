@@ -13,6 +13,8 @@ use App\Models\Leave;
 use App\Models\Salary;
 use App\Models\Month;
 use Illuminate\Support\Facades\Auth;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Hash;
 
 class RegistrationController extends Controller
 {
@@ -44,16 +46,21 @@ class RegistrationController extends Controller
     $registration= new User();
     $registration->name=$request->input('name');
     $registration->email=$request->input('email');
-    $registration->password=$request->input('password');
-    
+    $registration->password=Hash::make($request->input('password'));
+   
     $registration->gender=$request->input('gender');
     $registration->address=$request->input('address');
     $registration->nid=$request->input('nid');
     $registration->phone=$request->input('phone');
     $registration->create_by= Auth::User()->name;
     $registration->save();
-   
-    return redirect()->back()->with('status','Registration success');
+
+        Toastr::success('Department create successfully', 'success', [
+            "positionClass" => "toast-top-right", "closeButton"
+            =>
+            "true", "progressBar" => "true"
+        ]);
+        return redirect()->back();
 
    }
 
@@ -68,15 +75,25 @@ class RegistrationController extends Controller
         }
         User::where('id',$id)->update(['status'=>  $status]);
 
-      
-        return back()->with('status','status update successfully');
+
+        Toastr::success('Status update successfully', 'success', [
+            "positionClass" => "toast-top-right", "closeButton"
+            =>
+            "true", "progressBar" => "true"
+        ]);
+        return redirect()->back();
    
    }
     public function delete($id)
     {
         $userDelete = User::find($id);
         $userDelete->delete();
-        return back();
+        Toastr::Error('Delete successfully', 'success', [
+            "positionClass" => "toast-top-right", "closeButton"
+            =>
+            "true", "progressBar" => "true"
+        ]);
+        return redirect()->back();
     }
 
     public function edit($id){

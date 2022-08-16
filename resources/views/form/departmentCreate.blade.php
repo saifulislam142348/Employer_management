@@ -15,7 +15,7 @@
                             class="col-md-4 col-form-label text-md-end">{{ __('Department  Name') }}</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control" name="name">
+                            <input id="departmet" type="text" class="form-control" name="name">
 
                         </div>
                         @foreach ($errors->get('name') as $message)
@@ -23,7 +23,7 @@
                     @endforeach
                     </div>
             </div>
-            <input class="btn btn-success" type="submit" value="save">
+            <input class="btn btn-success add_department" type="submit" value="save">
             </form>
         </div>
     </div>

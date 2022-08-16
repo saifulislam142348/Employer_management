@@ -13,6 +13,7 @@ use App\Models\Leave;
 use App\Models\Salary;
 use App\Models\month;
 use Illuminate\Support\Facades\Auth;
+use Brian2694\Toastr\Facades\Toastr;
 class LeavesController extends Controller
 {
    public function leave(){
@@ -24,6 +25,8 @@ class LeavesController extends Controller
 
    public function leavestore(Request $request){
       $rules=[
+         'user_id' => 'required|unique:leaves', 
+         'month' => 'required', 
          'leave' => 'required', 
         
  
@@ -32,11 +35,16 @@ class LeavesController extends Controller
  
       $leave= new Leave();
       $leave->user_id=$request->input('user_id');
-      $leave->month_id=$request->input('month_id');
+      $leave->month=$request->input('month');
       $leave->leave=$request->input('leave');
       $leave->create_by= Auth::User()->name;
      $leave->save();
-     return redirect()->back()->with('status',' success');
+      Toastr::success('leave create successfully', 'success', [
+         "positionClass" => "toast-top-right", "closeButton"
+         =>
+         "true", "progressBar" => "true"
+      ]);
+      return redirect()->back();
    }
 
    public function leaveStatus($id){
@@ -55,6 +63,17 @@ class LeavesController extends Controller
    {
       $leaveDelete = Leave::find($id);
       $leaveDelete->delete();
-      return back();
+      Toastr::Error('Delete successfully', 'success', [
+         "positionClass" => "toast-top-right", "closeButton"
+         =>
+         "true", "progressBar" => "true"
+      ]);
+      return redirect()->back();
+   }
+
+   //  user leave
+
+   public function userLeave(){
+      return view('user.pages.include.leave');
    }
 }

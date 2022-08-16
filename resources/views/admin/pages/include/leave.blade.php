@@ -32,7 +32,7 @@
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $item->user_id }}</td>
                                 <td>{{ $item->users->name }}</td>
-                                <td>{{ $item->months->name }}</td>
+                                <td>{{ $item->month }}</td>
                                 <td>
                                     @if ($item->leave == 1)
                                         <a class="btn btn-danger" href="">leave</a>

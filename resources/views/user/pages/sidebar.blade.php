@@ -36,8 +36,10 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Employee Components:</h6>
-                <a class="collapse-item" href="">Attemdences</a>
-                <a class="collapse-item" href="">Leaves Apply</a>
+                <a class="collapse-item" href="{{route('user.employee')}}">All Employee</a>
+                <a class="collapse-item" href="{{route('user.attendence')}}">Attemdences</a>
+                <a class="collapse-item" href="{{route('user.bonus')}}">Bonus apply</a>
+                <a class="collapse-item" href="{{route('user.leave')}}">Leaves Apply</a>
                 <a class="collapse-item" href="">Promosition Apply</a>
            
             </div>
@@ -56,8 +58,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Reports:</h6>
                 <h6 class="collapse-header">Employee Reports</h6>
-                <a class="collapse-item" href="">Department Reports</a>
-                <a class="collapse-item" href=""> Designation Reports</a>
+                <a class="collapse-item" href=""> Employee Reports</a>
                 <a class="collapse-item" href=""> Attemdences Reports</a>
                 <a class="collapse-item" href=""> Bonuses Reports</a>
                 <a class="collapse-item" href=""> Leaves Reports</a>

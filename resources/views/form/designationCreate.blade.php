@@ -15,7 +15,7 @@
                             class="col-md-4 col-form-label text-md-end">{{ __(' Designation Name') }}</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control" name="designation_name">
+                            <input id="name" type="text" class="form-control" name="name">
                         </div>
                         @foreach ($errors->get('designation_name') as $message)
                         <span class="text-center alert-danger">{{ $message }}</span>

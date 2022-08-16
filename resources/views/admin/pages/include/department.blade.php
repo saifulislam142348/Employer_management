@@ -1,5 +1,6 @@
 @extends('layouts.layout')
 @section('content')
+
     @include('admin.pages.include.header')
     <div class="container">
         <h1 style="text-align: center;"><b>Department List</b> </h1>
@@ -75,4 +76,7 @@
             </table>
         </div>
     </div>
+  @section('scripts')
+  @include('jquery.department')  
+  @endsection
 @endsection

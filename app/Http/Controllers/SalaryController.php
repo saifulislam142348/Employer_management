@@ -13,6 +13,7 @@ use App\Models\Leave;
 use App\Models\Salary;
 use App\Models\Month;
 use Illuminate\Support\Facades\Auth;
+use Brian2694\Toastr\Facades\Toastr;
 class SalaryController extends Controller
 {
    public function salaryPrepared(){
@@ -35,10 +36,15 @@ class SalaryController extends Controller
         $this->validate($request, $rules);
         $salary = new Salary();
         $salary->user_id = $request->input('user_id');
-        $salary->month_id = $request->input('month_id');
+        $salary->month = $request->input('month');
         $salary->bonus_id = $request->input('bonus_id');
         $salary->create_by = Auth::User()->name;
         $salary->save();
-        return redirect()->back()->with('status', ' success');
+        Toastr::success('Salary create successfully', 'success', [
+            "positionClass" => "toast-top-right", "closeButton"
+            =>
+            "true", "progressBar" => "true"
+        ]);
+        return redirect()->back();
    }
 }

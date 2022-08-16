@@ -13,6 +13,7 @@ use App\Models\Leave;
 use App\Models\Salary;
 use App\Models\Month;
 use Illuminate\Support\Facades\Auth;
+use Brian2694\Toastr\Facades\Toastr;
 class MonthController extends Controller
 {
     public function month(){
@@ -29,6 +30,11 @@ class MonthController extends Controller
         $month->name=$request->input('name');
         $month->create_by=Auth::user()->name;
         $month->save();
-        return redirect()->back()->with('status','month success');
+        Toastr::success('Month create successfully', 'success', [
+            "positionClass" => "toast-top-right", "closeButton"
+            =>
+            "true", "progressBar" => "true"
+        ]);
+        return redirect()->back();
      }
 }

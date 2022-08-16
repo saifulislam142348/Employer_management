@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->dateTime('in_time')->nullable();	
-            $table->unsignedBigInteger('month_id');
+            $table->string('month');
             $table->dateTime('out_time')->nullable();	
             $table->tinyInteger('status')->default(0)->comment('inactive=0 active=1');
             $table->string('create_by')->default('none');

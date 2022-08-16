@@ -53,8 +53,8 @@
 
 
 
-            <table class="table table-striped table-bordered table-hover">
-                <thead class="bg-light">
+            <table class="table table-striped table-bordered table-hover table-dark">
+                <thead>
                     <tr>
                         <th>Id</th>
                         <th>name</th>
@@ -77,7 +77,7 @@
                                 {{-- <td>{{ $item->bonus_title }}</td> --}}
                                 <td>{{ $item->bonus_title }}</td>
                                 <td>{{ $item->bonus }}</td>
-                                <td>{{ $item->months->name }}</td>
+                                <td>{{ $item->month }}</td>
                                 <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
                                 <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
                                 <td>

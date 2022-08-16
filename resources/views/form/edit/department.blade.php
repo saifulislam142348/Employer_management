@@ -10,6 +10,9 @@
                 </button>
             </div>
             <div class="modal-body">
+                <div class="errormsg">
+
+                </div>
                 <form method="POST" action="{{ route('admin.department.store') }}">
                     @csrf
                     <div class="row mb-3">

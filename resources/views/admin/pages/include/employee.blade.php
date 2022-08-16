@@ -45,9 +45,6 @@
             
         </div>
         <div class="jumbotron">
-
-
-
             <table class="table table-striped table-bordered table-hover table-dark">
                 <thead>
                     <tr>
@@ -74,7 +71,7 @@
                                 <td>{{ $item->departments->name }}</td>
                                 <td>{{ $item->designations->name }}</td>
                                 <td>{{ $item->salary }}</td>
-                                <td>{{ $item->months->name }}</td>
+                                <td>{{ $item->month }}</td>
                                 <td>{{ $item->join_date }}</td>
                                 <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
                                 <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
@@ -108,7 +105,7 @@
                     @else
                         <tr>
                             <td colspan="100%" style="text-align: center;">Not Found!</td>
-                            not found
+                         
                             </td>
                         </tr>
                     @endif
