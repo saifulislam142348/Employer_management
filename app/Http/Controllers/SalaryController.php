@@ -17,7 +17,7 @@ use Brian2694\Toastr\Facades\Toastr;
 class SalaryController extends Controller
 {
    public function salaryPrepared(){
-        $salaryPrepared= Salary::get();
+        $salaryPrepared= Salary::paginate(2);
         $users= User::get();
         $months= Month::get();
         $bonus= Bonus::get();

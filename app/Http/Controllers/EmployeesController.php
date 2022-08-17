@@ -19,7 +19,7 @@ class EmployeesController extends Controller
 {
     public function employee()
     {
-        $employees = Employee::get();
+        $employees = Employee::paginate(2);
         $users = User::where('type', 'employee')->get();
         $departments = Department::get();
         $designations = Designation::get();

@@ -6,13 +6,13 @@
 
     <div class="jumbotron">
 
-        @if (!$attendence->count() > 0)
+        @if (Auth::user()->id==$attendence->first()->user_id && !$attendence->count() > 0)
             <div class="d-flex p-2 bd-highlight justify-content-center">
                 @include('form.userintime')
 
             </div>
         @else
-            @if (!$attendence->first()->status == 1)
+            @if (Auth::user()->id==$attendence->first()->user_id && !$attendence->first()->status == 1)
                 <div class="d-flex p-2 bd-highlight justify-content-center">
                     @include('form.userouttime')
                 </div>
@@ -48,7 +48,7 @@
                             <td>{{ $item->out_time }}</td>
 
                             <td>
-                                @if ($item->status == 1)
+                                @if ( $item->status == 1)
                                     <a class="btn btn-danger" href=""></i>Out Time</a>
                                 @else
                                     @if ($item->status == 0)
@@ -79,13 +79,13 @@
     {{-- one time in or out --}}
     <div class="jumbotron">
 
-        @if (!$attendence->count() > 0)
+        @if ( !$attendence->count() > 0)
             <div class="d-flex p-2 bd-highlight justify-content-center">
                 @include('form.userintime')
 
             </div>
         @else
-            @if (!$attendence->first()->status == 1)
+            @if ( !$attendence->first()->status == 1)
                 <div class="d-flex p-2 bd-highlight justify-content-center">
                     @include('form.userouttime')
                 </div>
@@ -94,7 +94,7 @@
         <table class="table table-striped table-bordered table-hover table-dark">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>#</th> 
                     <th>Id</th>
                     <th>Name</th>
                     <th>Month</th>

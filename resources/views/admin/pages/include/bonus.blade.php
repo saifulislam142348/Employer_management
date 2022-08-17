@@ -48,7 +48,62 @@
             </div>
 
         </div>
+        <div class="jumbotron">
+            <table class="table table-striped table-bordered table-hover table-dark">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Month</th>
+                        <th>Bonus Title</th>
+                        <th>Bonus Amonut</th>
+                        <th>Create_by</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if ($bonus->count() > 0)
+                        @foreach ($bonus as $key => $item)
+                            <tr>
+                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $item->user_id }}</td>
+                                <td>{{ $item->users->name }}</td>
+                                {{-- <td>{{ $item->users->employees->departments->name }}</td>
+                                <td>{{ $item->users->employees->designations->name }}</td> --}}
+                                <td>{{ $item->month }}</td>
+                                <td>{{ $item->bonus_title }}</td>
+                               
+                                <td>{{ $item->Bonus }}</td>
+                                <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
 
-      
+                                <td>
+                                    @if ($item->status == 1)
+                                        <a class="btn btn-succcess" href="{{url('bonusStatus/'.$item->id)}}"></i>Active</a>
+                                    @else
+                                        @if ($item->status == 0)
+                                            <a class="btn btn-danger" href="{{url('bonusStatus/'.$item->id)}}">Inactive</i></a>
+                                        @endif
+                                    @endif
+                                </td>
+                                <td>
+                                    <form action="{{ url('bonus/delete/' . $item->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger"><i class="las la-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr>
+                            <td colspan="100%" style="text-align: center;">Not Found!</td>
+                        </tr>
+                    @endif
+                </tbody>
+            </table>
+            {!! $bonus->links() !!}
+        </div>
+
     </div>
 @endsection

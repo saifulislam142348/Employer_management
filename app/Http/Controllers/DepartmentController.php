@@ -32,8 +32,8 @@ class DepartmentController extends Controller
    public function depart_design()
    {
 
-      $departments = Department::all();
-      $designations = Designation::all();
+      $departments = Department::paginate(2);
+      $designations = Designation::paginate(2);
       $relations = Department_Designation::get();
       return view('admin.pages.include.departmentDesignation', compact('departments', 'designations', 'relations'));
    }

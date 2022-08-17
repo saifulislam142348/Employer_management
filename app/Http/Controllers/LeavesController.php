@@ -19,7 +19,7 @@ class LeavesController extends Controller
    public function leave(){
       $users = User::where('type','employee')->get();
       $months = month::get();
-      $leaves=Leave::get();
+      $leaves=Leave::paginate(2);
     return view('admin.pages.include.leave',compact('users','months','leaves'));
    }
 

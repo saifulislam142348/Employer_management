@@ -40,7 +40,7 @@ class AttendencesController extends Controller
 
       ];
       $this->validate($request, $rules);
-      $todayDate = Carbon::now()->format('Y-m-d H:i:s');
+      $todayDate = Carbon::now('+6')->format('Y-m-d H:i:s');
       $present = new Attendence();
       $present->user_id = $request->input('user_id');
       $present->month = $request->input('month');
@@ -58,7 +58,7 @@ class AttendencesController extends Controller
          'month' => ['required'],
       ];
       $this->validate($request, $rules);
-      $todayDate = Carbon::now()->format('Y-m-d H:i:s');
+      $todayDate = Carbon::now('+6')->format('Y-m-d H:i:s');;
       $present = new Attendence();
       $present->user_id = $request->input('user_id');
       $present->month= $request->input('month');

@@ -543,7 +543,7 @@
                             </path>
                         </svg>
 
-                        <a href="https://laravel.bigcartel.com" class="ml-1 underline">
+                        <a href="" class="ml-1 underline">
                             Shop
                         </a>
 
@@ -560,9 +560,7 @@
                     </div>
                 </div>
 
-                <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                    Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-                </div>
+                
             </div>
         </div>
     </div>
@@ -579,12 +577,7 @@
         });
     </script>
 
-    <script>
-        $(document).ready(function() {
     
-        alert();
-        })
-    </script>
 </body>
 
 </html>

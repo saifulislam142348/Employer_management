@@ -22,7 +22,7 @@ class BonusController extends Controller
    {
       $users= User::get();
         $months= Month::get();
-        $bonus= Bonus::get();
+        $bonus= Bonus::paginate(2);;
         $employees= Employee::get();
         $departments= Department::get();
         $designations= Designation::get();
@@ -55,14 +55,14 @@ class BonusController extends Controller
    }
    public function bonusStatus($id)
    {
-      $bonusStatus = Bonus::select('status')->where('user_id', $id)->first();
+      $bonusStatus = Bonus::select('status')->where('id', $id)->first();
       if ($bonusStatus->status == 0) {
          $status = 1;
       }
       else{
          $status=0;
       }
-      Bonus::where('user_id', $id)->update(['status'=> $status]);
+      Bonus::where('id', $id)->update(['status'=> $status]);
       Toastr::success('Bonus status change', 'success', [
          "positionClass" => "toast-top-right", "closeButton"
          =>

@@ -18,8 +18,8 @@ class DesignationController extends Controller
 {
    public function designation()
    {
-      $designations= Designation::all();
-      $departments = Department::all();
+      $designations= Designation::paginate(2);
+      $departments = Department::paginate(2);
       return view('admin.pages.include.designation', compact('designations', 'departments'));
    }
 

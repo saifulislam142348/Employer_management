@@ -50,11 +50,7 @@
                                     @endif
                                 </td>
                                 @if (Auth::user()->id == $item->user_id)
-                                    <td>
-                                        <a class="btn btn-success" data-toggle="modal" data-target="#leaveEditModal"
-                                            href=""><i class="las la-edit"></i></a>
-                                        @include('form.edit.leave')
-                                    </td>
+                                   
                                     <td>
                                         <form action="{{ url('leave/delete/' . $item->id) }}" method="POST">
                                             @csrf

@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Hash;
 class RegistrationController extends Controller
 {
    public function registration(){
-    $registration = User::where('type','employee')->get();
+    $registration = User::where('type','employee')->paginate(2);
     $users= User::get();
     $months= Month::get();
     $bonus= Bonus::get();

@@ -119,7 +119,9 @@
                                     @endif
                                 </td>
                             </tr>
+
                         @endforeach
+                       
                     @else
                         <tr>
                             <td colspan="100%" style="text-align: center;">Not Found!</td>
@@ -128,7 +130,12 @@
                         </tr>
                     @endif
                 </tbody>
+             
             </table>
+           {!! $registration->links() !!} 
         </div>
+    
+      
     </div>
+  
 @endsection
