@@ -70,6 +70,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     route::delete('employee/delete/{id}', [EmployeesController::class, 'delete']);
     
     route::get('employeeStatus/{id}', [EmployeesController::class, 'employeeStatus']);
+   
 
 
     //bonuscontroller
@@ -148,3 +149,8 @@ route::post('employee/password/update',[ChangeController::class,'passwordUpdate'
 route::post('employee/email/update',[ChangeController::class,'emaildUpdate'])->name('update.email');
 route::post('employee/phone/update',[ChangeController::class,'phoneUpdate'])->name('update.phone');
 route::post('employee/nid/update',[ChangeController::class,'nidUpdate'])->name('update.nid');
+
+
+// employee profile
+
+route::get('user/pages/include/employee_profile', [EmployeesController::class, 'employeeProfile'])->name('employee.profile');

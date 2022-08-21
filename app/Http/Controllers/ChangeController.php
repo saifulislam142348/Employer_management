@@ -71,7 +71,6 @@ class ChangeController extends Controller
     public function emaildUpdate(Request $request)
     {
         $id = Auth::user()->id;
-        $old_email = $request->input('old_email');
         $new_email = $request->input('new_email');
         $confirm_email = $request->input('confirm_email');
         if ($new_email === $confirm_email) {

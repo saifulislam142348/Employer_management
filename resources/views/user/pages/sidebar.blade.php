@@ -13,10 +13,14 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{ route('user.index') }}">
             <i class="las la-tachometer-alt"></i>
             <span>Dashboard</span></a>
+
+
     </li>
+   
+ 
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -36,12 +40,12 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Employee Components:</h6>
-                <a class="collapse-item" href="{{route('user.employee')}}">All Employee</a>
-                <a class="collapse-item" href="{{route('user.attendence')}}">Attemdences</a>
-                <a class="collapse-item" href="{{route('user.bonus')}}">Bonus apply</a>
-                <a class="collapse-item" href="{{route('user.leave')}}">Leaves Apply</a>
+                <a class="collapse-item" href="{{ route('user.employee') }}">All Employee</a>
+                <a class="collapse-item" href="{{ route('user.attendence') }}">Attemdences</a>
+                <a class="collapse-item" href="{{ route('user.bonus') }}">Bonus apply</a>
+                <a class="collapse-item" href="{{ route('user.leave') }}">Leaves Apply</a>
                 <a class="collapse-item" href="">Promosition Apply</a>
-           
+
             </div>
         </div>
     </li>
@@ -53,8 +57,7 @@
             <i class="las la-wrench"></i>
             <span>Setting</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Reports:</h6>
                 <h6 class="collapse-header">Employee Reports</h6>
@@ -84,14 +87,14 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="{{route('email.change')}}"> Email Change</a>
-                <a class="collapse-item" href="{{route('password.change')}}"> Password Change</a>
+                <a class="collapse-item" href="{{ route('email.change') }}"> Email Change</a>
+                <a class="collapse-item" href="{{ route('password.change') }}"> Password Change</a>
                 <div class="collapse-divider"></div>
                 <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="{{route('phone.change')}}">Phone Number Change</a>
-                <a class="collapse-item" href="{{route('nid.change')}}">NID Number Change</a>
-             
-              
+                <a class="collapse-item" href="{{ route('phone.change') }}">Phone Number Change</a>
+                <a class="collapse-item" href="{{ route('nid.change') }}">NID Number Change</a>
+
+
             </div>
         </div>
     </li>
@@ -115,10 +118,10 @@
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
-       
+
         <button class="rounded-circle las la-angle-double-left" id="sidebarToggle"></button>
     </div>
 
     <!-- Sidebar Message -->
-   
+
 </ul>

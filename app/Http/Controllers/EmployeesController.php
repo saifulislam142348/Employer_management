@@ -86,4 +86,10 @@ class EmployeesController extends Controller
         // dd($allEmployees);
         return view('user.pages.include.employee', compact('allEmployees'));
     }
+
+    // employee profile
+
+    public function employeeProfile(){
+        return view('user.pages.include.employee_profile');
+    }
 }
