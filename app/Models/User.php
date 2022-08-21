@@ -57,6 +57,6 @@ class User extends Authenticatable
         return $this->hasMany(Bonus::class);
   }
     public function employees(){
-        return $this->hasMany(Employee::class);
+        return $this->belongsTo(Employee::class,'user_id','id');
   }
 }

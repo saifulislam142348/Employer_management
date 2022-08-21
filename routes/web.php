@@ -145,3 +145,6 @@ route::get('form/changes/nid_change',[ChangeController::class,'nidChange'])->nam
 // changecontroller update
 
 route::post('employee/password/update',[ChangeController::class,'passwordUpdate'])->name('update.password');
+route::post('employee/email/update',[ChangeController::class,'emaildUpdate'])->name('update.email');
+route::post('employee/phone/update',[ChangeController::class,'phoneUpdate'])->name('update.phone');
+route::post('employee/nid/update',[ChangeController::class,'nidUpdate'])->name('update.nid');

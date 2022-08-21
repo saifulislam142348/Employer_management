@@ -16,13 +16,13 @@
                     <label class="col-md-4 col-form-label text-md-end">{{ __('Old Pasword') }}</label>
 
                     <div class="col-md-6">
-                        <input type="text" class="form-control" name="old_password">
+                        <input type="password" class="form-control" name="old_password" placeholder="Old password">
 
                     </div>
                     <div class="d-flex justify-content-center">
                         @if (session('oldpassword'))
                             <hr>
-                            <span class="alert alert-danger  ">{{ session('oldpassword') }}</span>
+                            <span class="text-danger  ">{{ session('oldpassword') }}</span>
                             <hr>
                         @endif
                     </div>
@@ -32,7 +32,7 @@
                     <label class="col-md-4 col-form-label text-md-end">{{ __('New Password') }}</label>
 
                     <div class="col-md-6">
-                        <input type="text" class="form-control" name="new_password">
+                        <input type="password" class="form-control" name="new_password" placeholder="New password">
 
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                     <label class="col-md-4 col-form-label text-md-end">{{ __('New Confirm Password') }}</label>
 
                     <div class="col-md-6">
-                        <input type="text" class="form-control" name="confirm_password">
+                        <input type="password" class="form-control  " name="confirm_password" placeholder="Confirm password">
 
                     </div>
                 </div>
