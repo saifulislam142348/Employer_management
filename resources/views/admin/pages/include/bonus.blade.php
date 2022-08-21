@@ -59,6 +59,7 @@
                         <th>Bonus Title</th>
                         <th>Bonus Amonut</th>
                         <th>Create_by</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -79,7 +80,7 @@
 
                                 <td>
                                     @if ($item->status == 1)
-                                        <a class="btn btn-succcess" href="{{url('bonusStatus/'.$item->id)}}"></i>Active</a>
+                                        <a class="btn btn-success" href="{{url('bonusStatus/'.$item->id)}}"></i>Active</a>
                                     @else
                                         @if ($item->status == 0)
                                             <a class="btn btn-danger" href="{{url('bonusStatus/'.$item->id)}}">Inactive</i></a>

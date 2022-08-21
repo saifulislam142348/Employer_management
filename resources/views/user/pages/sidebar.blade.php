@@ -79,16 +79,19 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">
             <i class="lar la-folder-open"></i>
-            <span>Pages</span>
+            <span>Info Changes Pages</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                <a class="collapse-item" href="{{route('email.change')}}"> Email Change</a>
+                <a class="collapse-item" href="{{route('password.change')}}"> Password Change</a>
                 <div class="collapse-divider"></div>
                 <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
-                <a class="collapse-item" href="blank.html">Blank Page</a>
+                <a class="collapse-item" href="{{route('phone.change')}}">Phone Number Change</a>
+                <a class="collapse-item" href="{{route('nid.change')}}">NID Number Change</a>
+             
+              
             </div>
         </div>
     </li>

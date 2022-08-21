@@ -14,6 +14,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\BonusController;
 use App\Http\Controllers\MonthController;
+use App\Http\Controllers\ChangeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -133,3 +134,14 @@ route::post('employee/attendence/outTime', [AttendencesController::class, 'outTi
 route::delete('attendence/delete/{id}', [AttendencesController::class, 'delete']);
 route::post('employee/leave', [LeavesController::class, 'leavestore'])->name('admin.employee.leave');
 route::delete('leave/delete/{id}', [LeavesController::class, 'delete']);
+
+// changescontroller 
+route::get('form/changes/email_change',[ChangeController::class,'emailChange'])->name('email.change');
+route::get('form/changes/password_change',[ChangeController::class,'passwordChange'])->name('password.change');
+route::get('form/changes/phone_change',[ChangeController::class,'phoneChange'])->name('phone.change');
+route::get('form/changes/nid_change',[ChangeController::class,'nidChange'])->name('nid.change');
+
+
+// changecontroller update
+
+route::post('employee/password/update',[ChangeController::class,'passwordUpdate'])->name('update.password');
