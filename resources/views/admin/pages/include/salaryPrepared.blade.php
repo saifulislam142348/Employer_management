@@ -3,55 +3,13 @@
     @include('admin.pages.include.header')
     <div class="container">
         <h1 style="text-align: center;"><b>Salary Prepared List</b> </h1>
-
-
-
-        <div class="d-flex flex-row bd-highlight mb-4">
-            <div class="p-2 bd-highlight">
-                <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#registrationModal">
-                    Registration create
-                </button>
-                @include('form.registrationCreate')
-            </div>
-            <div class="p-2 bd-highlight">
-                <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#employeeModal">
-                    Employee create
-                </button>
-                @include('form.employeeCreate')
-            </div>
-            <div class="p-2 bd-highlight">
-                <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#bonusModal">
-                    Bonus create
-                </button>
-                @include('form.bonusCreate')
-                <div class="p-2 bd-highlight">
-                    <button type="button" class="btn btn-primary " data-bs-toggle="modal"
-                        data-bs-target="#departmentModal">
-                        Department Create
-                    </button>
-                    @include('form.departmentCreate')
-                </div>
-                <div class="p-2 bd-highlight">
-                    <button type="button" class="btn btn-primary " data-bs-toggle="modal"
-                        data-bs-target="#designationModal">
-                        Designation create
-                    </button>
-                    @include('form.designationCreate')
-                </div>
-                <div class="p-2 bd-highlight">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Relation Add
-                    </button>
-                    @include('form.departmentDesignationCreate')
-                </div>
-            </div>
-
+        <div class="p-2 bd-highlight">
+            <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#salaryPreparedCreateModal">
+                Salary Prepared
+            </button>
+            @include('form.salaryPreparedCreate')
         </div>
-
         <div class="jumbotron">
-
-
-
             <table class="table table-striped table-bordered table-hover table-dark">
                 <thead>
                     <tr>
@@ -80,12 +38,21 @@
                                 <td>{{ $item->designations->name }}</td>
                                 <td>{{ $item->month }}</td>
                                 <td>{{ $item->salary }}</td>
-                                 <td>{{$item->users->bonuses}}</td>
-     @foreach ($item->users->bonuses as $i)
-     <td>{{$i->bonus}}</td>
-     
-         
-     @endforeach
+                                <td>
+                                    @foreach ($item->users->bonuses as $it)
+                                        <span>{{ $it->bonus_title }}:</span>
+                                        {{ $it->bonus }}
+                                    @endforeach
+                                </td>
+                                <td>
+                                    @foreach ($item->users->bonuses as $it)
+                                    @if ($it->isEmpty())
+                                        
+                                    @endif
+                                       
+                                        {{ $item->salary+$it->bonus }}
+                                    @endforeach
+                                </td>
                                 <td>{{ $item->join_date }}</td>
 
                                 {{-- {{dd($item->employees)}} --}}
@@ -129,6 +96,7 @@
 
                 </tbody>
             </table>
+
         </div>
     </div>
 @endsection

@@ -18,42 +18,44 @@ use Illuminate\Support\Facades\Hash;
 
 class RegistrationController extends Controller
 {
-   public function registration(){
-    $registration = User::where('type','employee')->paginate(2);
-    $users= User::get();
-    $months= Month::get();
-    $bonus= Bonus::get();
-    $employees= Employee::get();
-    $departments= Department::get();
-    $designations= Designation::get();
-    return view('admin.pages.include.registration',compact('registration','users','months','bonus','employees','departments','designations'));
-   }
+    public function registration()
+    {
+        $registration = User::where('type', 'employee')->paginate(5);
+        $users = User::get();
+        $months = Month::get();
+        $bonus = Bonus::get();
+        $employees = Employee::get();
+        $departments = Department::get();
+        $designations = Designation::get();
+        return view('admin.pages.include.registration', compact('registration', 'users', 'months', 'bonus', 'employees', 'departments', 'designations'));
+    }
 
-   public function store(Request $request){
-    $rules=[
-        'name' => 'required', 
-        'email' =>'required',
-        'password' => 'required', 'min:8',
-        'gender' => 'required', 
-        'address' =>'required',
-        'nid' => 'required',
-        'phone' => 'required',
-       
+    public function store(Request $request)
+    {
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required', 'min:8',
+            'gender' => 'required',
+            'address' => 'required',
+            'nid' => 'required',
+            'phone' => 'required',
 
-    ];
-    $this->validate($request,$rules);
 
-    $registration= new User();
-    $registration->name=$request->input('name');
-    $registration->email=$request->input('email');
-    $registration->password=Hash::make($request->input('password'));
-   
-    $registration->gender=$request->input('gender');
-    $registration->address=$request->input('address');
-    $registration->nid=$request->input('nid');
-    $registration->phone=$request->input('phone');
-    $registration->create_by= Auth::User()->name;
-    $registration->save();
+        ];
+        $this->validate($request, $rules);
+
+        $registration = new User();
+        $registration->name = $request->input('name');
+        $registration->email = $request->input('email');
+        $registration->password = Hash::make($request->input('password'));
+
+        $registration->gender = $request->input('gender');
+        $registration->address = $request->input('address');
+        $registration->nid = $request->input('nid');
+        $registration->phone = $request->input('phone');
+        $registration->create_by = Auth::User()->name;
+        $registration->save();
 
         Toastr::success('Department create successfully', 'success', [
             "positionClass" => "toast-top-right", "closeButton"
@@ -61,19 +63,19 @@ class RegistrationController extends Controller
             "true", "progressBar" => "true"
         ]);
         return redirect()->back();
+    }
 
-   }
 
-   
-   public function statusChange($id){
-  $getstatus=User::select('status')->where('id',$id)->first();
+    public function statusChange($id)
+    {
+        $getstatus = User::select('status')->where('id', $id)->first();
 
-        if($getstatus->status==1){
-            $status=0;
-        }else{
-            $status=1;
+        if ($getstatus->status == 1) {
+            $status = 0;
+        } else {
+            $status = 1;
         }
-        User::where('id',$id)->update(['status'=>  $status]);
+        User::where('id', $id)->update(['status' =>  $status]);
 
 
         Toastr::success('Status update successfully', 'success', [
@@ -82,8 +84,7 @@ class RegistrationController extends Controller
             "true", "progressBar" => "true"
         ]);
         return redirect()->back();
-   
-   }
+    }
     public function delete($id)
     {
         $userDelete = User::find($id);
@@ -96,9 +97,10 @@ class RegistrationController extends Controller
         return redirect()->back();
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
 
-        $registration= User::find($id);
+        $registration = User::find($id);
         return redirect('admin.pages.include.registration', compact('registration'));
     }
 }

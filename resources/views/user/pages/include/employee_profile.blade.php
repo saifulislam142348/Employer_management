@@ -46,18 +46,17 @@
         <!--====================================================
                             ABOUT
         ======================================================-->
+        
         <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+            <h1 class="mb-0">
+                    
+                <span class="text-danger">{{Auth::user()->name}}</span>
+            </h1>
             <div class="my-auto">
-                <img src="{{asset('asset/img/logo-s.png')}}" class="img-fluid mb-3" alt="">
-                <h1 class="mb-0">Johndon
-                    <span class="text-primary">Bonsen</span>
-                </h1>
-                <div class="subheading mb-5">THE NEXT BIG IDEA IS WAITING FOR ITS NEXT BIG CHANGER WITH
-                    <a href="#">THEMSBIT</a>
-                </div>
-                <p class="mb-5" style="max-width: 500px;">I am experienced in leveraging agile frameworks to provide a
-                    robust synopsis for high level overviews. Iterative approaches to corporate strategy foster
-                    collaborative thinking to further the overall value proposition.</p>
+              
+                
+               
+               
                 <ul class="list-inline list-social-icons mb-0">
                     <li class="list-inline-item">
                         <a href="#">
@@ -389,18 +388,17 @@
                     <div class="contact-cont2">
                         <div class="contact-add contact-box-desc">
                             <h3><i class="fa fa-map-marker cl-atlantis fa-2x"></i> Address</h3>
-                            <p>25, Dist town Street, Logn <br>
-                                California, US <br></p>
+                            <p>{{Auth::user()->address}} </p>
                         </div>
                         <div class="contact-phone contact-side-desc contact-box-desc">
                             <h3><i class="fa fa-phone cl-atlantis fa-2x"></i> Phone</h3>
-                            <p>800 123 3456 <br>900 123 3457</p>
+                            <p>{{Auth::user()->phone}}</p>
                         </div>
                         <div class="contact-mail contact-side-desc contact-box-desc">
                             <h3><i class="fa fa-envelope-o cl-atlantis fa-2x"></i> Email</h3>
                             <address class="address-details-f">
-                                Fax: 800 123 3456 <br>
-                                Email: <a href="mailto:info@themsbit.com" class="">info@themsbit.com</a>
+                               
+                                Email: <a href="mailto:info@themsbit.com" class="">{{Auth::User()->email}}</a>
                             </address>
                             <ul class="list-inline social-icon-f top-data">
                                 <li><a href="#" target="_empty"><i class="fa top-social fa-facebook"
@@ -419,9 +417,7 @@
         <section class=" d-flex flex-column" id="maps">
             <div id="map">
                 <div class="map-responsive">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d6030.418742494061!2d-111.34563870463673!3d26.01036670629853!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1471908546569"
-                        width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58205.29492351263!2d89.88204923987162!3d24.247691292553824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fdfbe3d271b363%3A0x8a0d420f347f7c7c!2sTangail!5e0!3m2!1sen!2sbd!4v1661232150915!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </section>

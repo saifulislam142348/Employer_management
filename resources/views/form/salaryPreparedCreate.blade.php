@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="salaryPreparedCreateModal" tabindex="-1" aria-labelledby="employeeModalLabel"
+<div class="modal fade" id="salaryPreparedCreateModal" tabindex="-1" aria-labelledby="salaryPreparedCreateModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -13,16 +13,26 @@
                     <span class="text-danger">{{ $error }}</span>
                 @endforeach
 
-                <form method="POST" action="{{ route('admin.employee.bonus') }}">
+                <form method="POST" action="{{ route('admin.salaryPreparedCreate') }}">
                     @csrf
                     <div class="row mb-3">
-                        <label for="user_id"
-                            class="col-md-4 col-form-label text-md-end">{{ __('Employees Id') }}</label>
+                        <label class="col-md-4 col-form-label text-md-end">{{ __('Employees Id') }}</label>
                         <div class="col-md-6">
-                            <select class="form-select" name="user_id">
+                            <select class="form-select" name="employee_id">
                                 <option selected></option>
                                 @foreach ($employees as $item)
-                                    <option value="{{ $item->user_id }}">{{ $item->user_id }}</option>
+                                    <option value="{{ $item->id }}">{{ $item->id }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-md-4 col-form-label text-md-end">{{ __('Bonus Id') }}</label>
+                        <div class="col-md-6">
+                            <select class="form-select" name="bonus_id">
+                                <option selected></option>
+                                @foreach ($bonus as $item)
+                                    <option value="{{ $item->id }}">{{ $item->id }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -30,9 +40,7 @@
 
 
                     <div class="row mb-3">
-                        <label
-                            class="col-md-4 col-form-label text-md-end">{{ __(' Bo
-                                                    ') }}</label>
+                        <label class="col-md-4 col-form-label text-md-end">{{ __(' Month ') }}</label>
                         <div class="col-md-6">
                             <select class="form-select" name="month">
                                 <option selected></option>
@@ -49,32 +57,13 @@
                                 <option value="October">October</option>
                                 <option value="November">November</option>
                                 <option value="December">December</option>
-
                             </select>
                         </div>
                     </div>
+                    <input type="submit" class="btn btn-success " value="save">
 
-                    <div class="row mb-3">
-                        <label for="salary"
-                            class="col-md-4 col-form-label text-md-end">{{ __('Bonus Title') }}</label>
-                        <div class="col-md-6">
-                            <input id="bonus" type="text" class="form-control" name="bonus_title">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="salary" class="col-md-4 col-form-label text-md-end">{{ __('Bonus') }}</label>
-                        <div class="col-md-6">
-                            <input id="bonus" type="text" class="form-control" name="bonus">
-                        </div>
-                    </div>
-
+                </form>
 
             </div>
-
-            <input type="submit" class="btn btn-success " value="save">
-
-            </form>
-
         </div>
     </div>
-</div>

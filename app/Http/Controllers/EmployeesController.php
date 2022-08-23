@@ -19,7 +19,7 @@ class EmployeesController extends Controller
 {
     public function employee()
     {
-        $employees = Employee::paginate(2);
+        $employees = Employee::paginate(3);
         $users = User::where('type', 'employee')->get();
         $departments = Department::get();
         $designations = Designation::get();
@@ -90,6 +90,8 @@ class EmployeesController extends Controller
     // employee profile
 
     public function employeeProfile(){
-        return view('user.pages.include.employee_profile');
+        $employees=Employee::get();
+
+        return view('user.pages.include.employee_profile',compact('employees'));
     }
 }

@@ -71,11 +71,11 @@
                                 <td>{{ $item->user_id }}</td>
                                 <td>{{ $item->users->name }}</td>
                                 {{-- <td>{{ $item->users->employees->departments->name }}</td>
-                                <td>{{ $item->users->employees->designations->name }}</td> --}}
+                                <td>{{ $item->users->employees->designations->name }}</td>  --}}
                                 <td>{{ $item->month }}</td>
                                 <td>{{ $item->bonus_title }}</td>
                                
-                                <td>{{ $item->Bonus }}</td>
+                                <td>{{ $item->bonus }}</td>
                                 <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
 
                                 <td>

@@ -17,7 +17,7 @@ use Brian2694\Toastr\Facades\Toastr;
 class SalaryController extends Controller
 {
    public function salaryPrepared(){
-        $salaryPrepared= Salary::paginate(2);
+        $salaryPrepared= Salary::paginate(3);
         $users= User::get();
         $months= Month::get();
         $bonus= Bonus::get();
@@ -32,10 +32,11 @@ class SalaryController extends Controller
 
         $rules = [
             'bonus_id' => 'required',
+            'employee_id' => 'required',
         ];
         $this->validate($request, $rules);
         $salary = new Salary();
-        $salary->user_id = $request->input('user_id');
+        $salary->employee_id = $request->input('employee_id');
         $salary->month = $request->input('month');
         $salary->bonus_id = $request->input('bonus_id');
         $salary->create_by = Auth::User()->name;

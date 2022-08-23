@@ -42,7 +42,7 @@
                 <h6 class="collapse-header">Employee Components:</h6>
                 <a class="collapse-item" href="{{ route('user.employee') }}">All Employee</a>
                 <a class="collapse-item" href="{{ route('user.attendence') }}">Attemdences</a>
-                <a class="collapse-item" href="{{ route('user.bonus') }}">Bonus apply</a>
+                <a class="collapse-item" href="{{ route('user.bonus') }}">Bonus</a>
                 <a class="collapse-item" href="{{ route('user.leave') }}">Leaves Apply</a>
                 <a class="collapse-item" href="">Promosition Apply</a>
 
@@ -55,16 +55,16 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="las la-wrench"></i>
-            <span>Setting</span>
+            <span>Employees information Add</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Reports:</h6>
-                <h6 class="collapse-header">Employee Reports</h6>
-                <a class="collapse-item" href=""> Employee Reports</a>
-                <a class="collapse-item" href=""> Attemdences Reports</a>
-                <a class="collapse-item" href=""> Bonuses Reports</a>
-                <a class="collapse-item" href=""> Leaves Reports</a>
+                <h6 class="collapse-header">Employee info add</h6>
+                <a class="collapse-item" href=""> ABOUT</a>
+                <a class="collapse-item" href="">  EXPERIENCE</a>
+                <a class="collapse-item" href=""> PORTFOLIO</a>
+                <a class="collapse-item" href=""> CODING SKILLS</a>
+                <a class="collapse-item" href=""> AWARDS</a>
             </div>
         </div>
     </li>

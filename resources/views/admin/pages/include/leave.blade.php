@@ -75,6 +75,7 @@
                     @endif
                 </tbody>
             </table>
+            {!! $leaves->links() !!} 
         </div>
     </div>
 @endsection

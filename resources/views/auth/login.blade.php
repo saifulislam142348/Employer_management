@@ -5,13 +5,24 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header">{{ __('Login') }}
+                    <div class="d-flex justify-content-center">
+                        @if (session('error'))
+                            <hr>
+                            <span class="text-danger  ">{{ session('error') }}</span>
+                            <hr>
+                        @endif
+                    </div>
+                
+                </div>
 
                 <div class="card-body">
                     @foreach ($errors->all() as $error)
                     <span>{{$error}}</span>
                         
                     @endforeach
+
+                   
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -62,7 +73,7 @@
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-link" href="{{ route('forget.password.get') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif

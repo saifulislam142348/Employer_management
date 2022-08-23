@@ -15,6 +15,7 @@ use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\BonusController;
 use App\Http\Controllers\MonthController;
 use App\Http\Controllers\ChangeController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ use App\Http\Controllers\ChangeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 route::get('user/index', [UserController::class, 'index'])->name('user.index');
@@ -68,9 +69,9 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     route::get('admin/pages/include/employee', [EmployeesController::class, 'employee'])->name('admin.employee');
     route::post('admin/pages/include/employee/create', [EmployeesController::class, 'store'])->name('admin.employee.store');
     route::delete('employee/delete/{id}', [EmployeesController::class, 'delete']);
-    
+
     route::get('employeeStatus/{id}', [EmployeesController::class, 'employeeStatus']);
-   
+
 
 
     //bonuscontroller
@@ -123,7 +124,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-                               // form post 
+// form post 
 
 
 
@@ -137,20 +138,27 @@ route::post('employee/leave', [LeavesController::class, 'leavestore'])->name('ad
 route::delete('leave/delete/{id}', [LeavesController::class, 'delete']);
 
 // changescontroller 
-route::get('form/changes/email_change',[ChangeController::class,'emailChange'])->name('email.change');
-route::get('form/changes/password_change',[ChangeController::class,'passwordChange'])->name('password.change');
-route::get('form/changes/phone_change',[ChangeController::class,'phoneChange'])->name('phone.change');
-route::get('form/changes/nid_change',[ChangeController::class,'nidChange'])->name('nid.change');
+route::get('form/changes/email_change', [ChangeController::class, 'emailChange'])->name('email.change');
+route::get('form/changes/password_change', [ChangeController::class, 'passwordChange'])->name('password.change');
+route::get('form/changes/phone_change', [ChangeController::class, 'phoneChange'])->name('phone.change');
+route::get('form/changes/nid_change', [ChangeController::class, 'nidChange'])->name('nid.change');
 
 
 // changecontroller update
 
-route::post('employee/password/update',[ChangeController::class,'passwordUpdate'])->name('update.password');
-route::post('employee/email/update',[ChangeController::class,'emaildUpdate'])->name('update.email');
-route::post('employee/phone/update',[ChangeController::class,'phoneUpdate'])->name('update.phone');
-route::post('employee/nid/update',[ChangeController::class,'nidUpdate'])->name('update.nid');
+route::post('employee/password/update', [ChangeController::class, 'passwordUpdate'])->name('update.password');
+route::post('employee/email/update', [ChangeController::class, 'emaildUpdate'])->name('update.email');
+route::post('employee/phone/update', [ChangeController::class, 'phoneUpdate'])->name('update.phone');
+route::post('employee/nid/update', [ChangeController::class, 'nidUpdate'])->name('update.nid');
 
 
 // employee profile
 
 route::get('user/pages/include/employee_profile', [EmployeesController::class, 'employeeProfile'])->name('employee.profile');
+
+// forgetpasswordcontroller
+
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');

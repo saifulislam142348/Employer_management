@@ -22,7 +22,7 @@ class BonusController extends Controller
    {
       $users= User::get();
         $months= Month::get();
-        $bonus= Bonus::paginate(2);;
+        $bonus= Bonus::paginate(3);;
         $employees= Employee::get();
         $departments= Department::get();
         $designations= Designation::get();

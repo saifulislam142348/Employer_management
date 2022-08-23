@@ -1,8 +1,9 @@
 @extends('layouts.layout')
 @section('content')
     @include('user.pages.include.userHeader')
-
+    <h1 class="text-center"><b>All Employees</b> </h1>
     <div class="jumbotron">
+      
         <table class="table table-striped table-bordered table-hover table-dark">
             <thead>
                 <tr>

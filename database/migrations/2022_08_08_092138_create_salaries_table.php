@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('update_by')->default('none');
             $table->string('delete_by')->default('none');
             $table->timestamps();
-           
             $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
         });
     }

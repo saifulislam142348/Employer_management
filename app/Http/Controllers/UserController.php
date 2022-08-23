@@ -19,6 +19,14 @@ class UserController extends Controller
   
 
    public function index(){
-    return view('user.index');
+
+      $employees=Employee::get();
+      $date = \Carbon\Carbon::now();
+      $attendence=Attendence::get();
+      $in=Attendence::where('status' ,0)->where('user_id',Auth::user()->id)->get();
+     
+      $out=Attendence::where('status',1)->where('user_id',Auth::user()->id)->get();
+    
+    return view('user.index',compact('employees','in','out','date','attendence'));
    }
 }

@@ -20,5 +20,8 @@ class Employee extends Model
     public function months(){
        return $this->belongsTo(Month::class,'month_id','id');
     }
+   
+    
+   
     
 }

@@ -28,8 +28,10 @@ class AttendencesController extends Controller
       $out = Attendence::select('out_time')->latest()->get();
       $users = User::where('type', 'employee')->get();
       $months = Month::get();
+      
+      $date = \Carbon\Carbon::now();
 
-      return view('admin.pages.include.attendence', compact('users', 'months', 'attendence', 'in', 'out'));
+      return view('admin.pages.include.attendence', compact('users', 'months', 'attendence', 'in', 'out','date'));
    }
 
    public function inTime(Request $request)
@@ -40,6 +42,7 @@ class AttendencesController extends Controller
 
       ];
       $this->validate($request, $rules);
+    
       $todayDate = Carbon::now('+6')->format('Y-m-d H:i:s');
       $present = new Attendence();
       $present->user_id = $request->input('user_id');
@@ -93,9 +96,12 @@ class AttendencesController extends Controller
       $users = User::where('type', 'employee')->get();
       $months = Month::get();
       $date = \Carbon\Carbon::now();
+      $incount=Attendence::where('status' ,0)->where('user_id',Auth::user()->id)->get();
+     
+      $outcount=Attendence::where('status',1)->where('user_id',Auth::user()->id)->get();
        
      
 
-      return view('user.pages.include.attendence', compact('users', 'months', 'attendence', 'in', 'out','date'));
+      return view('user.pages.include.attendence', compact('users', 'months', 'attendence', 'in', 'out','date','incount','outcount'));
    }
 }
