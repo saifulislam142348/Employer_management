@@ -54,6 +54,7 @@
                    <div class="col mr-2">
                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">daily Attendences
                        </div>
+                       
                        <div class="row no-gutters align-items-center">
                            <div class="col-auto">
                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
@@ -95,28 +96,44 @@
            <div class="card-body">
                <div class="row no-gutters align-items-center">
                    <div class="col mr-2">
-                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Monthly Attendences
+                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">current time days
                        </div>
                        <div class="row no-gutters align-items-center">
                         <div class="col-auto">
                             <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                              <button type="button" class="btn btn-primary">
                                   <strong> PRESENT::</strong>
-                                <span class="badge bg-danger">4</span>
+                                <span class="badge bg-danger">
+                                   @if ($in->isEmpty())
+                                   <span>null</span>
+                                   @else
+                                   {{$present->in_time}}  
+                                       
+                                   @endif
+                                      
+                                 
+                               
+                                </span>
                                </button>
-                            </div>
-                           
-                        </div>
-                        <hr>
-                        <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                               <hr>
                              <button type="button" class="btn btn-primary">
-                                  <strong> ABSENT:</strong>
-                                <span class="badge bg-danger">4</span>
+                                  <strong> Absent::</strong>
+                                <span class="badge bg-danger">
+                                   @if ($out->isEmpty())
+                                   <span>null</span>
+                                   @else
+                                   {{$present->out_time}}  
+                                       
+                                   @endif
+                                      
+                                 
+                               
+                                </span>
                                </button>
                             </div>
                            
                         </div>
+                        
 
                        </div>
                    </div>

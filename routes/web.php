@@ -16,6 +16,7 @@ use App\Http\Controllers\BonusController;
 use App\Http\Controllers\MonthController;
 use App\Http\Controllers\ChangeController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Contactcontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -162,3 +163,6 @@ Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPassw
 Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+
+// contact form
+route::post('employee/contact',[Contactcontroller::class, 'store'])->name('user.contact');

@@ -19,8 +19,8 @@
 
 
     </li>
-   
- 
+
+
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -44,7 +44,6 @@
                 <a class="collapse-item" href="{{ route('user.attendence') }}">Attemdences</a>
                 <a class="collapse-item" href="{{ route('user.bonus') }}">Bonus</a>
                 <a class="collapse-item" href="{{ route('user.leave') }}">Leaves Apply</a>
-                <a class="collapse-item" href="">Promosition Apply</a>
 
             </div>
         </div>
@@ -61,7 +60,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Employee info add</h6>
                 <a class="collapse-item" href=""> ABOUT</a>
-                <a class="collapse-item" href="">  EXPERIENCE</a>
+                <a class="collapse-item" href=""> EXPERIENCE</a>
                 <a class="collapse-item" href=""> PORTFOLIO</a>
                 <a class="collapse-item" href=""> CODING SKILLS</a>
                 <a class="collapse-item" href=""> AWARDS</a>
@@ -108,9 +107,9 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="las la-table"></i>
-            <span>Tables</span></a>
+        <button type="button" class="btn btn-primary" href="" data-bs-toggle="modal"
+            data-bs-target="#contactModal">Contact</button>
+        @include('form.contact')
     </li>
 
     <!-- Divider -->

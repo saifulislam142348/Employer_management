@@ -5,6 +5,7 @@
         <span class="mr-2 d-none d-lg-inline text-gray-600 small"> <b>{{ Auth::user()->name }}</b> </span>
         <img class="img-profile rounded-circle" src="{{ asset('asset/img/undraw_profile.svg') }}">
     </a>
+    
     <!-- Dropdown - User Information -->
     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
         <a class="dropdown-item" href="{{route('employee.profile')}}">
