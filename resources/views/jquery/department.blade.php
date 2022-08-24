@@ -1,35 +1,31 @@
 <script>
     $(document).ready(function() {
-        $(document).on('click', '.add_department', function(e) {
+        $('.add_department').click(function(e){
             e.preventDefault();
-
-            let department_name = $('#departmet').val();
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+           let departmentName=$('#departmet').val();
+     $.ajax({
+        url:"route('admin.department.store')",
+        type:'POST',
+                data: {departmentName:name},
+                success: function(data) {
+                    if($.isEmptyObject(data.error)){
+                        alert(data.success);
+                    }else{
+                        printErrorMsg(data.error);
+                    }
                 }
             });
-            $.ajax({
-                url: "{{ route('admin.department.store') }}",
-                method: 'post',
-                data: {
-                    name: department_name
-                },
-                success: function(res) {
+       
+        }); 
+    
 
-                },
-                error: function(err) {
-                    let error = err.responseJSON;
-                    $.each(error.errors, function(index, value) {
-                        $('.errormsg').append('<span class="text-danger">' + value +
-                            '</span>' + '</br>');
-
-                    });
-                }
-
+     function printErrorMsg (msg) {
+            $(".print-error-msg").find("ul").html('');
+            $(".print-error-msg").css('display','block');
+            $.each( msg, function( key, value ) {
+                $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
             });
-        });
-
-
+        }
     });
+
 </script>

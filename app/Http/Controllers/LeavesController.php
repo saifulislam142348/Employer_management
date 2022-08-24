@@ -17,7 +17,7 @@ use Brian2694\Toastr\Facades\Toastr;
 class LeavesController extends Controller
 {
    public function leave(){
-      $users = User::where('type','employee')->get();
+      $users = User::where('status',1)->where('type','employee')->get();
       $months = month::get();
       $leaves=Leave::paginate(3);
     return view('admin.pages.include.leave',compact('users','months','leaves'));

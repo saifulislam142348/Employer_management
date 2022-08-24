@@ -21,8 +21,8 @@ class EmployeesController extends Controller
     {
         $employees = Employee::paginate(3);
         $users = User::where('type', 'employee')->get();
-        $departments = Department::get();
-        $designations = Designation::get();
+        $departments = Department::where('status',1)->get();
+        $designations = Designation::where('status',1)->get();
         $months = Month::get();
         return view('admin.pages.include.employee', compact('users', 'departments', 'designations', 'months', 'employees'));
     }

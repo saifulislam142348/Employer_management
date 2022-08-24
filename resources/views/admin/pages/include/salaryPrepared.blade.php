@@ -40,17 +40,17 @@
                                 <td>{{ $item->salary }}</td>
                                 <td>
                                     @foreach ($item->users->bonuses as $it)
-                                        <span>{{ $it->bonus_title }}:</span>
-                                        {{ $it->bonus }}
+                                        @if ($item->month == $it->month)
+                                            <span>{{ $it->bonus_title }}:</span>
+                                            {{ $it->bonus }}
+                                        @endif
                                     @endforeach
                                 </td>
                                 <td>
                                     @foreach ($item->users->bonuses as $it)
-                                    @if ($it->isEmpty())
-                                        
-                                    @endif
-                                       
-                                        {{ $item->salary+$it->bonus }}
+                                        @if ($item->month == $it->month)
+                                            {{ $item->salary + $it->bonus }}
+                                        @endif
                                     @endforeach
                                 </td>
                                 <td>{{ $item->join_date }}</td>

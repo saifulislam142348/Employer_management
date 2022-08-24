@@ -16,6 +16,11 @@ use Illuminate\Auth\Access\Response;
 use App\Models\Department_Designation;
 use Illuminate\Support\Facades\Auth;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Validator;
+use GrahamCampbell\ResultType\Success;
+use Illuminate\Support\Facades\Hash;
+
+
 
 class DepartmentController extends Controller
 {
@@ -23,10 +28,10 @@ class DepartmentController extends Controller
    {
       $users= User::get();
       $months= Month::get();
-      $bonus= Bonus::get();
-      $employees= Employee::get();
+      $bonus= Bonus::where('status',1)->get();
+      $employees= Employee::where('status',1)->get();
       $departments= Department::get();
-      $designations= Designation::get();
+      $designations= Designation::where('status',1)->get();
       return view('admin.pages.include.department', compact('users','months','bonus','employees','departments','designations'));
    }
    public function depart_design()
@@ -40,11 +45,17 @@ class DepartmentController extends Controller
 
    public function deptStore(Request $request)
    {
-      $rules = [
+      $validator= Validator::make($request->all(),[
          'name' => 'required|unique:departments',
 
-      ];
-      $this->validate($request, $rules);
+      ]);
+      if($validator->passes()){
+         return response()->json(['success'=>'added successfully']);
+      }
+      else{
+         return response()->json(['error'=>$validator->errors()->all()]);
+      }
+   
 
       $department = new Department();
       $department->name = $request->input('name');

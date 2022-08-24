@@ -16,28 +16,16 @@
                 <form method="POST" action="{{ route('admin.salaryPreparedCreate') }}">
                     @csrf
                     <div class="row mb-3">
-                        <label class="col-md-4 col-form-label text-md-end">{{ __('Employees Id') }}</label>
+                        <label class="col-md-4 col-form-label text-md-end">{{ __('User Id') }}</label>
                         <div class="col-md-6">
-                            <select class="form-select" name="employee_id">
+                            <select class="form-select" name="user_id">
                                 <option selected></option>
-                                @foreach ($employees as $item)
+                                @foreach ($users as $item)
                                     <option value="{{ $item->id }}">{{ $item->id }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <label class="col-md-4 col-form-label text-md-end">{{ __('Bonus Id') }}</label>
-                        <div class="col-md-6">
-                            <select class="form-select" name="bonus_id">
-                                <option selected></option>
-                                @foreach ($bonus as $item)
-                                    <option value="{{ $item->id }}">{{ $item->id }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-
 
                     <div class="row mb-3">
                         <label class="col-md-4 col-form-label text-md-end">{{ __(' Month ') }}</label>
@@ -58,6 +46,13 @@
                                 <option value="November">November</option>
                                 <option value="December">December</option>
                             </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label class="col-md-4 col-form-label text-md-end">{{ __('Salary') }}</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="salary">
                         </div>
                     </div>
                     <input type="submit" class="btn btn-success " value="save">

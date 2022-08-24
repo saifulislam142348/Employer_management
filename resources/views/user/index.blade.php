@@ -57,13 +57,13 @@
 
                         <h1 class="h3 mb-0 text-gray-800">
                             
-                            @if (Auth::user()->id == $attendence->first()->user_id && !$attendence->count() > 0)
+                            @if ( !$attendence->count() > 0)
                                 <div class="d-flex p-2 bd-highlight justify-content-center">
                                     @include('form.userintime')
 
                                 </div>
                             @else
-                                @if (Auth::user()->id == $attendence->first()->user_id && !$attendence->first()->status == 1)
+                                @if (Auth::user()->id == $attendence->first()->user_id && !$attendence->first()->status == 1 && Auth::user()->id == $attendence->first()->user_id)
                                     <div class="d-flex p-2 bd-highlight justify-content-center">
                                         @include('form.userouttime')
                                     </div>

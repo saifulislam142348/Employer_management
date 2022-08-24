@@ -20,14 +20,14 @@ class BonusController extends Controller
 {
    public function bonus()
    {
-      $users= User::get();
-        $months= Month::get();
-        $bonus= Bonus::paginate(3);;
-        $employees= Employee::get();
-        $departments= Department::get();
-        $designations= Designation::get();
-      
-      return view('admin.pages.include.bonus', compact('users', 'months', 'employees', 'bonus','departments','designations'));
+      $users = User::where('type','employee')->get();
+      $months = Month::get();
+      $bonus = Bonus::paginate(3);;
+      $employees = Employee::where('status', 1)->get();
+      $departments = Department::where('status', 1)->get();
+      $designations = Designation::where('status', 1)->get();
+
+      return view('admin.pages.include.bonus', compact('users', 'months', 'employees', 'bonus', 'departments', 'designations'));
    }
 
    public function bonusstore(Request $request)
@@ -39,30 +39,38 @@ class BonusController extends Controller
 
       ];
       $this->validate($request, $rules);
-
-      $bonus = new bonus();
-      $bonus->user_id = $request->input('user_id');
-      $bonus->month = $request->input('month');
-      $bonus->bonus_title = $request->input('bonus_title');
-      $bonus->bonus = $request->input('bonus');
-      $bonus->create_by = Auth::User()->name;
-      $bonus->save();
-      Toastr::success('Bonus added done', 'success', [
-         "positionClass" => "toast-top-right",
-         "closeButton" => "true", "progressBar" => "true"
-      ]);
-      return redirect()->back();
+      $bonusCheck = Bonus::where('user_id', $request->input('user_id'))->where('month', $request->input('month'))->first();
+      if (!$bonusCheck) {
+         $bonus = new bonus();
+         $bonus->user_id = $request->input('user_id');
+         $bonus->month = $request->input('month');
+         $bonus->bonus_title = $request->input('bonus_title');
+         $bonus->bonus = $request->input('bonus');
+         $bonus->create_by = Auth::User()->name;
+         $bonus->save();
+         Toastr::success('Bonus added done', 'success', [
+            "positionClass" => "toast-top-right",
+            "closeButton" => "true", "progressBar" => "true"
+         ]);
+         return redirect()->back();
+      } 
+      else{
+         Toastr::error('Bonus allready exists', 'error', [
+            "positionClass" => "toast-top-center",
+            "closeButton" => "true", "progressBar" => "true"
+         ]);
+         return redirect()->back();
+      }
    }
    public function bonusStatus($id)
    {
       $bonusStatus = Bonus::select('status')->where('id', $id)->first();
       if ($bonusStatus->status == 0) {
          $status = 1;
+      } else {
+         $status = 0;
       }
-      else{
-         $status=0;
-      }
-      Bonus::where('id', $id)->update(['status'=> $status]);
+      Bonus::where('id', $id)->update(['status' => $status]);
       Toastr::success('Bonus status change', 'success', [
          "positionClass" => "toast-top-right", "closeButton"
          =>
@@ -75,17 +83,18 @@ class BonusController extends Controller
       $bonusDelete = Bonus::find($id);
       $bonusDelete->delete();
       Toastr::Error('Bonus Delete done', 'delete', [
-         "positionClass" => "toast-top-right", "closeButton"=>"true", "progressBar" => "true"
+         "positionClass" => "toast-top-right", "closeButton" => "true", "progressBar" => "true"
       ]);
       return redirect()->back();
    }
 
    // user pannel
 
-   public function userBonus(){
-      $bonus=Bonus::where('status',1)->get();
-      $users= User::get();
-      $months= Month::get();
-      return view('user.pages.include.bonus',compact('bonus','users','months'));
+   public function userBonus()
+   {
+      $bonus = Bonus::where('status', 1)->get();
+      $users = User::get();
+      $months = Month::get();
+      return view('user.pages.include.bonus', compact('bonus', 'users', 'months'));
    }
 }

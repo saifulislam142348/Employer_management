@@ -7,6 +7,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <div class="alert alert-danger print-error-msg" style="display:none">
+                    <ul></ul>
+                </div>
                 <form method="POST" action="{{ route('admin.department.store') }}">
                     @csrf
 
@@ -18,9 +21,9 @@
                             <input id="departmet" type="text" class="form-control" name="name">
 
                         </div>
-                        @foreach ($errors->get('name') as $message)
-                        <span class="text-center alert-danger">{{ $message }}</span>
-                    @endforeach
+                        {{-- @foreach ($errors->get('name') as $message)
+                            <span class="text-center alert-danger">{{ $message }}</span>
+                        @endforeach --}}
                     </div>
             </div>
             <input class="btn btn-success add_department" type="submit" value="save">

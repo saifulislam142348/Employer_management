@@ -4,18 +4,20 @@
 
     {{-- many time in out --}}
     <h1 class="text-center"><b>Attemdences pages</b> </h1>
-   
+
 
     <div class="jumbotron">
         @include('user.pages.include.attendencescount')
 
-        @if (Auth::user()->id == $attendence->first()->user_id && !$attendence->count() > 0)
+        @if (!$attendence->count() > 0)
             <div class="d-flex p-2 bd-highlight justify-content-center">
                 @include('form.userintime')
 
             </div>
         @else
-            @if (Auth::user()->id == $attendence->first()->user_id && !$attendence->first()->status == 1)
+            @if (Auth::user()->id == $attendence->first()->user_id &&
+                !$attendence->first()->status == 1 &&
+                Auth::user()->id == $attendence->first()->user_id)
                 <div class="d-flex p-2 bd-highlight justify-content-center">
                     @include('form.userouttime')
                 </div>

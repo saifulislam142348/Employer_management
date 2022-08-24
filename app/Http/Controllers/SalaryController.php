@@ -18,12 +18,12 @@ class SalaryController extends Controller
 {
    public function salaryPrepared(){
         $salaryPrepared= Salary::paginate(3);
-        $users= User::get();
+        $users= User::where('type','employee')->get();
         $months= Month::get();
-        $bonus= Bonus::get();
-        $employees= Employee::get();
-        $departments= Department::get();
-        $designations= Designation::get();
+        $bonus= Bonus::where('status',1)->get();
+        $employees= Employee::where('status',1)->get();
+        $departments= Department::where('status',1)->get();
+        $designations= Designation::where('status',1)->get();
     return view('admin/pages/include/salaryPrepared',compact('salaryPrepared','users','months','bonus','employees','departments','designations'));
    }
 

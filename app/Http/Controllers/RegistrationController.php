@@ -25,8 +25,8 @@ class RegistrationController extends Controller
         $months = Month::get();
         $bonus = Bonus::get();
         $employees = Employee::get();
-        $departments = Department::get();
-        $designations = Designation::get();
+        $departments = Department::where('status', 1)->get();
+        $designations = Designation::where('status', 1)->get();
         return view('admin.pages.include.registration', compact('registration', 'users', 'months', 'bonus', 'employees', 'departments', 'designations'));
     }
 

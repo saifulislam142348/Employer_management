@@ -27,7 +27,7 @@ class UserController extends Controller
       $object=Carbon::now(+6)->format('Y-M-D h:i:s');
       $days=carbon::now()->daysInMonth;
 
-      $employees=Employee::get();
+      $employees=Employee::where('status',1)->get();
       $date = \Carbon\Carbon::now();
       $attendence = Attendence::latest()->get();
       $in=Attendence::where('status' ,0)->where('user_id',Auth::user()->id)->get();

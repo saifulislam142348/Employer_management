@@ -26,7 +26,7 @@ class AttendencesController extends Controller
       $attendence = Attendence::latest()->get();
       $in = Attendence::select('in_time')->latest()->get();
       $out = Attendence::select('out_time')->latest()->get();
-      $users = User::where('type', 'employee')->get();
+      $users = User::where('type', 'employee')->where('status',1)->get();
       $months = Month::get();
       
       $date = \Carbon\Carbon::now();
