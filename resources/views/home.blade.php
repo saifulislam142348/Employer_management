@@ -15,6 +15,8 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <span class="alert alert-danger"><strong>  {{ __('Your Account doesn,t Active ,') }}</strong></span>
+                  
                 </div>
             </div>
         </div>

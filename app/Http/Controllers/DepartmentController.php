@@ -26,13 +26,13 @@ class DepartmentController extends Controller
 {
    public function department()
    {
-      $users= User::get();
-      $months= Month::get();
-      $bonus= Bonus::where('status',1)->get();
-      $employees= Employee::where('status',1)->get();
-      $departments= Department::get();
-      $designations= Designation::where('status',1)->get();
-      return view('admin.pages.include.department', compact('users','months','bonus','employees','departments','designations'));
+      $users = User::get();
+      $months = Month::get();
+      $bonus = Bonus::where('status', 1)->get();
+      $employees = Employee::where('status', 1)->get();
+      $departments = Department::get();
+      $designations = Designation::where('status', 1)->get();
+      return view('admin.pages.include.department', compact('users', 'months', 'bonus', 'employees', 'departments', 'designations'));
    }
    public function depart_design()
    {
@@ -45,28 +45,22 @@ class DepartmentController extends Controller
 
    public function deptStore(Request $request)
    {
-      $validator= Validator::make($request->all(),[
+      $validator = Validator::make($request->all(), [
          'name' => 'required|unique:departments',
 
       ]);
-      if($validator->passes()){
-         return response()->json(['success'=>'added successfully']);
-      }
-      else{
-         return response()->json(['error'=>$validator->errors()->all()]);
-      }
-   
-
-      $department = new Department();
-      $department->name = $request->input('name');
-      $department->create_by = Auth::User()->name;
-      $department->save();
-      Toastr::success('Department create successfully', 'success', [
-         "positionClass" => "toast-top-right", "closeButton"
-         =>
-         "true",
-      ]);
-      return redirect()->back();
+  
+         $department = new Department();
+         $department->name = $request->input('name');
+         $department->create_by = Auth::User()->name;
+         $department->save();
+         Toastr::success('Department create successfully', 'success', [
+            "positionClass" => "toast-top-right", "closeButton"
+            =>
+            "true",
+         ]);
+         return redirect()->back();
+    
    }
    public function deptrelation(Request $request)
    {

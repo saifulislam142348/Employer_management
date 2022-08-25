@@ -117,6 +117,7 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     //salary add
     route::get('admin/pages/include/salaryPrepared', [SalaryController::class, 'salaryPrepared'])->name('admin.salaryPrepared');
     route::post('admin/employees/salaryPrepared', [SalaryController::class, 'store'])->name('admin.salaryPreparedCreate');
+    route::get('salaryStatusUpdate/{id}', [SalaryController::class, 'salaryStatus'])->name('salaryStatus');
 });
 
 

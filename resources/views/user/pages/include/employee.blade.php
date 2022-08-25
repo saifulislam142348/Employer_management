@@ -30,8 +30,8 @@
                             {{-- {{dd($item->departments->name)}} --}}
                             <td>{{ $item->departments->name }}</td>
                             <td>{{ $item->designations->name }}</td>
-                            <td>{{ $item->salary }}</td>
-                            <td>{{ $item->month }}</td>
+                            {{-- <td>{{ $item->salary }}</td> --}}
+                            {{-- <td>{{ $item->month }}</td> --}}
                             <td>{{ $item->join_date }}</td>
                             <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
                             <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>

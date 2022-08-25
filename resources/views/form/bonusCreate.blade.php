@@ -17,8 +17,8 @@
                         <div class="col-md-6">
                             <select class="form-select" name="user_id">
                                 <option selected></option>
-                                @foreach ($users as $item)
-                                    <option value="{{ $item->id }}">{{ $item->id }}</option>
+                                @foreach ($employees as $item)
+                                    <option value="{{ $item->user_id }}">{{ $item->user_id}}</option>
                                 @endforeach
                             </select>
                            

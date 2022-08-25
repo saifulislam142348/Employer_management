@@ -20,8 +20,9 @@
                         <div class="col-md-6">
                             <select class="form-select" name="user_id">
                                 <option selected></option>
-                                @foreach ($users as $item)
-                                    <option value="{{ $item->id }}">{{ $item->id }}</option>
+                                @foreach ($employees as $item)
+                          
+                                    <option value="{{ $item->user_id }}">{{ $item->user_id }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -55,8 +56,9 @@
                             <input type="text" class="form-control" name="salary">
                         </div>
                     </div>
-                    <input type="submit" class="btn btn-success " value="save">
-
+                    <div class="row mb-3">
+                        <input type="submit" class="btn btn-success  " value="save">
+                    </div>
                 </form>
 
             </div>

@@ -49,16 +49,22 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']
+        if (auth()->attempt(array(
+            'email' => $input['email'], 'password' => $input['password']
         ))) {
             if (auth()->user()->type == 'admin') {
                 return redirect()->route('admin.index')->with('success', 'Login success.');;
             } else {
-                return redirect()->route('user.index')->with('error', 'Email-Address And Password Are Wrong.');;
+                if (auth()->user()->status == 1) {
+                    return redirect()->route('user.index');
+                } else {
+                    return redirect()->route('login')
+                        ->with('error', 'Email-Address And Password Are not Active.');
+                }
             }
         } else {
             return redirect()->route('login')
-            ->with('error', 'Email-Address And Password Are Wrong.');
+                ->with('error', 'Email-Address And Password Are Wrong.');
         }
     }
 }

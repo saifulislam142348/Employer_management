@@ -32,8 +32,6 @@ class EmployeesController extends Controller
             'user_id' => 'required|unique:employees',
             'department_id' => 'required',
             'designation_id' => 'required',
-            'month' => 'required',
-            'salary' => 'required',
             'join_date' => 'required',
         ];
         $this->validate($request, $rules);
@@ -41,8 +39,6 @@ class EmployeesController extends Controller
         $employee->user_id = $request->input('user_id');
         $employee->department_id = $request->input('department_id');
         $employee->designation_id = $request->input('designation_id');
-        $employee->month = $request->input('month');
-        $employee->salary = $request->input('salary');
         $employee->join_date = $request->input('join_date');
         $employee->create_by = Auth::user()->name;
         $employee->save();

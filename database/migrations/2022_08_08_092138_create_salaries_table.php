@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('month');
+            $table->unsignedBigInteger('salary');
             $table->tinyInteger('status')->default(0)->comment('inactive=0 active=1');
             $table->string('create_by')->default('none');
             $table->string('update_by')->default('none');
