@@ -5,14 +5,14 @@
 
         <div class="col-md-6">
 
-            <input type="hidden" class="form-control" value="{{ Auth::user()->id }}" name="user_id" readonly>
+            <input type="text" class="form-control" value="{{ Auth::user()->id }}" name="user_id" readonly>
         </div>
     </div>
     <div class="row mb-3">
        
         <div class="col-md-6">
 
-            <input class="from-control" type="hidden" value="{{ $date->format('F') }}" name="month" readonly>
+            <input class="from-control" type="text" value="{{ $date->format('F') }}" name="month" readonly>
 
         </div>
     </div>
