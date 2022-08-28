@@ -15,15 +15,14 @@ return new class extends Migration
     {
         Schema::create('salaries', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employee_id');
-            $table->unsignedBigInteger('bonus_id');
+            $table->unsignedBigInteger('user_id');
+            $table->string('month');
+            $table->unsignedBigInteger('salary');
             $table->tinyInteger('status')->default(0)->comment('inactive=0 active=1');
             $table->string('create_by')->default('none');
             $table->string('update_by')->default('none');
-            $table->string('delete_by')->default('none');
             $table->timestamps();
-           
-            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

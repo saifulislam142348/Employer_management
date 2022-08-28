@@ -19,10 +19,10 @@ class EmployeesController extends Controller
 {
     public function employee()
     {
-        $employees = Employee::paginate(2);
+        $employees = Employee::paginate(3);
         $users = User::where('type', 'employee')->get();
-        $departments = Department::get();
-        $designations = Designation::get();
+        $departments = Department::where('status',1)->get();
+        $designations = Designation::where('status',1)->get();
         $months = Month::get();
         return view('admin.pages.include.employee', compact('users', 'departments', 'designations', 'months', 'employees'));
     }
@@ -32,8 +32,6 @@ class EmployeesController extends Controller
             'user_id' => 'required|unique:employees',
             'department_id' => 'required',
             'designation_id' => 'required',
-            'month' => 'required',
-            'salary' => 'required',
             'join_date' => 'required',
         ];
         $this->validate($request, $rules);
@@ -41,8 +39,6 @@ class EmployeesController extends Controller
         $employee->user_id = $request->input('user_id');
         $employee->department_id = $request->input('department_id');
         $employee->designation_id = $request->input('designation_id');
-        $employee->month = $request->input('month');
-        $employee->salary = $request->input('salary');
         $employee->join_date = $request->input('join_date');
         $employee->create_by = Auth::user()->name;
         $employee->save();
@@ -85,5 +81,13 @@ class EmployeesController extends Controller
         $allEmployees = Employee::where('status', '1')->get();
         // dd($allEmployees);
         return view('user.pages.include.employee', compact('allEmployees'));
+    }
+
+    // employee profile
+
+    public function employeeProfile(){
+        $employees=Employee::get();
+
+        return view('user.pages.include.employee_profile',compact('employees'));
     }
 }

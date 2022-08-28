@@ -13,10 +13,14 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{ route('user.index') }}">
             <i class="las la-tachometer-alt"></i>
             <span>Dashboard</span></a>
+
+
     </li>
+
+
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -36,12 +40,11 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Employee Components:</h6>
-                <a class="collapse-item" href="{{route('user.employee')}}">All Employee</a>
-                <a class="collapse-item" href="{{route('user.attendence')}}">Attemdences</a>
-                <a class="collapse-item" href="{{route('user.bonus')}}">Bonus apply</a>
-                <a class="collapse-item" href="{{route('user.leave')}}">Leaves Apply</a>
-                <a class="collapse-item" href="">Promosition Apply</a>
-           
+                <a class="collapse-item" href="{{ route('user.employee') }}">All Employee</a>
+                <a class="collapse-item" href="{{ route('user.attendence') }}">Attemdences</a>
+                <a class="collapse-item" href="{{ route('user.bonus') }}">Bonus</a>
+                <a class="collapse-item" href="{{ route('user.leave') }}">Leaves Apply</a>
+
             </div>
         </div>
     </li>
@@ -51,17 +54,16 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="las la-wrench"></i>
-            <span>Setting</span>
+            <span>Employees information Add</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Reports:</h6>
-                <h6 class="collapse-header">Employee Reports</h6>
-                <a class="collapse-item" href=""> Employee Reports</a>
-                <a class="collapse-item" href=""> Attemdences Reports</a>
-                <a class="collapse-item" href=""> Bonuses Reports</a>
-                <a class="collapse-item" href=""> Leaves Reports</a>
+                <h6 class="collapse-header">Employee info add</h6>
+                <a class="collapse-item" href=""> ABOUT</a>
+                <a class="collapse-item" href=""> EXPERIENCE</a>
+                <a class="collapse-item" href=""> PORTFOLIO</a>
+                <a class="collapse-item" href=""> CODING SKILLS</a>
+                <a class="collapse-item" href=""> AWARDS</a>
             </div>
         </div>
     </li>
@@ -79,16 +81,27 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">
             <i class="lar la-folder-open"></i>
-            <span>Pages</span>
+            <span>Info Update Pages</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Login Screens:</h6>
+<<<<<<< HEAD
                 <a class="collapse-item" href="forgot-password.html">Profile</a>
                 <div class="collapse-divider"></div>
                 <h6 class="collapse-header">Other Pages:</h6>
                 <a class="collapse-item" href="">Change Password</a>
                 <a class="collapse-item" href="">Forgot-password</a>
+=======
+                <a class="collapse-item" href="{{ route('email.change') }}"> Email Change</a>
+                <a class="collapse-item" href="{{ route('password.change') }}"> Password Change</a>
+                <div class="collapse-divider"></div>
+                <h6 class="collapse-header">Other Pages:</h6>
+                <a class="collapse-item" href="{{ route('phone.change') }}">Phone Number Change</a>
+                <a class="collapse-item" href="{{ route('nid.change') }}">NID Number Change</a>
+
+
+>>>>>>> c6fe238e4991c30f8dda80711c1bb189377b31de
             </div>
         </div>
     </li>
@@ -102,9 +115,9 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="las la-table"></i>
-            <span>Tables</span></a>
+        <button type="button" class="btn btn-primary" href="" data-bs-toggle="modal"
+            data-bs-target="#contactModal">Contact</button>
+        @include('form.contact')
     </li>
 
     <!-- Divider -->
@@ -112,10 +125,10 @@
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
-       
+
         <button class="rounded-circle las la-angle-double-left" id="sidebarToggle"></button>
     </div>
 
     <!-- Sidebar Message -->
-   
+
 </ul>

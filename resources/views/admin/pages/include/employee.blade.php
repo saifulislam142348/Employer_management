@@ -47,8 +47,8 @@
         <div class="jumbotron">
             <table class="table table-striped table-bordered table-hover table-dark">
                 <thead>
-                    <tr>
-                        <th>Id</th>
+                    <tr> <th>#</th>
+                        <th>User ID</th>
                         <th>name</th>
                         <th>Department</th>
                         <th>Designation</th>
@@ -63,15 +63,16 @@
                 </thead>
                 <tbody>
                     @if ($employees->count() > 0)
-                        @foreach ($employees as $item)
+                        @foreach ($employees as $key=> $item)
                             <tr>
-                                <td>{{ $item->id }}</td>
+                                <td>{{ $key+1 }}</td>
+                                <td>{{ $item->user_id }}</td>
                                 <td>{{ $item->users->name }}</td>
                                 {{-- {{dd($item->departments->name)}} --}}
                                 <td>{{ $item->departments->name }}</td>
                                 <td>{{ $item->designations->name }}</td>
                                 <td>{{ $item->salary }}</td>
-                                <td>{{ $item->month }}</td>
+                                {{-- <td>{{ $item->month }}</td> --}}
                                 <td>{{ $item->join_date }}</td>
                                 <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
                                 <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
@@ -112,6 +113,7 @@
 
                 </tbody>
             </table>
+            {!! $employees->links() !!} 
         </div>
     </div>
 @endsection

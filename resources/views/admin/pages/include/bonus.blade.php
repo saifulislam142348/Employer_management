@@ -59,6 +59,7 @@
                         <th>Bonus Title</th>
                         <th>Bonus Amonut</th>
                         <th>Create_by</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -70,16 +71,16 @@
                                 <td>{{ $item->user_id }}</td>
                                 <td>{{ $item->users->name }}</td>
                                 {{-- <td>{{ $item->users->employees->departments->name }}</td>
-                                <td>{{ $item->users->employees->designations->name }}</td> --}}
+                                <td>{{ $item->users->employees->designations->name }}</td>  --}}
                                 <td>{{ $item->month }}</td>
                                 <td>{{ $item->bonus_title }}</td>
                                
-                                <td>{{ $item->Bonus }}</td>
+                                <td>{{ $item->bonus }}</td>
                                 <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
 
                                 <td>
                                     @if ($item->status == 1)
-                                        <a class="btn btn-succcess" href="{{url('bonusStatus/'.$item->id)}}"></i>Active</a>
+                                        <a class="btn btn-success" href="{{url('bonusStatus/'.$item->id)}}"></i>Active</a>
                                     @else
                                         @if ($item->status == 0)
                                             <a class="btn btn-danger" href="{{url('bonusStatus/'.$item->id)}}">Inactive</i></a>

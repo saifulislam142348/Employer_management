@@ -69,7 +69,7 @@
                     @endif
                 </tbody>
             </table>
-            {!! $attendence->links() !!} 
+    
         </div>
     </div>
 @endsection

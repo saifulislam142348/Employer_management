@@ -26,7 +26,7 @@
                                 @endforeach
                             </select>
                         </div>
-                     
+
                     </div>
                     {!! Toastr::message() !!}
 
@@ -34,33 +34,18 @@
                         <label class="col-md-4 col-form-label text-md-end">{{ __('Month Name ') }}</label>
 
                         <div class="col-md-6">
-                            <select class="form-select" name="month">
-                                <option selected></option>
-                               
-                                    <option value="January">January</option>
-                                    <option value="February">February</option>
-                                    <option value="March">March</option>
-                                    <option value="April">April</option>
-                                    <option value="May">May</option>
-                                    <option value="June">June</option>
-                                    <option value="July">July</option>
-                                    <option value="August">August</option>
-                                    <option value="Septembe">Septembe</option>
-                                    <option value="October">October</option>
-                                    <option value="November">November</option>
-                                    <option value="December">December</option>
-                                
-                            </select>
+                            <input class="from-control" type="text" value="{{ $date->format('F') }}" name="month"
+                                readonly>
                         </div>
-                       
+
                     </div>
-           
 
-            <input type="submit" class="btn btn-success " value="save">
 
-            </form>
+                    <input type="submit" class="btn btn-success " value="save">
+
+                </form>
+            </div>
+
         </div>
-
     </div>
-</div>
 </div>

@@ -44,10 +44,37 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+                    <button type="button" class="btn btn-primary">
+                        TOTAL EMPLOYEES: <span class="badge bg-danger">{{ $employees->count() }}</span>
+                    </button>
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <h6 class="h3 mb-0 text-gray-800">
+                            
+
+                        </h6>
+
+                        <h1 class="h3 mb-0 text-gray-800">
+                            
+                            @if ( !$attendence->count() > 0)
+                                <div class="d-flex p-2 bd-highlight justify-content-center">
+                                    @include('form.userintime')
+
+                                </div>
+                            @else
+                                @if (Auth::user()->id == $attendence->first()->user_id && !$attendence->first()->status == 1 && Auth::user()->id == $attendence->first()->user_id)
+                                    <div class="d-flex p-2 bd-highlight justify-content-center">
+                                        @include('form.userouttime')
+                                    </div>
+                                @else
+                                    <div class="d-flex p-2 bd-highlight justify-content-center">
+                                        @include('form.userintime')
+
+                                    </div>
+                                @endif
+                            @endif
+                        </h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>

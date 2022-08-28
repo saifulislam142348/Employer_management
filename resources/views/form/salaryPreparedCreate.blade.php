@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="salaryPreparedCreateModal" tabindex="-1" aria-labelledby="employeeModalLabel"
+<div class="modal fade" id="salaryPreparedCreateModal" tabindex="-1" aria-labelledby="salaryPreparedCreateModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -13,26 +13,23 @@
                     <span class="text-danger">{{ $error }}</span>
                 @endforeach
 
-                <form method="POST" action="{{ route('admin.employee.bonus') }}">
+                <form method="POST" action="{{ route('admin.salaryPreparedCreate') }}">
                     @csrf
                     <div class="row mb-3">
-                        <label for="user_id"
-                            class="col-md-4 col-form-label text-md-end">{{ __('Employees Id') }}</label>
+                        <label class="col-md-4 col-form-label text-md-end">{{ __('User Id') }}</label>
                         <div class="col-md-6">
                             <select class="form-select" name="user_id">
                                 <option selected></option>
                                 @foreach ($employees as $item)
+                          
                                     <option value="{{ $item->user_id }}">{{ $item->user_id }}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
 
-
                     <div class="row mb-3">
-                        <label
-                            class="col-md-4 col-form-label text-md-end">{{ __(' Bo
-                                                    ') }}</label>
+                        <label class="col-md-4 col-form-label text-md-end">{{ __(' Month ') }}</label>
                         <div class="col-md-6">
                             <select class="form-select" name="month">
                                 <option selected></option>
@@ -49,32 +46,21 @@
                                 <option value="October">October</option>
                                 <option value="November">November</option>
                                 <option value="December">December</option>
-
                             </select>
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <label for="salary"
-                            class="col-md-4 col-form-label text-md-end">{{ __('Bonus Title') }}</label>
+                        <label class="col-md-4 col-form-label text-md-end">{{ __('Salary') }}</label>
                         <div class="col-md-6">
-                            <input id="bonus" type="text" class="form-control" name="bonus_title">
+                            <input type="text" class="form-control" name="salary">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="salary" class="col-md-4 col-form-label text-md-end">{{ __('Bonus') }}</label>
-                        <div class="col-md-6">
-                            <input id="bonus" type="text" class="form-control" name="bonus">
-                        </div>
+                        <input type="submit" class="btn btn-success  " value="save">
                     </div>
-
+                </form>
 
             </div>
-
-            <input type="submit" class="btn btn-success " value="save">
-
-            </form>
-
         </div>
     </div>
-</div>
