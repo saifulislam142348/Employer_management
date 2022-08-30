@@ -42,12 +42,12 @@ class AttendencesController extends Controller
 
       ];
       $this->validate($request, $rules);
-<<<<<<< HEAD
+
       $todayDate = Carbon::now()->format('Y-m-d H:i:s');
-=======
+
     
       $todayDate = Carbon::now('+6')->format('Y-m-d H:i:s');
->>>>>>> c6fe238e4991c30f8dda80711c1bb189377b31de
+
       $present = new Attendence();
       $present->user_id = $request->input('user_id');
       $present->month = $request->input('month');
