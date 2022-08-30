@@ -34,7 +34,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if ($attendence->count() > 0)
+                    @if (Auth::user()->id && $attendence->count() > 0)
                         @foreach ($attendence as $key => $item)
                             <tr>
                                 <td>{{ $key + 1 }}</td>

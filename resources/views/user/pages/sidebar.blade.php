@@ -86,6 +86,13 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Login Screens:</h6>
+<<<<<<< HEAD
+                <a class="collapse-item" href="forgot-password.html">Profile</a>
+                <div class="collapse-divider"></div>
+                <h6 class="collapse-header">Other Pages:</h6>
+                <a class="collapse-item" href="">Change Password</a>
+                <a class="collapse-item" href="">Forgot-password</a>
+=======
                 <a class="collapse-item" href="{{ route('email.change') }}"> Email Change</a>
                 <a class="collapse-item" href="{{ route('password.change') }}"> Password Change</a>
                 <div class="collapse-divider"></div>
@@ -94,6 +101,7 @@
                 <a class="collapse-item" href="{{ route('nid.change') }}">NID Number Change</a>
 
 
+>>>>>>> c6fe238e4991c30f8dda80711c1bb189377b31de
             </div>
         </div>
     </li>

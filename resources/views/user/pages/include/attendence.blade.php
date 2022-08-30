@@ -9,15 +9,23 @@
     <div class="jumbotron">
         @include('user.pages.include.attendencescount')
 
+<<<<<<< HEAD
+        @if ( !$attendence->count() > 0)
+=======
         @if (!$attendence->count() > 0)
+>>>>>>> c6fe238e4991c30f8dda80711c1bb189377b31de
             <div class="d-flex p-2 bd-highlight justify-content-center">
                 @include('form.userintime')
 
             </div>
         @else
+<<<<<<< HEAD
+            @if ( !$attendence->first()->status == 1)
+=======
             @if (Auth::user()->id == $attendence->first()->user_id &&
                 !$attendence->first()->status == 1 &&
                 Auth::user()->id == $attendence->first()->user_id)
+>>>>>>> c6fe238e4991c30f8dda80711c1bb189377b31de
                 <div class="d-flex p-2 bd-highlight justify-content-center">
                     @include('form.userouttime')
                 </div>
