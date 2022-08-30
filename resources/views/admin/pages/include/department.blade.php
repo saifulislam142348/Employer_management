@@ -38,8 +38,10 @@
                                 <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
 
                                 <td>
-                                    <a class="btn btn-success" data-toggle="modal" data-target="#departmentEditModal"
-                                        href=""><i class="las la-edit"></i></a>
+                                    <a class="btn btn-success  up_department" data-toggle="modal" data-target="#departmentEditModal"
+                                        href="" data-id="{{$item->id}}" data-name="{{$item->name}}">
+                                        <i class="las la-edit"></i>
+                                    </a>
                                     @include('form.edit.department')
                                 <td>
 
@@ -77,6 +79,6 @@
         </div>
     </div>
   @section('scripts')
-  @include('jquery.department')  
+  @include('jquery.departmentUpdate')  
   @endsection
 @endsection

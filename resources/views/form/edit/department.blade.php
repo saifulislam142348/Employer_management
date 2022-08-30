@@ -13,17 +13,18 @@
                 <div class="errormsg">
 
                 </div>
-                <form method="POST" action="{{ route('admin.department.store') }}">
+                <form method="POST" action="{{ route('admin.department.store') }}" id="updateFormDepartment">
                     @csrf
+                    <input type="hidden" name="up_department_id" id="up_department_id">
                     <div class="row mb-3">
                         <label for="name"
                             class="col-md-4 col-form-label text-md-end">{{ __('Department  Name') }}</label>
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control" name="name">
+                            <input id="up_department_name" type="text" class="form-control" name="up_department_name">
                         </div>
                     </div>
             </div>
-            <input class="btn btn-success" type="submit" value="save">
+            <input class="btn btn-success update_department" type="submit" value="update">
 
 
             </form>

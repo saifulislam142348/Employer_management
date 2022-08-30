@@ -71,14 +71,19 @@
                                 {{-- {{dd($item->departments->name)}} --}}
                                 <td>{{ $item->departments->name }}</td>
                                 <td>{{ $item->designations->name }}</td>
-                                <td>{{ $item->salary }}</td>
+                               
                                 {{-- <td>{{ $item->month }}</td> --}}
                                 <td>{{ $item->join_date }}</td>
                                 <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
                                 <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
                                 <td>
-                                    <a class="btn btn-success" data-toggle="modal" data-target="#employeeEditModal"
-                                        href=""><i class="las la-edit"></i></a>
+                                    <a class="btn btn-success up_employee" data-toggle="modal" data-target="#employeeEditModal"
+                                        href="" 
+                                        data-id="{{$item->id}}" 
+                                        data-user_id="{{$item->user_id}}"
+                                        data-department_id="{{ $item->departments->name }}"
+                                        data-designation_id="{{ $item->designations->name }}"
+                                        ><i class="las la-edit"></i></a>
                                     @include('form.edit.employee')
                                 <td>
 
@@ -116,4 +121,7 @@
             {!! $employees->links() !!} 
         </div>
     </div>
+    @section('scripts')
+  @include('jquery.employeeUpdate')  
+  @endsection
 @endsection

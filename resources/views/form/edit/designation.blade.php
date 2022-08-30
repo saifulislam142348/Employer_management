@@ -12,15 +12,16 @@
             <div class="modal-body">
                 <form method="POST" action="{{ route('admin.designation.store') }}">
                     @csrf
+                    <input type="hidden" name="id" id="up_designation_id">
                     <div class="row mb-3">
                         <label for="name"
                             class="col-md-4 col-form-label text-md-end">{{ __(' Designation Name') }}</label>
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control" name="name">
+                            <input  type="text" id="up_designation_name" class="form-control" name="name">
                         </div>
                     </div>
             </div>
-            <input class="btn btn-success" type="submit" value="save">
+            <input class="btn btn-success" type="submit" value="update">
             </form>
         </div>
     </div>

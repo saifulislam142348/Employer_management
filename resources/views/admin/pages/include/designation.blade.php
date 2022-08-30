@@ -34,8 +34,8 @@
 
                                 <td>
 
-                                    <a class="btn btn-success" data-toggle="modal" data-target="#designationEditModal"
-                                        href=""><i class="las la-edit"></i></a>
+                                    <a class="btn btn-success up_designation" data-toggle="modal" data-target="#designationEditModal"
+                                        href="" data-id="{{$item->id}}" data-name="{{$item->name}}"><i class="las la-edit"></i></a>
                                     @include('form.edit.designation')
                                 <td>
 
@@ -71,4 +71,7 @@
             </table>
         </div>
     </div>
+    @section('scripts')
+  @include('jquery.designationUpdate')  
+  @endsection
 @endsection

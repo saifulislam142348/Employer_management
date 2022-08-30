@@ -60,7 +60,7 @@
                         <th>Bonus Amonut</th>
                         <th>Create_by</th>
                         <th>Status</th>
-                        <th>Action</th>
+                        <th colspan="2">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -88,6 +88,18 @@
                                     @endif
                                 </td>
                                 <td>
+
+                                    <a class="btn btn-success up_bonus" data-toggle="modal" data-target="#bonusEditModal"
+                                        href=""
+                                         data-id="{{$item->id}}"
+                                          data-bonus_month="{{$item->month}}"
+                                          data-bonus_title="{{$item->bonus_title}}"
+                                          data-bonus="{{$item->bonus}}"
+                                          ><i class="las la-edit"></i></a>
+                                    @include('form.edit.bonus')
+                                </td>
+                                <td>
+
                                     <form action="{{ url('bonus/delete/' . $item->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -107,4 +119,7 @@
         </div>
 
     </div>
+    @section('scripts')
+  @include('jquery.bonusUpdate')  
+  @endsection
 @endsection

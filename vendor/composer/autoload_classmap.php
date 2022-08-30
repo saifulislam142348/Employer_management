@@ -6,6 +6,9 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Anhskohbo\\NoCaptcha\\Facades\\NoCaptcha' => $vendorDir . '/anhskohbo/no-captcha/src/Facades/NoCaptcha.php',
+    'Anhskohbo\\NoCaptcha\\NoCaptcha' => $vendorDir . '/anhskohbo/no-captcha/src/NoCaptcha.php',
+    'Anhskohbo\\NoCaptcha\\NoCaptchaServiceProvider' => $vendorDir . '/anhskohbo/no-captcha/src/NoCaptchaServiceProvider.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
@@ -18,6 +21,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
     'App\\Http\\Controllers\\BonusController' => $baseDir . '/app/Http/Controllers/BonusController.php',
     'App\\Http\\Controllers\\ChangeController' => $baseDir . '/app/Http/Controllers/ChangeController.php',
+    'App\\Http\\Controllers\\Contactcontroller' => $baseDir . '/app/Http/Controllers/Contactcontroller.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\DepartmentController' => $baseDir . '/app/Http/Controllers/DepartmentController.php',
     'App\\Http\\Controllers\\DesignationController' => $baseDir . '/app/Http/Controllers/DesignationController.php',
@@ -25,6 +29,7 @@ return array(
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\LeavesController' => $baseDir . '/app/Http/Controllers/LeavesController.php',
     'App\\Http\\Controllers\\MonthController' => $baseDir . '/app/Http/Controllers/MonthController.php',
+    'App\\Http\\Controllers\\PDFController' => $baseDir . '/app/Http/Controllers/PDFController.php',
     'App\\Http\\Controllers\\RegistrationController' => $baseDir . '/app/Http/Controllers/RegistrationController.php',
     'App\\Http\\Controllers\\SalaryController' => $baseDir . '/app/Http/Controllers/SalaryController.php',
     'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
@@ -38,6 +43,7 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\UserAccess' => $baseDir . '/app/Http/Middleware/UserAccess.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Mail\\ContactFormMail' => $baseDir . '/app/Mail/ContactFormMail.php',
     'App\\Models\\Attendence' => $baseDir . '/app/Models/Attendence.php',
     'App\\Models\\Bonus' => $baseDir . '/app/Models/Bonus.php',
     'App\\Models\\Department' => $baseDir . '/app/Models/Department.php',

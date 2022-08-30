@@ -104,6 +104,9 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
     route::delete('department/delete/{id}', [DepartmentController::class, 'delete']);
     route::delete('dept/desgn/delete/{id}', [DepartmentController::class, 'deleteelation']);
 
+    // update department
+    route::post('update/department', [DepartmentController::class, 'updateDepartment'])->name('update.department');
+
     //designation add
     route::get('admin/pages/include/designation', [DesignationController::class, 'designation'])->name('admin.designation');
     route::post('admin/designation/create', [DesignationController::class, 'store'])->name('admin.designation.store');

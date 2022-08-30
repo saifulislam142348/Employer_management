@@ -4,7 +4,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="bonusEditModallLabel">Bonus Edit</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
         </div>
         <div class="modal-body">
           
@@ -16,15 +18,10 @@
             @csrf
 
             <div class="row mb-3">
-                <label for="user_id" class="col-md-4 col-form-label text-md-end">{{ __('User_Id') }}</label>
+               
 
                 <div class="col-md-6">
-                   <select class="form-select" name="user_id" >
-                    <option  selected></option>
-                    @foreach ($users as $item)
-                        <option value="{{$item->id}}">{{$item->id}}</option>
-                    @endforeach
-                   </select>
+                   <input type="hidden" name='up_bonus_id' id="id">
                 </div>
             </div>
            
@@ -33,12 +30,7 @@
                 <label  class="col-md-4 col-form-label text-md-end">{{ __('Month Name ') }}</label>
 
                 <div class="col-md-6">
-                   <select class="form-select" name="month_id" id="">
-                    <option  selected>..</option>
-                    @foreach ($months as $item)
-                        <option value="{{$item->id}}">{{$item->name}}</option>
-                    @endforeach
-                   </select>
+                   <input type="text" name="up_bonus_month" >
                 </div>
             </div>
             
@@ -46,7 +38,7 @@
                 <label for="salary" class="col-md-4 col-form-label text-md-end">{{ __('Bonus Title') }}</label>
 
                 <div class="col-md-6">
-                    <input id="bonus" type="text" class="form-control" name="bonus_title">
+                    <input id="bonus" type="text" class="form-control" name="up_bonus_title">
 
                 </div>
             </div>
@@ -54,13 +46,13 @@
                 <label for="salary" class="col-md-4 col-form-label text-md-end">{{ __('Bonus') }}</label>
 
                 <div class="col-md-6">
-                    <input id="bonus" type="text" class="form-control" name="bonus">
+                    <input id="bonus" type="text" class="form-control" name="up_bonus">
 
                 </div>
             </div>
     </div>
     
-    <input type="submit" class="btn btn-success " value="save">
+    <input type="submit" class="btn btn-success " value="Update">
     
 </form>
        

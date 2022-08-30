@@ -62,6 +62,7 @@
                         <th>Gender</th>
                         <th>Address</th>
                         <th>Phone</th>
+                        <th>National_ID</th>
 
                         <th>Create_by</th>
                         <th>Update_by</th>
@@ -83,14 +84,23 @@
                                 @endif
                                 <td>{{ $item->address }}</td>
                                 <td>{{ $item->phone }}</td>
+                                <td>{{ $item->nid }}</td>
                                 <td>by <span style="color: aqua">/{{ $item->create_by }}</span></td>
                                 <td>by <span style="color: aqua">/{{ $item->update_by }}</span></td>
                                 <td>
 
 
 
-                                    <a class="btn btn-success" data-toggle="modal" data-target="#registrationEditModal"
-                                        href="{{ url('form.edit.registration/' . $item->id) }}"><i
+                                    <a class="btn btn-success up_registration" data-toggle="modal" data-target="#registrationEditModal"
+                                        href=""
+                                        data-id="{{$item->id}}";
+                                        data-name="{{$item->name}}";
+                                        data-email="{{$item->email}}";
+                                        data-gender="{{$item->gender}}";
+                                        data-address="{{$item->address}}";
+                                        data-phone="{{$item->phone}}";
+                                        data-nid="{{$item->nid}}";
+                                        ><i
                                             class="las la-edit"></i></a>
                                     @include('form.edit.registration')
 
@@ -134,8 +144,9 @@
             </table>
            {!! $registration->links() !!} 
         </div>
-    
       
     </div>
-  
+    @section('scripts')
+    @include('jquery.registrationUpdate')  
+    @endsection
 @endsection

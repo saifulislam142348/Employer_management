@@ -49,18 +49,17 @@ class DepartmentController extends Controller
          'name' => 'required|unique:departments',
 
       ]);
-  
-         $department = new Department();
-         $department->name = $request->input('name');
-         $department->create_by = Auth::User()->name;
-         $department->save();
-         Toastr::success('Department create successfully', 'success', [
-            "positionClass" => "toast-top-right", "closeButton"
-            =>
-            "true",
-         ]);
-         return redirect()->back();
-    
+
+      $department = new Department();
+      $department->name = $request->input('name');
+      $department->create_by = Auth::User()->name;
+      $department->save();
+      Toastr::success('Department create successfully', 'success', [
+         "positionClass" => "toast-top-right", "closeButton"
+         =>
+         "true",
+      ]);
+      return redirect()->back();
    }
    public function deptrelation(Request $request)
    {
@@ -138,5 +137,27 @@ class DepartmentController extends Controller
          "true",
       ]);
       return redirect()->back();
+   }
+
+
+   // update Department
+
+   public function updateDepartment(Request $request)
+   {
+      $request->validate(
+         [
+
+            'up_department_name' => 'required' . $request->up_department_id,
+
+         ],
+         [
+
+            'up_department_name.required' => 'department name is required',
+         ]
+      );
+       Department::where('id', $request->up_department_id)->update(['name'=>$request->input('name'),'update_by'=>Auth::User()->name]);
+     
+      
+      return response()->json(['status' => 'success']);
    }
 }

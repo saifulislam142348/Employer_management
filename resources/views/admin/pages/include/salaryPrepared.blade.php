@@ -39,16 +39,28 @@
 
                    
 
-                @if ($salary->users->bonuses[0]->user_id == $salary->user_id &&
-                    $salary->month == $salary->users->bonuses[0]->month && $salary->users->bonuses[0]->status==1 )
+                {{-- @if ($salary->users->bonuses[0]->user_id == $salary->user_id &&
+                    $salary->month == $salary->users->bonuses[0]->month && $salary->users->bonuses[0]->status==1 ) --}}
+                     @php
+                         $montlyBonus=DB::table('salaries')->join('bonuses','month','=','month');
+                     @endphp
+                     
+                     @if ( $montlyBonus)
                      <td>{{ $salary->salary }}</td>
-                    <td>{{ $salary->users->bonuses[0]->bonus }}</td>
-                    <td>{{ $salary->salary + $salary->users->bonuses[0]->bonus }}</td>
-                @else
-                    <td>{{ $salary->salary }}</td>
+                     <td>{{ $salary->users->bonuses[0]->bonus }}</td>
+                     <td>{{ $salary->salary + $salary->users->bonuses[0]->bonus }}</td>
+                     @else
+                     <td>{{ $salary->salary }}</td>
+                     <td>0</td>
+                     <td>{{ $salary->salary+0}}</td>
+                     @endif
+                  
+                {{-- @else --}}
+                
+                    {{-- <td>{{ $salary->salary }}</td>
                     <td>0</td>
-                    <td>{{ $salary->salary + 0 }}</td>
-                @endif
+                    <td>{{ $salary->salary + 0 }}</td> --}}
+                {{-- @endif --}}
 
 
                 <td>{{ $salary->create_by }}</td>
